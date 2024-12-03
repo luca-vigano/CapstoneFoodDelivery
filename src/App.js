@@ -6,16 +6,18 @@ import { Home } from "./component/Navbar/Home/Home";
 import RestaurantDetails from "./component/Restaurant/RestaurantDetails";
 import Cart from "./component/Cart/Cart";
 import Profile from "./component/Profile/Profile";
+import CustomerRoute from "./Routers/CustomerRoute";
 
 function App() {
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
-      <Navbar />
+      {/* <Navbar /> */}
       {/* <Home /> */}
       {/* <RestaurantDetails /> */}
       {/* <Cart /> */}
-      <Profile />
+      {/* <Profile /> */}
+      <CustomerRoute />
     </ThemeProvider>
   );
 }

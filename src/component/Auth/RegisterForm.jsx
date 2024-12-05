@@ -10,11 +10,11 @@ import {
 } from "@mui/material";
 import { Field, Form, Formik } from "formik";
 import { useNavigate } from "react-router-dom";
-import { registerUser } from "../State/Authentication/Action";
+import { loginUser, registerUser } from "../State/Authentication/Action";
 import { useDispatch } from "react-redux";
 
 const initialValues = {
-  fullName: "",
+  fullname: "",
   email: "",
   password: "",
   role: "RESTAURANT_CUSTOMER",
@@ -23,9 +23,17 @@ const initialValues = {
 const RegisterForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const handleSubmit = (values) => {
+  const handleSubmit = async (values) => {
     console.log("form values", values);
-    dispatch(registerUser({ userData: values, navigate }));
+
+    try {
+      await dispatch(registerUser({ userData: values, navigate }));
+
+      // Se la registrazione ha successo, esegui il login
+      await dispatch(loginUser({ userData: values, navigate }));
+    } catch (error) {
+      console.log("Registrazione o login falliti", error);
+    }
   };
   return (
     <div>
@@ -36,7 +44,7 @@ const RegisterForm = () => {
         <Form>
           <Field
             as={TextField}
-            name="fullName"
+            name="fullname"
             label="full name"
             fullWidth
             variant="outlined"

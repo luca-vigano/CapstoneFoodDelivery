@@ -17,7 +17,7 @@ const initialState = {
   user: null,
   isLoading: false,
   error: null,
-  jwt: null,
+  token: null,
   favorites: [],
   success: null,
 };
@@ -33,7 +33,7 @@ export const authReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        jwt: action.payload,
+        token: action.payload,
         success: "Register Success",
       };
     case ADD_TO_FAVORITE_SUCCESS:

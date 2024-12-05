@@ -18,17 +18,19 @@ import { api, API_URL } from "../../config/Api";
 export const registerUser = (reqData) => async (dispatch) => {
   dispatch({ type: REGISTER_REQUEST });
   try {
-    const { data } = await axios.post(
-      `${API_URL}/auth/signup`,
+    const { data } = await api.post(
+      `${API_URL}/auth/register`,
       reqData.userData
     );
-    if (data.jwt) localStorage.setItem("jwt", data.jwt);
+    console.log("RISPOSTA DEL SERVER", data);
+    if (data.token) localStorage.setItem("token", data.token);
+    // console.log("jwt salvato register", data.jwt);
     if (data.role === "RESTAURANT_OWNER") {
       reqData.navigate("/admin/restaurant");
     } else {
       reqData.navigate("/");
     }
-    dispatch({ type: REGISTER_SUCCESS, payload: data.jwt });
+    dispatch({ type: REGISTER_SUCCESS, payload: data.token });
     console.log("register success", data);
   } catch (error) {
     dispatch({ type: REGISTER_FAILURE, payload: error });
@@ -39,17 +41,15 @@ export const registerUser = (reqData) => async (dispatch) => {
 export const loginUser = (reqData) => async (dispatch) => {
   dispatch({ type: LOGIN_REQUEST });
   try {
-    const { data } = await axios.post(
-      `${API_URL}/auth/signin`,
-      reqData.userData
-    );
-    if (data.jwt) localStorage.setItem("jwt", data.jwt);
+    const { data } = await api.post(`${API_URL}/auth/login`, reqData.userData);
+    if (data.token) localStorage.setItem("jwt", data.token);
+    console.log("jwt salvato login", data.token);
     if (data.role === "RESTAURANT_OWNER") {
       reqData.navigate("/admin/restaurant");
     } else {
       reqData.navigate("/");
     }
-    dispatch({ type: LOGIN_SUCCESS, payload: data.jwt });
+    dispatch({ type: LOGIN_SUCCESS, payload: data.token });
     console.log("login success", data);
   } catch (error) {
     dispatch({ type: LOGIN_FAILURE, payload: error });
@@ -61,7 +61,7 @@ export const loginUser = (reqData) => async (dispatch) => {
 export const getUser = (jwt) => async (dispatch) => {
   dispatch({ type: GET_USER_REQUEST });
   try {
-    const { data } = await api.get(`/auth/signin`, {
+    const { data } = await api.get(`/user/profile`, {
       headers: {
         Authorization: `Bearer ${jwt}`,
       },

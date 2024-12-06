@@ -12,7 +12,7 @@ import {
   UPDATE_CART_ITEM_REQUEST,
   UPDATE_CART_ITEM_SUCCESS,
 } from "./ActionType";
-import LOGOUT from "../Authentication/ActionType";
+import { LOGOUT } from "../Authentication/ActionType";
 
 const initialState = {
   cart: null,
@@ -81,3 +81,5 @@ const cartReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export default cartReducer;

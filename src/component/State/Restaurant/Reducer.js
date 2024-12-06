@@ -1,4 +1,3 @@
-import { PlaylistAddOutlined } from "@mui/icons-material";
 import {
   CREATE_CATEGORY_FAILURE,
   CREATE_CATEGORY_REQUEST,

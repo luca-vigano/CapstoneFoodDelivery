@@ -5,6 +5,7 @@ import {
   ADD_TO_FAVORITE_SUCCESS,
   GET_USER_FAILURE,
   GET_USER_REQUEST,
+  GET_USER_SUCCESS,
   LOGIN_FAILURE,
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
@@ -70,7 +71,7 @@ export const getUser = (jwt) => async (dispatch) => {
       },
     });
 
-    dispatch({ type: REGISTER_SUCCESS, payload: data });
+    dispatch({ type: GET_USER_SUCCESS, payload: data });
     console.log("user profile", data);
   } catch (error) {
     dispatch({ type: GET_USER_FAILURE, payload: error });

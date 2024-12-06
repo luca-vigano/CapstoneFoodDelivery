@@ -24,6 +24,7 @@ export const registerUser = (reqData) => async (dispatch) => {
     );
     console.log("RISPOSTA DEL SERVER", data);
     if (data.token) localStorage.setItem("token", data.token);
+    // if (data.user) localStorage.setItem("user", data.user);
     if (data.role === "RESTAURANT_OWNER") {
       reqData.navigate("/admin/restaurant");
     } else {

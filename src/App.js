@@ -20,8 +20,6 @@ function App() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    console.log("Token from localStorage!!!!!!!!!!!!:", token);
-
     if (auth.token || token) {
       dispatch(getUser(auth.token || token));
     }

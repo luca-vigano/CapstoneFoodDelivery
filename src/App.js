@@ -10,7 +10,6 @@ import CustomerRoute from "./Routers/CustomerRoute";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "./component/State/Authentication/Action";
-import { store } from "./component/State/store";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,6 +19,9 @@ function App() {
   console.log("jwt from localStorage:", token);
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
+    console.log("Token from localStorage!!!!!!!!!!!!:", token);
+
     if (auth.token || token) {
       dispatch(getUser(auth.token || token));
     }

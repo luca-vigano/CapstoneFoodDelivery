@@ -24,13 +24,15 @@ export const registerUser = (reqData) => async (dispatch) => {
     );
     console.log("RISPOSTA DEL SERVER", data);
     if (data.token) localStorage.setItem("token", data.token);
-    // console.log("jwt salvato register", data.jwt);
     if (data.role === "RESTAURANT_OWNER") {
       reqData.navigate("/admin/restaurant");
     } else {
       reqData.navigate("/");
     }
-    dispatch({ type: REGISTER_SUCCESS, payload: data.token });
+    dispatch({
+      type: REGISTER_SUCCESS,
+      payload: { token: data.token, user: data.user },
+    });
     console.log("register success", data);
   } catch (error) {
     dispatch({ type: REGISTER_FAILURE, payload: error });
@@ -61,7 +63,7 @@ export const loginUser = (reqData) => async (dispatch) => {
 export const getUser = (jwt) => async (dispatch) => {
   dispatch({ type: GET_USER_REQUEST });
   try {
-    const { data } = await api.get(`/user/profile`, {
+    const { data } = await api.get(`/users/profile`, {
       headers: {
         Authorization: `Bearer ${jwt}`,
       },

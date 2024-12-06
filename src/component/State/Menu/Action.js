@@ -1,4 +1,3 @@
-import { type } from "@testing-library/user-event/dist/type";
 import { api } from "../../config/Api";
 import {
   CREATE_MENU_ITEM_FAILURE,

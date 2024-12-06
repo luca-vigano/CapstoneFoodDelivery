@@ -9,6 +9,7 @@ import {
   LOGIN_FAILURE,
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
+  LOGOUT,
   REGISTER_FAILURE,
   REGISTER_REQUEST,
   REGISTER_SUCCESS,
@@ -42,7 +43,7 @@ export const authReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         token: action.payload.token, // Aggiorna il token
-        user: action.payload.user, // Aggiorna i dettagli dell'utente
+        // user: action.payload.user, // Aggiorna i dettagli dell'utente
         success:
           action.type === REGISTER_SUCCESS
             ? "Register Success"
@@ -66,6 +67,8 @@ export const authReducer = (state = initialState, action) => {
           ? state.favorites.filter((item) => item.id !== action.payload.id)
           : [action.payload, ...state.favorites],
       };
+    case LOGOUT:
+      return initialState;
 
     case REGISTER_FAILURE:
     case LOGIN_FAILURE:

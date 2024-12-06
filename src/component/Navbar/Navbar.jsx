@@ -12,10 +12,24 @@ export const Navbar = () => {
   const { auth } = useSelector((store) => store);
   console.log("navbar store", auth);
   const navigate = useNavigate();
+
+  const handleAvatarClick = () => {
+    if (auth.user?.role === "RESTAURANT_CUSTOMER") {
+      navigate("/my-profile");
+    } else {
+      navigate("/admin/restaurant");
+    }
+  };
+
   return (
     <Box className="px-5 sticky top-0 z-50 py-[.8rem] bg-[#367BC1] lg:px-20 flex justify-between">
       <div className="lg:mr-10 cursor-pointer flex items-center space-x-4">
-        <li className="logo font-semibold text-gray-300 text-2xl">ClickFood</li>
+        <li
+          onClick={() => navigate("/")}
+          className="logo font-semibold text-gray-300 text-2xl"
+        >
+          ClickFood
+        </li>
       </div>
       <div className="flex items-center space-x-2 lg:space-x-10">
         <div className="">
@@ -25,7 +39,10 @@ export const Navbar = () => {
         </div>
         <div className="">
           {auth.user ? (
-            <Avatar sx={{ bgcolor: "white", color: blue.A400 }}>
+            <Avatar
+              onClick={handleAvatarClick}
+              sx={{ bgcolor: "white", color: blue.A400 }}
+            >
               {auth.user?.fullName[0].toUpperCase()}
             </Avatar>
           ) : (

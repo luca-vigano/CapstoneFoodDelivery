@@ -46,7 +46,7 @@ export const loginUser = (reqData) => async (dispatch) => {
   dispatch({ type: LOGIN_REQUEST });
   try {
     const { data } = await api.post(`${API_URL}/auth/login`, reqData.userData);
-    if (data.token) localStorage.setItem("jwt", data.token);
+    if (data.token) localStorage.setItem("token", data.token);
     console.log("jwt salvato login", data.token);
     if (data.role === "RESTAURANT_OWNER") {
       reqData.navigate("/admin/restaurant");
@@ -81,7 +81,7 @@ export const getUser = (jwt) => async (dispatch) => {
 };
 
 export const addToFavorite = (jwt, restaurantId) => async (dispatch) => {
-  dispatch({ type: ADD_TO_FAVORITE_REQUEST });
+  // dispatch({ type: ADD_TO_FAVORITE_REQUEST });
   try {
     const { data } = await api.put(
       `/api/restaurants/${restaurantId}/add-favorite`,

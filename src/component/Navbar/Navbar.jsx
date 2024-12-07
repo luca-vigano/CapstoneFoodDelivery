@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 
 export const Navbar = () => {
   const { auth } = useSelector((store) => store);
-  console.log("navbar store", auth);
+  // console.log("navbar store", auth);
   const navigate = useNavigate();
 
   const handleAvatarClick = () => {

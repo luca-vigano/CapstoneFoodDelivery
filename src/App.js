@@ -15,8 +15,8 @@ function App() {
   const dispatch = useDispatch();
   const token = localStorage.getItem("token");
   const { auth } = useSelector((store) => store);
-  console.log("auth from store:", auth);
-  console.log("jwt from localStorage:", token);
+  // console.log("auth from store:", auth);
+  // console.log("jwt from localStorage:", token);
 
   useEffect(() => {
     const token = localStorage.getItem("token");

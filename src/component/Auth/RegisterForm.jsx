@@ -29,7 +29,7 @@ const RegisterForm = () => {
     try {
       await dispatch(registerUser({ userData: values, navigate }));
 
-      // Se la registrazione ha successo, esegui il login
+      // +++++++++++PROVARE A TOGLIERE+++++++++++++++
       await dispatch(loginUser({ userData: values, navigate }));
     } catch (error) {
       console.log("Registrazione o login falliti", error);

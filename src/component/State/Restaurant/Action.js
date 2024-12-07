@@ -1,4 +1,3 @@
-import { type } from "@testing-library/user-event/dist/type";
 import { api } from "../../config/Api";
 import {
   CREATE_CATEGORY_FAILURE,
@@ -46,7 +45,7 @@ export const getAllRestaurantsAction = (token) => {
   return async (dispatch) => {
     dispatch({ type: GET_ALL_RESTAURANT_REQUEST });
     try {
-      const { data } = await api.get("/api/restaurant", {
+      const { data } = await api.get("/api/restaurants", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

@@ -32,7 +32,7 @@ import {
 const initialState = {
   restaurants: [],
   usersRestaurant: null,
-  restauant: null,
+  restaurant: null,
   loading: false,
   error: null,
   events: [],
@@ -64,7 +64,7 @@ export const restaurantReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        restaurant: action.payload,
+        restaurants: action.payload,
       };
     case GET_RESTAURANT_BY_ID_SUCCESS:
       return {

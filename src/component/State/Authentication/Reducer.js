@@ -56,6 +56,7 @@ export const authReducer = (state = initialState, action) => {
         isLoading: false,
         user: action.payload, // Memorizza i dati utente ricevuti
         error: null,
+        favorites: action.payload.favorites,
       };
 
     case ADD_TO_FAVORITE_SUCCESS:

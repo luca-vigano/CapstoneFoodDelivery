@@ -64,7 +64,7 @@ export const getRestaurantById = (reqData) => {
     dispatch({ type: GET_RESTAURANT_BY_ID_REQUEST });
     try {
       const response = await api.get(
-        `api/restaurants/${reqData.restaurantId}`,
+        `/api/restaurants/${reqData.restaurantId}`,
         {
           headers: {
             Authorization: `Bearer ${reqData.token}`,

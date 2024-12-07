@@ -7,10 +7,13 @@ import {
   RadioGroup,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import MenuCard from "./MenuCard";
+import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getRestaurantById } from "../State/Restaurant/Action";
 
 const categories = ["pizza", "hamburger", "sushi", "cinese"];
 
@@ -24,9 +27,22 @@ const menu = [1, 1, 1, 1, 1];
 
 const RestaurantDetails = () => {
   const [foodType, setFoodType] = useState("All");
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const token = localStorage.getItem("token");
+  const { auth, restaurant } = useSelector((store) => store);
+
+  const { id, city } = useParams();
+
   const handleFilter = (e) => {
     console.log(e.target.value, e.target.name);
   };
+
+  console.log("restaurant", restaurant);
+  useEffect(() => {
+    dispatch(getRestaurantById({ token, restaurantId: id }));
+  }, []);
+
   return (
     <div className="px-5 lg:px-20">
       <section>
@@ -35,36 +51,26 @@ const RestaurantDetails = () => {
         </h3>
         <div>
           <Grid2 container spacing={2}>
-            <Grid2 size={{ xs: 12 }}>
-              <img
-                className="w-full h-[40vh] object-cover"
-                src="https://images.pexels.com/photos/1581554/pexels-photo-1581554.jpeg?auto=compress&cs=tinysrgb&w=1000"
-                alt=""
-              />
-            </Grid2>
-            <Grid2 size={{ xs: 12, lg: 6 }}>
-              <img
-                className="w-full h-[40vh] object-cover"
-                src="https://images.pexels.com/photos/1484516/pexels-photo-1484516.jpeg?auto=compress&cs=tinysrgb&w=600"
-                alt=""
-              />
-            </Grid2>
-            <Grid2 size={{ xs: 12, lg: 6 }}>
-              <img
-                className="w-full h-[40vh] object-cover"
-                src="https://images.pexels.com/photos/1126728/pexels-photo-1126728.jpeg?auto=compress&cs=tinysrgb&w=600"
-                alt=""
-              />
-            </Grid2>
+            {restaurant.restaurant?.images.map((image, index) => (
+              <Grid2
+                size={{ xs: 12, lg: index % 2 === 0 ? 12 : 6 }}
+                key={index}
+              >
+                <img
+                  className="w-full h-[40vh] object-cover"
+                  src={image}
+                  alt="restaurant"
+                />
+              </Grid2>
+            ))}
           </Grid2>
         </div>
         <div className="pt-3 pb-5">
-          <h1 className="text-4xl font-semibold">fast food</h1>
+          <h1 className="text-4xl font-semibold">
+            {restaurant.restaurant?.name}
+          </h1>
           <p className="text-gray-500 mt-1">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi
-            beatae dolore voluptate ratione eos consequuntur odit dignissimos
-            est ducimus inventore? Sunt cumque eveniet iure exercitationem.
-            Minima sit cum tempore provident.
+            {restaurant.restaurant?.description}
           </p>
           <div className="space-y-3 mt-3">
             <p className="text-gray-500 flex items-center gap-3">

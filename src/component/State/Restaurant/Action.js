@@ -280,6 +280,7 @@ export const getRestaurantsCategory = ({ restaurantId, token }) => {
           Authorization: `Bearer ${token}`,
         },
       });
+      console.log("get restaurant category", res.data);
       dispatch({ type: GET_RESTAURANT_CATEGORY_SUCCESS, payload: res.data });
     } catch (error) {
       console.log("delete event error", error);

@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import React from "react";
+import { categoriesIngredients } from "../Util/CategoriesIngredient";
 
 const demo = [
   {
@@ -21,7 +22,7 @@ const demo = [
   },
 ];
 
-const MenuCard = () => {
+const MenuCard = ({ item }) => {
   const handleCheckboxChange = (value) => {
     console.log("value");
   };
@@ -36,13 +37,13 @@ const MenuCard = () => {
           <div className="lg:flex items-center lg:gap-5">
             <img
               className="w-[7rem] h-[7rem] object-cover"
-              src="https://cdn.pixabay.com/photo/2020/10/05/19/55/hamburger-5630646_640.jpg"
+              src={item.images[0]}
               alt=""
             />
             <div className="space-y-1 lg:space-y-5 lg:max-w-2xl">
-              <p className="font-semibold text-xl">Hamburger</p>
-              <p>€ 20</p>
-              <p className="text-gray-400">carne 100% bovino</p>
+              <p className="font-semibold text-xl">{item.name}</p>
+              <p>€ {item.price}</p>
+              <p className="text-gray-400">{item.description}</p>
             </div>
           </div>
         </div>
@@ -50,21 +51,28 @@ const MenuCard = () => {
       <AccordionDetails>
         <form>
           <div className="flex gap-5 flex-wrap">
-            {demo.map((item) => (
-              <div>
-                <p>{item.category}</p>
-                <FormGroup>
-                  {item.ingredients.map((item) => (
-                    <FormControlLabel
-                      control={
-                        <Checkbox onChange={() => handleCheckboxChange(item)} />
-                      }
-                      label={item}
-                    />
-                  ))}
-                </FormGroup>
-              </div>
-            ))}
+            {Object.keys(categoriesIngredients(item.ingredients)).map(
+              (category) => (
+                <div>
+                  <p>{category}</p>
+                  <FormGroup>
+                    {categoriesIngredients(item.ingredients)[category].map(
+                      (item) => (
+                        <FormControlLabel
+                          key={item.name}
+                          control={
+                            <Checkbox
+                              onChange={() => handleCheckboxChange(item)}
+                            />
+                          }
+                          label={item.name}
+                        />
+                      )
+                    )}
+                  </FormGroup>
+                </div>
+              )
+            )}
           </div>
           <div className="pt-5">
             <Button variant="contained" disabled={false} type="submit">

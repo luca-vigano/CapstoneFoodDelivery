@@ -32,7 +32,7 @@ const RestaurantDetails = () => {
   const token = localStorage.getItem("token");
   const { auth, restaurant, menu } = useSelector((store) => store);
   const [selectedCategory, setSelectedCategory] = useState("");
-  console.log("menu itemmmmm", menu.menuItems);
+  // console.log("menu item", menu.menuItems);
 
   const { id, city } = useParams();
 

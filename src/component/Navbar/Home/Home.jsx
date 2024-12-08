@@ -2,13 +2,10 @@ import React, { useEffect } from "react";
 import "./Home.css";
 import HomeCarousel from "./HomeCarousel";
 import { RestaurantCard } from "../../Restaurant/RestaurantCard";
-import Auth from "../../Auth/Auth";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllRestaurantsAction } from "../../State/Restaurant/Action";
 import { useNavigate } from "react-router-dom";
-import { findCart } from "../../State/Cart/Action";
 
-const restaurants = [1, 1, 1, 1, 1, 1, 1, 1, 1];
 export const Home = () => {
   const dispatch = useDispatch();
   const token = localStorage.getItem("token");

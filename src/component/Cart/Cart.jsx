@@ -48,6 +48,12 @@ const Cart = () => {
   const handleClose = () => setOpen(false);
   const dispatch = useDispatch();
   const { cart, auth } = useSelector((store) => store);
+
+  const calculateTotal = () => {
+    if (!cart.cartItems) return 0;
+    return cart.cartItems.reduce((total, item) => total + item.totalPrice, 0);
+  };
+
   const handleSubmit = (values) => {
     const data = {
       token: localStorage.getItem("token"),
@@ -79,7 +85,7 @@ const Cart = () => {
             <div className="space-y-3">
               <div className="flex justify-between text-gray-400">
                 <p>Totale</p>
-                <p>€{cart.cart?.total}</p>
+                <p>€{calculateTotal()}</p>
               </div>
               <div className="flex justify-between text-gray-400">
                 <p>Spese di consegna</p>
@@ -93,7 +99,7 @@ const Cart = () => {
             </div>
             <div className="flex justify-between text-gray-400">
               <p>Totale carrello</p>
-              <p>€{cart.cart?.total + 3 + 2}</p>
+              <p>€{calculateTotal() === 0 ? 0 : calculateTotal() + 3 + 2}</p>
             </div>
           </div>
         </section>

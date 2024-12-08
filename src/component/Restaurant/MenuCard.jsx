@@ -13,20 +13,10 @@ import { categoriesIngredients } from "../Util/CategoriesIngredient";
 import { useDispatch } from "react-redux";
 import { addItemToCart } from "../State/Cart/Action";
 
-// const demo = [
-//   {
-//     category: "Pane",
-//     ingredients: ["Sesamo"],
-//   },
-//   {
-//     category: "Carne",
-//     ingredients: ["Manzo", "Bacon"],
-//   },
-// ];
-
 const MenuCard = ({ item }) => {
   const [selectedIngredients, setSelectedIngredients] = useState([]);
   const dispatch = useDispatch();
+
   const handleCheckboxChange = (itemName) => {
     console.log("value", itemName);
     if (selectedIngredients.includes(itemName)) {

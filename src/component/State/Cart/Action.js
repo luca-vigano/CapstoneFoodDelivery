@@ -29,6 +29,7 @@ export const findCart = (token) => {
           Authorization: `Bearer ${token}`,
         },
       });
+      console.log("my cart", response.data);
       dispatch({ type: FIND_CART_SUCCESS, payload: response.data });
     } catch (error) {
       dispatch({ type: FIND_CART_FAILURE, payload: error });
@@ -61,6 +62,7 @@ export const addItemToCart = (reqData) => {
           Authorization: `Bearer ${reqData.token}`,
         },
       });
+      console.log("add item to cart", data);
       dispatch({ type: ADD_ITEM_TO_CART_SUCCESS, payload: data });
     } catch (error) {
       dispatch({ type: ADD_ITEM_TO_CART_FAILURE, payload: error });
@@ -68,7 +70,7 @@ export const addItemToCart = (reqData) => {
   };
 };
 
-export const updateCartItem = (reqData) => {
+export const updateCartItem = ({ reqData }) => {
   return async (dispatch) => {
     dispatch({ type: UPDATE_CART_ITEM_REQUEST });
     try {
@@ -77,8 +79,10 @@ export const updateCartItem = (reqData) => {
           Authorization: `Bearer ${reqData.token}`,
         },
       });
+      console.log("update cart item", data);
       dispatch({ type: UPDATE_CART_ITEM_SUCCESS, payload: data });
     } catch (error) {
+      console.log("error update cart item", error);
       dispatch({ type: UPDATE_CART_ITEM_FAILURE, payload: error });
     }
   };
@@ -88,7 +92,7 @@ export const removeCartItem = ({ cartItemId, token }) => {
   return async (dispatch) => {
     dispatch({ type: REMOVE_CART_ITEM_REQUEST });
     try {
-      const { data } = await api.delete(`/api/cart/${cartItemId}/remove`, {
+      const { data } = await api.delete(`/api/cart-item/${cartItemId}/remove`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

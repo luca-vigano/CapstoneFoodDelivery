@@ -11,8 +11,10 @@ import React from "react";
 import CartItem from "./CartItem";
 import AddressCard from "./AddressCard";
 import AddLocationAltIcon from "@mui/icons-material/AddLocationAlt";
-import { ErrorMessage, Field, Form, Formik } from "formik";
+import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
+import { useDispatch, useSelector } from "react-redux";
+import { createOrder } from "../State/Order/Action";
 
 export const style = {
   position: "absolute",
@@ -39,21 +41,37 @@ const validationSchema = Yup.object().shape({
   city: Yup.string().required("City is required"),
 });
 
-const items = [1, 1];
 const Cart = () => {
   const createOrderUsingSelectedAddress = () => {};
   const handleOpenAddressModal = () => setOpen(true);
   const [open, setOpen] = React.useState(false);
   const handleClose = () => setOpen(false);
+  const dispatch = useDispatch();
+  const { cart, auth } = useSelector((store) => store);
   const handleSubmit = (values) => {
+    const data = {
+      token: localStorage.getItem("token"),
+      order: {
+        restaurantId: cart.cartItems[0].food?.restaurant.id,
+        deliveryAddress: {
+          fullName: auth.user?.fullName,
+          streetAddress: values.streetAddress,
+          city: values.city,
+          state: values.state,
+          postalCode: values.pincode,
+          country: "Italia",
+        },
+      },
+    };
+    dispatch(createOrder(data));
     console.log("form value", values);
   };
   return (
     <>
       <main className="lg:flex justify-between">
         <section className="lg:w-[30%] space-y-6 lg:min-h-screen pt-10">
-          {items.map((item) => (
-            <CartItem />
+          {cart.cartItems.map((item) => (
+            <CartItem item={item} />
           ))}
           <Divider />
           <div className="billDetails px-5 text-sm">
@@ -61,7 +79,7 @@ const Cart = () => {
             <div className="space-y-3">
               <div className="flex justify-between text-gray-400">
                 <p>Totale</p>
-                <p>€50</p>
+                <p>€{cart.cart?.total}</p>
               </div>
               <div className="flex justify-between text-gray-400">
                 <p>Spese di consegna</p>
@@ -75,7 +93,7 @@ const Cart = () => {
             </div>
             <div className="flex justify-between text-gray-400">
               <p>Totale carrello</p>
-              <p>€55</p>
+              <p>€{cart.cart?.total + 3 + 2}</p>
             </div>
           </div>
         </section>

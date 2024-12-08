@@ -20,6 +20,7 @@ export const createOrder = (reqData) => {
       // if (data.payment_url) {
       //     window.location.href=data.payment_url
       // }
+      console.log("create order data", data);
       dispatch({ type: CREATE_ORDER_SUCCESS, payload: data });
     } catch (error) {
       dispatch({ type: CREATE_ORDER_FAILURE, payload: error });
@@ -36,6 +37,7 @@ export const getUsersOrders = (token) => {
           Authorization: `Bearer ${token}`,
         },
       });
+      console.log("user order", data);
       dispatch({ type: GET_USERS_ORDER_SUCCESS, payload: data });
     } catch (error) {
       dispatch({ type: GET_USERS_ORDER_FAILURE, payload: error });

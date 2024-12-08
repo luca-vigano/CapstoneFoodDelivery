@@ -8,24 +8,49 @@ import {
   FormGroup,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import React from "react";
+import React, { useState } from "react";
 import { categoriesIngredients } from "../Util/CategoriesIngredient";
+import { useDispatch } from "react-redux";
+import { addItemToCart } from "../State/Cart/Action";
 
-const demo = [
-  {
-    category: "Pane",
-    ingredients: ["Sesamo"],
-  },
-  {
-    category: "Carne",
-    ingredients: ["Manzo", "Bacon"],
-  },
-];
+// const demo = [
+//   {
+//     category: "Pane",
+//     ingredients: ["Sesamo"],
+//   },
+//   {
+//     category: "Carne",
+//     ingredients: ["Manzo", "Bacon"],
+//   },
+// ];
 
 const MenuCard = ({ item }) => {
-  const handleCheckboxChange = (value) => {
-    console.log("value");
+  const [selectedIngredients, setSelectedIngredients] = useState([]);
+  const dispatch = useDispatch();
+  const handleCheckboxChange = (itemName) => {
+    console.log("value", itemName);
+    if (selectedIngredients.includes(itemName)) {
+      setSelectedIngredients(
+        selectedIngredients.filter((item) => item !== itemName)
+      );
+    } else {
+      setSelectedIngredients([...selectedIngredients, itemName]);
+    }
   };
+  const handleAddItemToCart = (e) => {
+    e.preventDefault();
+    const reqData = {
+      token: localStorage.getItem("token"),
+      cartItem: {
+        foodId: item.id,
+        quantity: 1,
+        ingredients: selectedIngredients,
+      },
+    };
+    dispatch(addItemToCart(reqData));
+    console.log("reqData", reqData);
+  };
+
   return (
     <Accordion>
       <AccordionSummary
@@ -49,7 +74,7 @@ const MenuCard = ({ item }) => {
         </div>
       </AccordionSummary>
       <AccordionDetails>
-        <form>
+        <form onSubmit={handleAddItemToCart}>
           <div className="flex gap-5 flex-wrap">
             {Object.keys(categoriesIngredients(item.ingredients)).map(
               (category) => (
@@ -59,10 +84,10 @@ const MenuCard = ({ item }) => {
                     {categoriesIngredients(item.ingredients)[category].map(
                       (item) => (
                         <FormControlLabel
-                          key={item.name}
+                          key={item.id}
                           control={
                             <Checkbox
-                              onChange={() => handleCheckboxChange(item)}
+                              onChange={() => handleCheckboxChange(item.name)}
                             />
                           }
                           label={item.name}

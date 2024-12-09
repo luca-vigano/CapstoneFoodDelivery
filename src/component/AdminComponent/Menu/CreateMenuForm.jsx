@@ -28,7 +28,7 @@ const initialValue = {
   images: [],
 };
 
-function CreateRestaurantForm() {
+function CreateMenuForm() {
   const [uploadImage, setUploadImage] = useState(false);
   const formik = useFormik({
     initialValues: initialValue,
@@ -279,4 +279,4 @@ function CreateRestaurantForm() {
   );
 }
 
-export default CreateRestaurantForm;
+export default CreateMenuForm;

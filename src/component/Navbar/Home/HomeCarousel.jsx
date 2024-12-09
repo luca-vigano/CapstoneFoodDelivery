@@ -10,7 +10,7 @@ export const HomeCarousel = () => {
     dots: true,
     infinite: true,
     speed: 2000,
-    slidesToShow: 7, // Mostra 5 elementi per default
+    slidesToShow: 6, // Mostra 5 elementi per default
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3500,
@@ -19,7 +19,7 @@ export const HomeCarousel = () => {
       {
         breakpoint: 1920,
         settings: {
-          slidesToShow: 6,
+          slidesToShow: 5,
           slidesToScroll: 1,
         },
       },
@@ -40,7 +40,7 @@ export const HomeCarousel = () => {
       {
         breakpoint: 768,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 2,
         },
       },
       {

@@ -5,11 +5,25 @@ import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchRestaurantsOrder } from "../../State/Restaurant Order/Action";
 
 const orders = [1, 1, 1, 1, 1];
 
 export default function OrderTable() {
+  const dispatch = useDispatch();
+  const token = localStorage.getItem("token");
+  const { restaurant, ingredients, menu } = useSelector((store) => store);
+
+  useEffect(() => {
+    dispatch(
+      fetchRestaurantsOrder({
+        token,
+        restaurantId: restaurant.usersRestaurant?.id,
+      })
+    );
+  }, []);
   return (
     <Box>
       <Card className="mt-1">

@@ -39,8 +39,13 @@ export const getMenuItemsByRestaurantId = (reqData) => {
   return async (dispatch) => {
     dispatch({ type: GET_MENU_ITEMS_BY_RESTAURANT_ID_REQUEST });
     try {
+      const params = new URLSearchParams();
+      params.append("vegetarian", reqData.vegetarian ?? ""); // Usa stringa vuota se undefined
+      params.append("nonvegetarian", reqData.nonvegetarian ?? ""); // Usa stringa vuota se undefined
+      params.append("food_category", reqData.foodCategory ?? "");
+
       const { data } = await api.get(
-        `/api/food/restaurant/${reqData.restaurantId}?vegetarian=${reqData.vegetarian}&nonvegetarian=${reqData.nonvegetarian}&food_category=${reqData.foodCategory}`,
+        `/api/food/restaurant/${reqData.restaurantId}?${params.toString()}`,
         {
           headers: {
             Authorization: `Bearer ${reqData.token}`,

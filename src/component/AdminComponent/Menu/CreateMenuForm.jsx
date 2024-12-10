@@ -1,9 +1,16 @@
 import { AddPhotoAlternate, Instagram } from "@mui/icons-material";
 import {
+  Box,
   Button,
+  Chip,
   CircularProgress,
+  FormControl,
   Grid2,
   IconButton,
+  InputLabel,
+  MenuItem,
+  OutlinedInput,
+  Select,
   TextField,
 } from "@mui/material";
 import { useFormik } from "formik";
@@ -14,17 +21,11 @@ import { uploadImageToCloudinary } from "../Util/UploadToCloudinary";
 const initialValue = {
   name: "",
   description: "",
-  cuisineType: "",
-  streetAddress: "",
-  city: "",
-  stateProvince: "",
-  postalCode: "",
-  country: "",
-  email: "",
-  mobile: "",
-  twitter: "",
-  instagram: "",
-  openingHours: "mar-dom : 9-15 18-24",
+  price: "",
+  category: "",
+  restaurantId: "",
+  vegetarian: true,
+  ingredients: [],
   images: [],
 };
 
@@ -33,27 +34,8 @@ function CreateMenuForm() {
   const formik = useFormik({
     initialValues: initialValue,
     onSubmit: (values) => {
-      const data = {
-        name: values.name,
-        description: values.description,
-        cuisineType: values.cuisineType,
-        address: {
-          streetAddress: values.streetAddress,
-          city: values.city,
-          stateProvince: values.stateProvince,
-          postalCode: values.postalCode,
-          country: values.country,
-        },
-        contactInformation: {
-          email: values.email,
-          mobile: values.mobile,
-          twitter: values.twitter,
-          instagram: values.instagram,
-        },
-        openingHours: values.openingHours,
-        images: values.images,
-      };
-      console.log("data---", data);
+      values.restaurantId = 103;
+      console.log("data---", values);
     },
   });
 
@@ -74,7 +56,7 @@ function CreateMenuForm() {
     <div className="py-10 px-5 lg:flex items-center justify-center min-h-screen">
       <div className="lg:max-w-4xl">
         <h1 className="font-bold text-2xl text-center py-2">
-          Add New Restaurant
+          Add New Menu Item
         </h1>
         <form onSubmit={formik.handleSubmit} className="space-y-4">
           <Grid2 container spacing={2}>
@@ -151,127 +133,87 @@ function CreateMenuForm() {
             <Grid2 size={{ xs: 12, lg: 6 }}>
               <TextField
                 fullWidth
-                id="cuisineType"
-                name="cuisineType"
-                label="CuisineType"
+                id="price"
+                name="price"
+                label="Price"
                 variant="outlined"
                 onChange={formik.handleChange}
-                value={formik.values.cuisineType}
+                value={formik.values.price}
               ></TextField>
             </Grid2>
             <Grid2 size={{ xs: 12, lg: 6 }}>
-              <TextField
-                fullWidth
-                id="openingHours"
-                name="openingHours"
-                label="Opening Hours"
-                variant="outlined"
-                onChange={formik.handleChange}
-                value={formik.values.openingHours}
-              ></TextField>
+              <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">Category</InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={formik.values.category}
+                  label="Category"
+                  onChange={formik.handleChange}
+                  name="category"
+                >
+                  <MenuItem value={10}>Ten</MenuItem>
+                  <MenuItem value={20}>Twenty</MenuItem>
+                  <MenuItem value={30}>Thirty</MenuItem>
+                </Select>
+              </FormControl>
             </Grid2>
             <Grid2 size={{ xs: 12 }}>
-              <TextField
-                fullWidth
-                id="streetAddres"
-                name="streetAddress"
-                label="Street Address"
-                variant="outlined"
-                onChange={formik.handleChange}
-                value={formik.values.addres}
-              ></TextField>
+              <FormControl fullWidth>
+                <InputLabel id="demo-multiple-chip-label">
+                  Ingredients
+                </InputLabel>
+                <Select
+                  labelId="demo-multiple-chip-label"
+                  id="demo-multiple-chip"
+                  name="ingredients"
+                  multiple
+                  value={formik.values.ingredients}
+                  onChange={formik.handleChange}
+                  input={
+                    <OutlinedInput
+                      id="select-multiple-chip"
+                      label="Ingredients"
+                    />
+                  }
+                  renderValue={(selected) => (
+                    <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
+                      {selected.map((value) => (
+                        <Chip key={value} label={value} />
+                      ))}
+                    </Box>
+                  )}
+                  // MenuProps={MenuProps}
+                >
+                  {["no salsa", "no cipolla", "no aglio"].map((name, index) => (
+                    <MenuItem key={name} value={name}>
+                      {name}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
             </Grid2>
-            <Grid2 size={{ xs: 12 }}>
-              <TextField
-                fullWidth
-                id="city"
-                name="city"
-                label="City"
-                variant="outlined"
-                onChange={formik.handleChange}
-                value={formik.values.city}
-              ></TextField>
-            </Grid2>
-            <Grid2 size={{ xs: 12, lg: 4 }}>
-              <TextField
-                fullWidth
-                id="stateProvince"
-                name="stateProvince"
-                label="State"
-                variant="outlined"
-                onChange={formik.handleChange}
-                value={formik.values.stateProvince}
-              ></TextField>
-            </Grid2>
-            <Grid2 size={{ xs: 12, lg: 4 }}>
-              <TextField
-                fullWidth
-                id="postalCode"
-                name="postalCode"
-                label="Postal Code"
-                variant="outlined"
-                onChange={formik.handleChange}
-                value={formik.values.postalCode}
-              ></TextField>
-            </Grid2>
-            <Grid2 size={{ xs: 12, lg: 4 }}>
-              <TextField
-                fullWidth
-                id="country"
-                name="country"
-                label="Country"
-                variant="outlined"
-                onChange={formik.handleChange}
-                value={formik.values.country}
-              ></TextField>
-            </Grid2>
-            <Grid2 size={{ xs: 12, lg: 6 }}>
-              <TextField
-                fullWidth
-                id="email"
-                name="email"
-                label="Email"
-                variant="outlined"
-                onChange={formik.handleChange}
-                value={formik.values.email}
-              ></TextField>
-            </Grid2>
-            <Grid2 size={{ xs: 12, lg: 6 }}>
-              <TextField
-                fullWidth
-                id="mobile"
-                name="mobile"
-                label="Mobile"
-                variant="outlined"
-                onChange={formik.handleChange}
-                value={formik.values.mobile}
-              ></TextField>
-            </Grid2>
-            <Grid2 size={{ xs: 12, lg: 6 }}>
-              <TextField
-                fullWidth
-                id="instagram"
-                name="instagram"
-                label="Instagram"
-                variant="outlined"
-                onChange={formik.handleChange}
-                value={formik.values.instagram}
-              ></TextField>
-            </Grid2>
-            <Grid2 size={{ xs: 12, lg: 6 }}>
-              <TextField
-                fullWidth
-                id="twitter"
-                name="twitter"
-                label="Twitter"
-                variant="outlined"
-                onChange={formik.handleChange}
-                value={formik.values.twitter}
-              ></TextField>
+            <Grid2 size={{ xs: 12, lg: 12 }}>
+              <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">
+                  Is Vegetarian
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="vegetarian"
+                  value={formik.values.vegetarian}
+                  label="is vegetarian"
+                  onChange={formik.handleChange}
+                  name="vegetarian"
+                >
+                  <MenuItem value={true}>Yes</MenuItem>
+                  <MenuItem value={false}>No</MenuItem>
+                </Select>
+              </FormControl>
             </Grid2>
           </Grid2>
           <Button variant="contained" color="primary" type="submit">
-            Create Restaurant
+            Create Menu Item
           </Button>
         </form>
       </div>

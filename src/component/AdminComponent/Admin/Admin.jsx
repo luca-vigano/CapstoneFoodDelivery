@@ -8,6 +8,7 @@ import Ingredients from "../Ingredients/Ingredients";
 import Events from "../Events/Events";
 import RestaurantDetails from "./RestaurantDetails";
 import RestaurantDashboard from "../Dashboard/RestaurantDashboard";
+import CreateMenuForm from "../Menu/CreateMenuForm";
 
 function Admin() {
   const handleClose = () => {};
@@ -26,6 +27,7 @@ function Admin() {
             <Route path="/ingredients" element={<Ingredients />} />
             <Route path="/event" element={<Events />} />
             <Route path="/details" element={<RestaurantDetails />} />
+            <Route path="/add-menu" element={<CreateMenuForm />} />
           </Routes>
         </div>
       </div>

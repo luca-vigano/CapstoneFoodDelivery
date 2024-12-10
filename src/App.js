@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "./component/State/Authentication/Action";
 import { findCart } from "./component/State/Cart/Action";
 import Routers from "./Routers/Routers";
+import { getRestaurantByUserId } from "./component/State/Restaurant/Action";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,6 +21,10 @@ function App() {
       dispatch(findCart(token));
     }
   }, [auth.token, token, dispatch]);
+
+  useEffect(() => {
+    dispatch(getRestaurantByUserId(auth.token || token));
+  }, [auth.user]);
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />

@@ -41,7 +41,7 @@ export const createIngredient = ({ data, token }) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log("create ingredients", response.data);
+      console.log("created ingredients", response.data);
       dispatch({ type: CREATE_INGREDIENT_SUCCESS, payload: response.data });
     } catch (error) {
       console.log("ERROR", error);

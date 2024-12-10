@@ -26,8 +26,10 @@ export const createMenuItem = ({ menu, token }) => {
           Authorization: `Bearer ${token}`,
         },
       });
+      console.log("Created Menu!", data);
       dispatch({ type: CREATE_MENU_ITEM_SUCCESS, payload: data });
     } catch (error) {
+      console.log("Created Menu!", error);
       dispatch({ type: CREATE_MENU_ITEM_FAILURE, payload: error });
     }
   };

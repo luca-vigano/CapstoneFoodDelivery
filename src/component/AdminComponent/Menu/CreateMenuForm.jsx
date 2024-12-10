@@ -1,4 +1,4 @@
-import { AddPhotoAlternate, Instagram } from "@mui/icons-material";
+import { AddPhotoAlternate } from "@mui/icons-material";
 import {
   Box,
   Button,
@@ -14,9 +14,13 @@ import {
   TextField,
 } from "@mui/material";
 import { useFormik } from "formik";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import { uploadImageToCloudinary } from "../Util/UploadToCloudinary";
+import { useDispatch, useSelector } from "react-redux";
+import { createMenuItem } from "../../State/Menu/Action";
+import { getIngredientsOfRestaurant } from "../../State/Ingredients/Action";
+import { useNavigate } from "react-router-dom";
 
 const initialValue = {
   name: "",
@@ -30,12 +34,20 @@ const initialValue = {
 };
 
 function CreateMenuForm() {
+  const dispatch = useDispatch();
+  const token = localStorage.getItem("token");
+  const { restaurant, ingredients } = useSelector((store) => store);
   const [uploadImage, setUploadImage] = useState(false);
+  const navigate = useNavigate();
+
   const formik = useFormik({
     initialValues: initialValue,
     onSubmit: (values) => {
-      values.restaurantId = 103;
+      values.restaurantId = restaurant.usersRestaurant.id;
+      dispatch(createMenuItem({ menu: values, token }));
       console.log("data---", values);
+      formik.resetForm();
+      navigate("/admin/restaurants/menu");
     },
   });
 
@@ -51,6 +63,12 @@ function CreateMenuForm() {
     updatedImages.splice(index, 1);
     formik.setFieldValue("images", updatedImages);
   };
+
+  useEffect(() => {
+    dispatch(
+      getIngredientsOfRestaurant({ token, id: restaurant.usersRestaurant.id })
+    );
+  }, []);
 
   return (
     <div className="py-10 px-5 lg:flex items-center justify-center min-h-screen">
@@ -152,9 +170,9 @@ function CreateMenuForm() {
                   onChange={formik.handleChange}
                   name="category"
                 >
-                  <MenuItem value={10}>Ten</MenuItem>
-                  <MenuItem value={20}>Twenty</MenuItem>
-                  <MenuItem value={30}>Thirty</MenuItem>
+                  {restaurant.categories?.map((item) => (
+                    <MenuItem value={item}>{item.name}</MenuItem>
+                  ))}
                 </Select>
               </FormControl>
             </Grid2>
@@ -179,15 +197,15 @@ function CreateMenuForm() {
                   renderValue={(selected) => (
                     <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
                       {selected.map((value) => (
-                        <Chip key={value} label={value} />
+                        <Chip key={value.id} label={value.name} />
                       ))}
                     </Box>
                   )}
                   // MenuProps={MenuProps}
                 >
-                  {["no salsa", "no cipolla", "no aglio"].map((name, index) => (
-                    <MenuItem key={name} value={name}>
-                      {name}
+                  {ingredients.ingredients?.map((item, index) => (
+                    <MenuItem key={item.id} value={item}>
+                      {item.name}
                     </MenuItem>
                   ))}
                 </Select>

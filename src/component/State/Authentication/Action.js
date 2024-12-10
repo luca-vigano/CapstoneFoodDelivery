@@ -27,7 +27,7 @@ export const registerUser = (reqData) => async (dispatch) => {
     if (data.token) localStorage.setItem("token", data.token);
     // if (data.user) localStorage.setItem("user", data.user);
     if (data.role === "RESTAURANT_OWNER") {
-      reqData.navigate("/admin/restaurant");
+      reqData.navigate("/admin/restaurants");
     } else {
       reqData.navigate("/");
     }
@@ -49,7 +49,7 @@ export const loginUser = (reqData) => async (dispatch) => {
     if (data.token) localStorage.setItem("token", data.token);
     console.log("jwt salvato login", data.token);
     if (data.role === "RESTAURANT_OWNER") {
-      reqData.navigate("/admin/restaurant");
+      reqData.navigate("/admin/restaurants");
     } else {
       reqData.navigate("/");
     }

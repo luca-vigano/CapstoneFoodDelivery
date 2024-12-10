@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import AdminSideBar from "./AdminSideBar";
 import { Route, Routes } from "react-router-dom";
 import Orders from "../Orders/Orders";
@@ -9,9 +9,33 @@ import Events from "../Events/Events";
 import RestaurantDetails from "./RestaurantDetails";
 import RestaurantDashboard from "../Dashboard/RestaurantDashboard";
 import CreateMenuForm from "../Menu/CreateMenuForm";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getRestaurantById,
+  getRestaurantsCategory,
+} from "../../State/Restaurant/Action";
+import { getMenuItemsByRestaurantId } from "../../State/Menu/Action";
+import { fetchRestaurantsOrder } from "../../State/Restaurant Order/Action";
 
 function Admin() {
+  const dispatch = useDispatch();
+  const token = localStorage.getItem("token");
+  const { restaurant } = useSelector((store) => store);
   const handleClose = () => {};
+  useEffect(() => {
+    dispatch(
+      getRestaurantsCategory({
+        token,
+        restaurantId: restaurant.usersRestaurant?.id,
+      })
+    );
+    dispatch(
+      fetchRestaurantsOrder({
+        token,
+        restaurantId: restaurant.usersRestaurant?.id,
+      })
+    );
+  }, []);
   return (
     <div>
       <div className="lg:flex justify-between">

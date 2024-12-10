@@ -38,7 +38,7 @@ export const fetchRestaurantsOrder = ({ restaurantId, orderStatus, token }) => {
       dispatch({ type: GET_RESTAURANTS_ORDER_REQUEST });
 
       const { data } = await api.get(
-        `/api/admin/order/restaurant/${restaurantId}}`,
+        `/api/admin/order/restaurant/${restaurantId}`,
         {
           params: { order_status: orderStatus },
           headers: {

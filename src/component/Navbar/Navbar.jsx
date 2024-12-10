@@ -36,7 +36,7 @@ export const Navbar = () => {
             <SearchIcon sx={{ fontSize: "1.5rem" }} />
           </IconButton>
         </div>
-        <div className="">
+        <div className="cursor-pointer">
           {auth.user ? (
             <Avatar
               onClick={handleAvatarClick}

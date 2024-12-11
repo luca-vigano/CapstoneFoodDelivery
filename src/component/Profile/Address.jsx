@@ -28,22 +28,26 @@ const initialValues = {
   state: "",
   pincode: "",
   city: "",
+  country: "",
 };
 
 const validationSchema = Yup.object().shape({
   streetAddress: Yup.string().required("Street address is required"),
   state: Yup.string().required("State is required"),
-  pincode: Yup.number()
-    .typeError("Pincode must be a number")
-    .required("Pincode is required"),
+  postalCode: Yup.number()
+    .typeError("postalCode must be a number")
+    .required("postalCode is required"),
   city: Yup.string().required("City is required"),
+  country: Yup.string().required("country is requred"),
 });
 
 const Address = () => {
   const [open, setOpen] = React.useState(false);
   const dispatch = useDispatch();
-  const { address } = useSelector((store) => store);
+  const { addresses } = useSelector((store) => store.address);
   const token = localStorage.getItem("token");
+
+  console.log("address from store", addresses);
 
   const handleOpenAddressModal = () => setOpen(true);
 
@@ -67,8 +71,9 @@ const Address = () => {
       address: {
         streetAddress: values.streetAddress,
         state: values.state,
-        pincode: values.pincode,
+        postalCode: values.postalCode,
         city: values.city,
+        country: values.country,
       },
     };
 
@@ -87,7 +92,7 @@ const Address = () => {
               I tuoi indirizzi
             </h1>
             <div className="flex gap-5 flex-wrap justify-center">
-              {[1, 1, 1].map((item, index) => (
+              {addresses.map((item, index) => (
                 <AddressCard
                   key={index}
                   handleSelectAddress={handleDeleteAddress}
@@ -167,12 +172,23 @@ const Address = () => {
                   <Grid2 xs={12}>
                     <Field
                       as={TextField}
-                      name="pincode"
-                      label="Pincode"
+                      name="postalCode"
+                      label="PostalCode"
                       fullWidth
                       variant="outlined"
-                      error={touched.pincode && Boolean(errors.pincode)}
-                      helperText={touched.pincode && errors.pincode}
+                      error={touched.postalCode && Boolean(errors.postalCode)}
+                      helperText={touched.postalCode && errors.postalCode}
+                    />
+                  </Grid2>
+                  <Grid2 xs={12}>
+                    <Field
+                      as={TextField}
+                      name="country"
+                      label="Country"
+                      fullWidth
+                      variant="outlined"
+                      error={touched.country && Boolean(errors.country)}
+                      helperText={touched.country && errors.country}
                     />
                   </Grid2>
                   <Grid2 xs={12}>

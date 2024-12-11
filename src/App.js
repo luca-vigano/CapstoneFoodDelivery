@@ -15,16 +15,17 @@ function App() {
   const { auth } = useSelector((store) => store);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (auth.token || token) {
-      dispatch(getUser(auth.token || token));
+    if (token) {
+      dispatch(getUser(token));
       dispatch(findCart(token));
     }
-  }, [auth.token, token, dispatch]);
+  }, [token, dispatch]);
 
   useEffect(() => {
-    dispatch(getRestaurantByUserId(auth.token || token));
-  }, [auth.user]);
+    if (auth.user && token) {
+      dispatch(getRestaurantByUserId(token));
+    }
+  }, [auth.user, token, dispatch]);
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />

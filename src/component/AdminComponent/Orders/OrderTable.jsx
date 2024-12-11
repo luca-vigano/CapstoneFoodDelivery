@@ -18,23 +18,34 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchRestaurantsOrder } from "../../State/Restaurant Order/Action";
+import {
+  fetchRestaurantsOrder,
+  updateOrderStatus,
+} from "../../State/Restaurant Order/Action";
+
+const orderStatus = [
+  { label: "Pending", value: "PENDING" },
+  { label: "Completed", value: "COMPLETED" },
+  { label: "Out For Delivery", value: "OUT_FOR_DELIVERY" },
+  { label: "Delivered", value: "DELIVERED" },
+];
 
 export default function OrderTable() {
   const dispatch = useDispatch();
   const token = localStorage.getItem("token");
-  const { restaurant, restaurantOrder, ingredients, menu } = useSelector(
-    (store) => store
-  );
+  const { restaurant, restaurantOrder } = useSelector((store) => store);
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+  const [anchorElMap, setAnchorElMap] = React.useState({});
+
+  const handleClick = (event, orderId) => {
+    setAnchorElMap((prev) => ({ ...prev, [orderId]: event.currentTarget }));
   };
-  const handleClose = () => {
-    setAnchorEl(null);
+
+  const handleClose = (orderId) => {
+    setAnchorElMap((prev) => ({ ...prev, [orderId]: null }));
   };
+
+  const openMenu = (orderId) => Boolean(anchorElMap[orderId]);
 
   useEffect(() => {
     dispatch(
@@ -43,7 +54,13 @@ export default function OrderTable() {
         restaurantId: restaurant.usersRestaurant?.id,
       })
     );
-  }, []);
+  }, [dispatch, token, restaurant.usersRestaurant]);
+
+  const handleUpdateOrder = (orderId, orderStatus) => {
+    dispatch(updateOrderStatus({ orderId, orderStatus, token }));
+    handleClose(orderId);
+  };
+
   return (
     <Box>
       <Card className="mt-1">
@@ -65,7 +82,7 @@ export default function OrderTable() {
             <TableBody>
               {restaurantOrder.orders.map((item) => (
                 <TableRow
-                  key={item.name}
+                  key={item.id}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
@@ -73,23 +90,23 @@ export default function OrderTable() {
                   </TableCell>
                   <TableCell align="right">
                     <AvatarGroup>
-                      {item.items.map((orderItem) => (
-                        <Avatar src={orderItem.food?.images[0]} />
+                      {item.items.map((orderItem, index) => (
+                        <Avatar key={index} src={orderItem.food?.images[0]} />
                       ))}
                     </AvatarGroup>
                   </TableCell>
                   <TableCell align="right">{item.customer?.fullName}</TableCell>
                   <TableCell align="right">{item.totalAmount}</TableCell>
                   <TableCell align="right">
-                    {item.items.map((orderItem) => (
-                      <p>{orderItem.food?.name}</p>
+                    {item.items.map((orderItem, index) => (
+                      <p key={index}>{orderItem.food?.name}</p>
                     ))}
                   </TableCell>
                   <TableCell align="right">
-                    {item.items.map((orderItem) => (
-                      <div>
-                        {orderItem.ingredients.map((ingredient) => (
-                          <Chip label={ingredient} />
+                    {item.items.map((orderItem, index) => (
+                      <div key={index}>
+                        {orderItem.ingredients.map((ingredient, idx) => (
+                          <Chip key={idx} label={ingredient} />
                         ))}
                       </div>
                     ))}
@@ -97,24 +114,35 @@ export default function OrderTable() {
                   <TableCell align="right">{item.orderStatus}</TableCell>
                   <TableCell align="right">
                     <Button
-                      id="basic-button"
-                      aria-controls={open ? "basic-menu" : undefined}
+                      id={`update-button-${item.id}`}
+                      aria-controls={
+                        openMenu(item.id) ? `menu-${item.id}` : undefined
+                      }
                       aria-haspopup="true"
-                      aria-expanded={open ? "true" : undefined}
-                      onClick={handleClick}
+                      aria-expanded={openMenu(item.id) ? "true" : undefined}
+                      onClick={(event) => handleClick(event, item.id)}
                     >
                       Update
                     </Button>
                     <Menu
-                      id="basic-menu"
-                      anchorEl={anchorEl}
-                      open={open}
-                      onClose={handleClose}
+                      id={`menu-${item.id}`}
+                      anchorEl={anchorElMap[item.id]}
+                      open={openMenu(item.id)}
+                      onClose={() => handleClose(item.id)}
                       MenuListProps={{
-                        "aria-labelledby": "basic-button",
+                        "aria-labelledby": `update-button-${item.id}`,
                       }}
                     >
-                      <MenuItem onClick={handleClose}>Profile</MenuItem>
+                      {orderStatus.map((status) => (
+                        <MenuItem
+                          key={status.value}
+                          onClick={() =>
+                            handleUpdateOrder(item.id, status.value)
+                          }
+                        >
+                          {status.label}
+                        </MenuItem>
+                      ))}
                     </Menu>
                   </TableCell>
                 </TableRow>

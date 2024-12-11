@@ -42,7 +42,7 @@ function Admin() {
         <div>
           <AdminSideBar handleClose={handleClose} />
         </div>
-        <div className="lg:w-[80%]">
+        <div className="lg:w-[85%]">
           <Routes>
             <Route path="/" element={<RestaurantDashboard />} />
             <Route path="/orders" element={<Orders />} />

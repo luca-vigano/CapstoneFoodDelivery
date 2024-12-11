@@ -46,7 +46,7 @@ const AdminSideBar = ({ handleClose }) => {
           anchor="left"
           sx={{ zIndex: 1 }}
         >
-          <div className="w-[70vw] lg:w-[20vw] h-screen flex flex-col justify-center text-xl space-y-[1.65rem]">
+          <div className="w-[70vw] lg:w-[14vw] h-screen flex flex-col justify-center text-xl space-y-[1.65rem]">
             {menu.map((item, i) => (
               <>
                 <div

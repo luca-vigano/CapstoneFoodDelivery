@@ -8,14 +8,16 @@ const AddressCard = ({ item, showButton, handleSelectAddress }) => {
       <HomeIcon />
       <div className="space-y-3 text-gray-500">
         <h1 className="font-semibold text-lg text-white">Indirizzo</h1>
-        <p>Via Pincopallo 32 20011 Milano MI</p>
+        <p>
+          {item.streetAddress}, {item.city}, {item.state}, {item.pincode}
+        </p>
         {showButton && (
           <Button
             variant="outlined"
             fullWidth
-            onClick={() => handleSelectAddress(item)}
+            onClick={() => handleSelectAddress(item.id)}
           >
-            Seleziona
+            Elimina
           </Button>
         )}
       </div>

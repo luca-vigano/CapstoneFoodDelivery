@@ -1,4 +1,15 @@
-import { Box, Card, CardHeader, TableContainer } from "@mui/material";
+import {
+  Avatar,
+  AvatarGroup,
+  Box,
+  Button,
+  Card,
+  CardHeader,
+  Chip,
+  Menu,
+  MenuItem,
+  TableContainer,
+} from "@mui/material";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -9,12 +20,21 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchRestaurantsOrder } from "../../State/Restaurant Order/Action";
 
-const orders = [1, 1, 1, 1, 1];
-
 export default function OrderTable() {
   const dispatch = useDispatch();
   const token = localStorage.getItem("token");
-  const { restaurant, ingredients, menu } = useSelector((store) => store);
+  const { restaurant, restaurantOrder, ingredients, menu } = useSelector(
+    (store) => store
+  );
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   useEffect(() => {
     dispatch(
@@ -39,23 +59,64 @@ export default function OrderTable() {
                 <TableCell align="right">Name</TableCell>
                 <TableCell align="right">Ingredients</TableCell>
                 <TableCell align="right">Status</TableCell>
+                <TableCell align="right">Update</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {orders.map((row) => (
+              {restaurantOrder.orders.map((item) => (
                 <TableRow
-                  key={row.name}
+                  key={item.name}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
-                    {1}
+                    {item.id}
                   </TableCell>
-                  <TableCell align="right">{"image"}</TableCell>
-                  <TableCell align="right">{"Customer email"}</TableCell>
-                  <TableCell align="right">{"price"}</TableCell>
-                  <TableCell align="right">{"pizza"}</TableCell>
-                  <TableCell align="right">{"ingredients"}</TableCell>
-                  <TableCell align="right">{"status"}</TableCell>
+                  <TableCell align="right">
+                    <AvatarGroup>
+                      {item.items.map((orderItem) => (
+                        <Avatar src={orderItem.food?.images[0]} />
+                      ))}
+                    </AvatarGroup>
+                  </TableCell>
+                  <TableCell align="right">{item.customer?.fullName}</TableCell>
+                  <TableCell align="right">{item.totalAmount}</TableCell>
+                  <TableCell align="right">
+                    {item.items.map((orderItem) => (
+                      <p>{orderItem.food?.name}</p>
+                    ))}
+                  </TableCell>
+                  <TableCell align="right">
+                    {item.items.map((orderItem) => (
+                      <div>
+                        {orderItem.ingredients.map((ingredient) => (
+                          <Chip label={ingredient} />
+                        ))}
+                      </div>
+                    ))}
+                  </TableCell>
+                  <TableCell align="right">{item.orderStatus}</TableCell>
+                  <TableCell align="right">
+                    <Button
+                      id="basic-button"
+                      aria-controls={open ? "basic-menu" : undefined}
+                      aria-haspopup="true"
+                      aria-expanded={open ? "true" : undefined}
+                      onClick={handleClick}
+                    >
+                      Update
+                    </Button>
+                    <Menu
+                      id="basic-menu"
+                      anchorEl={anchorEl}
+                      open={open}
+                      onClose={handleClose}
+                      MenuListProps={{
+                        "aria-labelledby": "basic-button",
+                      }}
+                    >
+                      <MenuItem onClick={handleClose}>Profile</MenuItem>
+                    </Menu>
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>

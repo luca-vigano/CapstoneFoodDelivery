@@ -165,6 +165,11 @@ const Profile = () => {
   const [open, setOpen] = React.useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [selectedIndex, setSelectedIndex] = React.useState(1);
+
+  const handleListItemClick = (event, index) => {
+    setSelectedIndex(index);
+  };
 
   const handleNavigate = (item) => {
     if (item.title === "Logout") {
@@ -184,10 +189,10 @@ const Profile = () => {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
+      <AppBar position="fixed" open={open} sx={{ backgroundColor: "#0060C0" }}>
         <Toolbar sx={"justify-content: space-between"}>
           <IconButton
-            color="primary"
+            color="white"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
@@ -203,7 +208,7 @@ const Profile = () => {
           <Typography variant="h6" noWrap component="div">
             Control Pannel
           </Typography>
-          <IconButton color="primary" onClick={() => navigate("/")}>
+          <IconButton color="white" onClick={() => navigate("/")}>
             Home
           </IconButton>
         </Toolbar>

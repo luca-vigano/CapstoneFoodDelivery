@@ -1,7 +1,6 @@
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import "./App.css";
 import { darkTheme } from "./Theme/DarkTheme";
-import CustomerRoute from "./Routers/CustomerRoute";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "./component/State/Authentication/Action";

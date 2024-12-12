@@ -1,11 +1,13 @@
-import React, { useState } from "react";
-import ProfileNavigation from "./ProfileNavigation";
+import React, { useEffect } from "react";
+import Orders from "../Orders/Orders";
+import Menu from "../Menu/Menu";
+import FoodCategory from "../FoodCategory/FoodCategory";
+import Ingredients from "../Ingredients/Ingredients";
+import Events from "../Events/Events";
+import RestaurantDetails from "./RestaurantDetails";
+import RestaurantDashboard from "../Dashboard/RestaurantDashboard";
+import CreateMenuForm from "../Menu/CreateMenuForm";
 import { Route, Routes, useNavigate } from "react-router-dom";
-import UserProfile from "./UserProfile";
-import Orders from "./Orders";
-import Address from "./Address";
-import Favorites from "./Favorites";
-import Events from "./Events";
 
 //+++++++++++++++++++++++++
 
@@ -26,40 +28,27 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import HomeIcon from "@mui/icons-material/Home";
-import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
+import ShopTwoIcon from "@mui/icons-material/ShopTwo";
+import CategoryIcon from "@mui/icons-material/Category";
+import FastfoodIcon from "@mui/icons-material/Fastfood";
 import EventIcon from "@mui/icons-material/Event";
+import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { useDispatch } from "react-redux";
-import { logout } from "../State/Authentication/Action";
+import { useDispatch, useSelector } from "react-redux";
+import { getRestaurantsCategory } from "../../State/Restaurant/Action";
+import { fetchRestaurantsOrder } from "../../State/Restaurant Order/Action";
+import { Dashboard, ShoppingBag } from "@mui/icons-material";
+import { logout } from "../../State/Authentication/Action";
 
 const menu = [
-  {
-    title: "Orders",
-    icon: <ShoppingBagIcon />,
-  },
-  {
-    title: "Favorites",
-    icon: <FavoriteIcon />,
-  },
-  {
-    title: "Address",
-    icon: <HomeIcon />,
-  },
-  {
-    title: "Payments",
-    icon: <AccountBalanceWalletIcon />,
-  },
-  {
-    title: "Events",
-    icon: <EventIcon />,
-  },
-  {
-    title: "Logout",
-    icon: <LogoutIcon />,
-  },
+  { title: "Dashboard", icon: <Dashboard />, path: "/" },
+  { title: "Orders", icon: <ShoppingBag />, path: "/orders" },
+  { title: "Menu", icon: <ShopTwoIcon />, path: "/menu" },
+  { title: "Food Category", icon: <CategoryIcon />, path: "/category" },
+  { title: "Ingredients", icon: <FastfoodIcon />, path: "/ingredients" },
+  { title: "Event", icon: <EventIcon />, path: "/event" },
+  { title: "Details", icon: <AdminPanelSettingsIcon />, path: "/details" },
+  { title: "Logout", icon: <LogoutIcon />, path: "/" },
 ];
 
 const drawerWidth = 240;
@@ -142,35 +131,35 @@ const Drawer = styled(MuiDrawer, {
   ],
 }));
 
-const Profile = () => {
-  // const [openSideBar, setOpenSideBar] = useState(false);
-  // return (
-  //   <div className="lg:flex justify-between">
-  //     <div className="sticky h-[80vh] lg:w-[20%]">
-  //       <ProfileNavigation open={openSideBar} />
-  //     </div>
-  //     <div className="lg:w-[80%]">
-  //       <Routes>
-  //         <Route path="/" element={<UserProfile />} />
-  //         <Route path="/orders" element={<Orders />} />
-  //         <Route path="/address" element={<Address />} />
-  //         <Route path="/favorites" element={<Favorites />} />
-  //         <Route path="/events" element={<Events />} />
-  //       </Routes>
-  //     </div>
-  //   </div>
-  // );
-
+const AdminPannel = () => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const token = localStorage.getItem("token");
+  const { restaurant } = useSelector((store) => store);
+  useEffect(() => {
+    dispatch(
+      getRestaurantsCategory({
+        token,
+        restaurantId: restaurant.usersRestaurant?.id,
+      })
+    );
+    dispatch(
+      fetchRestaurantsOrder({
+        token,
+        restaurantId: restaurant.usersRestaurant?.id,
+      })
+    );
+  }, []);
 
   const handleNavigate = (item) => {
+    navigate(`/admin/restaurants${item.path}`);
     if (item.title === "Logout") {
-      dispatch(logout());
       navigate("/");
-    } else navigate(`/my-profile/${item.title.toLowerCase()}`);
+      dispatch(logout());
+      //   handleClose();
+    }
   };
 
   const handleDrawerOpen = () => {
@@ -276,15 +265,18 @@ const Profile = () => {
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
         <Routes>
-          <Route path="/" element={<UserProfile />} />
+          <Route path="/" element={<RestaurantDashboard />} />
           <Route path="/orders" element={<Orders />} />
-          <Route path="/address" element={<Address />} />
-          <Route path="/favorites" element={<Favorites />} />
-          <Route path="/events" element={<Events />} />
+          <Route path="/menu" element={<Menu />} />
+          <Route path="/category" element={<FoodCategory />} />
+          <Route path="/ingredients" element={<Ingredients />} />
+          <Route path="/event" element={<Events />} />
+          <Route path="/details" element={<RestaurantDetails />} />
+          <Route path="/add-menu" element={<CreateMenuForm />} />
         </Routes>
       </Box>
     </Box>
   );
 };
 
-export default Profile;
+export default AdminPannel;

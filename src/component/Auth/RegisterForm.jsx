@@ -37,16 +37,14 @@ const RegisterForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // Funzione per il submit del form
   const handleSubmit = async (values) => {
     console.log("form values", values);
 
     try {
-      // Invia i dati di registrazione
       await dispatch(registerUser({ userData: values, navigate }));
 
       // +++++++++++PROVARE A TOGLIERE+++++++++++++++
-      // Invia anche i dati per il login
+
       await dispatch(loginUser({ userData: values, navigate }));
     } catch (error) {
       console.log("Registrazione o login falliti", error);
@@ -60,7 +58,7 @@ const RegisterForm = () => {
       </Typography>
       <Formik
         initialValues={initialValues}
-        validationSchema={validationSchema} // Aggiungi la validazione tramite Yup
+        validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
         {({ errors, touched }) => (
@@ -72,8 +70,8 @@ const RegisterForm = () => {
               fullWidth
               variant="outlined"
               margin="normal"
-              error={touched.fullname && Boolean(errors.fullname)} // Mostra errore se c'è
-              helperText={touched.fullname && errors.fullname} // Mostra il messaggio di errore
+              error={touched.fullname && Boolean(errors.fullname)}
+              helperText={touched.fullname && errors.fullname}
             />
             <Field
               as={TextField}
@@ -82,8 +80,8 @@ const RegisterForm = () => {
               fullWidth
               variant="outlined"
               margin="normal"
-              error={touched.email && Boolean(errors.email)} // Mostra errore se c'è
-              helperText={touched.email && errors.email} // Mostra il messaggio di errore
+              error={touched.email && Boolean(errors.email)}
+              helperText={touched.email && errors.email}
             />
             <Field
               as={TextField}
@@ -93,8 +91,8 @@ const RegisterForm = () => {
               variant="outlined"
               margin="normal"
               type="password"
-              error={touched.password && Boolean(errors.password)} // Mostra errore se c'è
-              helperText={touched.password && errors.password} // Mostra il messaggio di errore
+              error={touched.password && Boolean(errors.password)}
+              helperText={touched.password && errors.password}
             />
 
             <Field
@@ -104,7 +102,7 @@ const RegisterForm = () => {
               labelId="role-simple-select-label"
               id="demo-simple-select"
               name="role"
-              error={touched.role && Boolean(errors.role)} // Mostra errore se c'è
+              error={touched.role && Boolean(errors.role)}
             >
               <MenuItem value={"RESTAURANT_CUSTOMER"}>Customer</MenuItem>
               <MenuItem value={"RESTAURANT_OWNER"}>Restaurant Owner</MenuItem>
@@ -115,7 +113,7 @@ const RegisterForm = () => {
               fullWidth
               type="submit"
               variant="contained"
-              disabled={Object.keys(errors).length > 0} // Disabilita il pulsante se ci sono errori
+              disabled={Object.keys(errors).length > 0}
             >
               Registrati
             </Button>

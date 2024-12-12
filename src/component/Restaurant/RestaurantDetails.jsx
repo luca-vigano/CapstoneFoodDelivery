@@ -78,13 +78,11 @@ const RestaurantDetails = () => {
   return (
     <div className="px-5 lg:px-20">
       <section>
-        <h3 className="text-gray-500 py-2 mt-10">
-          Home/india/indian fast food/3
-        </h3>
         <div>
           <Grid2 container spacing={2}>
             {restaurant.restaurant?.images.map((image, index) => (
               <Grid2
+                className="pt-5"
                 size={{ xs: 12, lg: index % 2 === 0 ? 12 : 6 }}
                 key={index}
               >

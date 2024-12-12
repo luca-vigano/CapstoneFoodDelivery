@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import CreateRestaurantForm from "../component/AdminComponent/CreateRestaurantForm/CreateRestaurantForm";
-import Admin from "../component/AdminComponent/Admin/Admin";
 import { useSelector } from "react-redux";
+import AdminPannel from "../component/AdminComponent/Admin/AdminPannel";
 
 function AdminRoute() {
   const { restaurant } = useSelector((store) => store);
@@ -12,7 +12,11 @@ function AdminRoute() {
         <Route
           path="/*"
           element={
-            !restaurant.usersRestaurant ? <CreateRestaurantForm /> : <Admin />
+            !restaurant.usersRestaurant ? (
+              <CreateRestaurantForm />
+            ) : (
+              <AdminPannel />
+            )
           }
         />
       </Routes>

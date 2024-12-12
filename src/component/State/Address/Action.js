@@ -47,9 +47,11 @@ export const getUserAddresses = (token) => {
   };
 };
 
-export const deleteAddress = (id, token) => {
+export const deleteAddress = ({ id, token }) => {
   return async (dispatch) => {
     dispatch({ type: DELETE_ADDRESS_REQUEST });
+    console.log("id fetch", id);
+    console.log("token fetch", token);
     try {
       await api.delete(`/api/addresses/${id}`, {
         headers: {

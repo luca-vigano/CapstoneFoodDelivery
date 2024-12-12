@@ -1,14 +1,22 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
-import { Button, Modal, Box, TextField, Card, Grid2 } from "@mui/material";
+import {
+  Button,
+  Modal,
+  Box,
+  TextField,
+  Card,
+  Grid2,
+  Typography,
+} from "@mui/material";
 import AddLocationAltIcon from "@mui/icons-material/AddLocationAlt";
 import {
   createAddress,
   deleteAddress,
   getUserAddresses,
-} from "../State/Address/Action"; // Import delle action
+} from "../State/Address/Action";
 import AddressCard from "../Cart/AddressCard";
 
 export const style = {
@@ -54,8 +62,10 @@ const Address = () => {
   const handleClose = () => setOpen(false);
 
   const handleDeleteAddress = (id) => {
-    dispatch(deleteAddress({ id, token }));
-    dispatch(getUserAddresses(token));
+    console.log("id delete", id);
+    dispatch(deleteAddress({ id, token })).then(() => {
+      dispatch(getUserAddresses(token));
+    });
   };
 
   useEffect(() => {
@@ -100,16 +110,32 @@ const Address = () => {
                   showButton={true}
                 />
               ))}
-              <Card className="flex gap-5 w-64 p-5">
-                <AddLocationAltIcon />
-                <div className="space-y-3 text-gray-500">
-                  <h1 className="font-semibold text-lg text-white">
+              <Card className="flex flex-col gap-5 p-5 w-64 shadow-lg rounded-md">
+                <AddLocationAltIcon color="primary" sx={{ fontSize: 40 }} />
+                <div className="space-y-3">
+                  <Typography variant="h6" className="font-semibold">
                     Nuovo Indirizzo
-                  </h1>
+                  </Typography>
+
+                  <Typography variant="body2" color="textSecondary">
+                    Aggiungi un nuovo indirizzo al tuo profilo.
+                  </Typography>
+
                   <Button
                     variant="outlined"
+                    color="primary"
                     fullWidth
                     onClick={handleOpenAddressModal}
+                    sx={{
+                      marginTop: 2,
+                      textTransform: "none",
+                      borderColor: "primary",
+                      color: "primary",
+                      "&:hover": {
+                        backgroundColor: "primary",
+                        color: "white",
+                      },
+                    }}
                   >
                     Aggiungi Indirizzo
                   </Button>

@@ -23,7 +23,6 @@ export const addressReducer = (state = initialState, { type, payload }) => {
     case DELETE_ADDRESS_REQUEST:
       return {
         ...state,
-        loading: true,
         error: null,
       };
 

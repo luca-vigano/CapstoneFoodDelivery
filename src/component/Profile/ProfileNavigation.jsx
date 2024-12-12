@@ -61,7 +61,7 @@ const ProfileNavigation = ({ open, handleClose }) => {
         anchor="left"
         sx={{ zIndex: 1 }}
       >
-        <div className="w-[50vw] lg:w-[20vw] h-[100vh] flex flex-col justify-start text-xl gap-8 pt-24">
+        <div className="w-[20vw] lg:w-[20vw] h-[100vh] flex flex-col justify-start text-xl gap-8 pt-24">
           {menu.map((item, i) => (
             <>
               <div

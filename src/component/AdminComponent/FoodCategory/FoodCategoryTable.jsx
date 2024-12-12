@@ -94,7 +94,7 @@ export default function FoodCategoryTable() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <CreateFoodCategoryForm />
+          <CreateFoodCategoryForm handleClose={handleClose} />
         </Box>
       </Modal>
     </Box>

@@ -18,8 +18,6 @@ import CreateIngredientCategoryForm from "./CreateIngredientCategoryForm";
 import { useDispatch, useSelector } from "react-redux";
 import { getIngredientCategory } from "../../State/Ingredients/Action";
 
-const orders = [1, 1, 1, 1, 1];
-
 const style = {
   position: "absolute",
   top: "50%",
@@ -88,7 +86,7 @@ export default function IngredientCategoryTable() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <CreateIngredientCategoryForm />
+          <CreateIngredientCategoryForm handleClose={handleClose} />
         </Box>
       </Modal>
     </Box>

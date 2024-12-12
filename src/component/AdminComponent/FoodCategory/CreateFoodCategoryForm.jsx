@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createCategoryAction } from "../../State/Restaurant/Action";
 
-const CreateFoodCategoryForm = () => {
+const CreateFoodCategoryForm = ({ handleClose }) => {
   const { restaurant } = useSelector((store) => store);
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
@@ -24,8 +24,13 @@ const CreateFoodCategoryForm = () => {
         reqData: data,
         token: localStorage.getItem("token"),
       })
-    );
-    console.log(data);
+    )
+      .then(() => {
+        handleClose();
+      })
+      .catch((error) => {
+        console.log("Error creating ingredient category:", error);
+      });
   };
 
   const handleInputChange = (e) => {

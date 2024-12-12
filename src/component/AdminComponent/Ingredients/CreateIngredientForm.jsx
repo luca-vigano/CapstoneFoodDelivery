@@ -10,7 +10,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createIngredient } from "../../State/Ingredients/Action";
 
-const CreateIngredientForm = () => {
+const CreateIngredientForm = ({ handleClose }) => {
   const dispatch = useDispatch();
   const { restaurant, ingredients } = useSelector((store) => store);
   const token = localStorage.getItem("token");
@@ -26,7 +26,13 @@ const CreateIngredientForm = () => {
       restaurantId: restaurant.usersRestaurant.id,
     };
     console.log(data);
-    dispatch(createIngredient({ data, token }));
+    dispatch(createIngredient({ data, token }))
+      .then(() => {
+        handleClose();
+      })
+      .catch((error) => {
+        console.log("Error creating ingredient category:", error);
+      });
   };
 
   const handleInputChange = (e) => {

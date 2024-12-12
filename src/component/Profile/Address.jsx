@@ -160,7 +160,8 @@ const Address = () => {
             {({ errors, touched }) => (
               <Form>
                 <Grid2 container spacing={2}>
-                  <Grid2 xs={12}>
+                  {/* Street Address */}
+                  <Grid2 size={{ xs: 12 }}>
                     <Field
                       as={TextField}
                       name="streetAddress"
@@ -173,7 +174,9 @@ const Address = () => {
                       helperText={touched.streetAddress && errors.streetAddress}
                     />
                   </Grid2>
-                  <Grid2 xs={12}>
+
+                  {/* State */}
+                  <Grid2 size={{ xs: 12 }}>
                     <Field
                       as={TextField}
                       name="state"
@@ -184,7 +187,9 @@ const Address = () => {
                       helperText={touched.state && errors.state}
                     />
                   </Grid2>
-                  <Grid2 xs={12}>
+
+                  {/* City */}
+                  <Grid2 size={{ xs: 12 }}>
                     <Field
                       as={TextField}
                       name="city"
@@ -195,18 +200,22 @@ const Address = () => {
                       helperText={touched.city && errors.city}
                     />
                   </Grid2>
-                  <Grid2 xs={12}>
+
+                  {/* Postal Code */}
+                  <Grid2 size={{ xs: 12 }}>
                     <Field
                       as={TextField}
                       name="postalCode"
-                      label="PostalCode"
+                      label="Postal Code"
                       fullWidth
                       variant="outlined"
                       error={touched.postalCode && Boolean(errors.postalCode)}
                       helperText={touched.postalCode && errors.postalCode}
                     />
                   </Grid2>
-                  <Grid2 xs={12}>
+
+                  {/* Country */}
+                  <Grid2 size={{ xs: 12 }}>
                     <Field
                       as={TextField}
                       name="country"
@@ -217,12 +226,15 @@ const Address = () => {
                       helperText={touched.country && errors.country}
                     />
                   </Grid2>
-                  <Grid2 xs={12}>
+
+                  {/* Save Button */}
+                  <Grid2 size={{ xs: 12 }}>
                     <Button
                       fullWidth
                       variant="contained"
                       type="submit"
                       color="primary"
+                      sx={{ marginTop: 2 }}
                     >
                       Salva
                     </Button>

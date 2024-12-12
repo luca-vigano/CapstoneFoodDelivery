@@ -19,7 +19,7 @@ const initialValue = {
   cuisineType: "",
   streetAddress: "",
   city: "",
-  stateProvince: "",
+  state: "",
   postalCode: "",
   country: "",
   email: "",
@@ -44,7 +44,7 @@ function CreateRestaurantForm() {
         address: {
           streetAddress: values.streetAddress,
           city: values.city,
-          stateProvince: values.stateProvince,
+          state: values.state,
           postalCode: values.postalCode,
           country: values.country,
         },
@@ -201,12 +201,12 @@ function CreateRestaurantForm() {
             <Grid2 size={{ xs: 12, lg: 4 }}>
               <TextField
                 fullWidth
-                id="stateProvince"
-                name="stateProvince"
+                id="state"
+                name="state"
                 label="State"
                 variant="outlined"
                 onChange={formik.handleChange}
-                value={formik.values.stateProvince}
+                value={formik.values.state}
               ></TextField>
             </Grid2>
             <Grid2 size={{ xs: 12, lg: 4 }}>

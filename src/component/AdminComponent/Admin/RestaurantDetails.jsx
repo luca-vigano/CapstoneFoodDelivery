@@ -9,6 +9,7 @@ import { updateRestaurantStatus } from "../../State/Restaurant/Action";
 
 const RestaurantDetails = () => {
   const { restaurant } = useSelector((store) => store);
+  console.log("restaurant from store+", restaurant);
   const dispatch = useDispatch();
   const handleRestaurantStatus = () => {
     dispatch(
@@ -103,28 +104,28 @@ const RestaurantDetails = () => {
                   <p className="w-48">Country</p>
                   <p className="text-gray-400">
                     <span className="pr-5">-</span>
-                    Titolare ristorante
+                    {restaurant.usersRestaurant?.address.country}
                   </p>
                 </div>
                 <div className="flex">
                   <p className="w-48">City</p>
                   <p className="text-gray-400">
                     <span className="pr-5">-</span>
-                    Nome ristorante
+                    {restaurant.usersRestaurant?.address.city}
                   </p>
                 </div>
                 <div className="flex">
                   <p className="w-48">Postal Code</p>
                   <p className="text-gray-400">
                     <span className="pr-5">-</span>
-                    Italiana
+                    {restaurant.usersRestaurant?.address.postalCode}
                   </p>
                 </div>
                 <div className="flex">
                   <p className="w-48">Street Address</p>
                   <p className="text-gray-400">
                     <span className="pr-5">-</span>
-                    ORARIO
+                    {restaurant.usersRestaurant?.address.streetAddress}
                   </p>
                 </div>
               </div>
@@ -158,23 +159,27 @@ const RestaurantDetails = () => {
                     <span className="pr-5">-</span>
                     <a
                       href={
-                        restaurant.usersRestaurant?.contactInformation.instagram
+                        restaurant.usersRestaurant?.contactInformation.instagram?.startsWith(
+                          "http"
+                        )
+                          ? restaurant.usersRestaurant?.contactInformation
+                              .instagram
+                          : `https://${restaurant.usersRestaurant?.contactInformation.instagram}`
                       }
                     >
                       <InstagramIcon sx={{ fontSize: "3rem" }} />
                     </a>
                     <a
                       href={
-                        restaurant.usersRestaurant?.contactInformation.twitter
+                        restaurant.usersRestaurant?.contactInformation.twitter?.startsWith(
+                          "http"
+                        )
+                          ? restaurant.usersRestaurant?.contactInformation
+                              .twitter
+                          : `https://${restaurant.usersRestaurant?.contactInformation.twitter}`
                       }
                     >
                       <XIcon sx={{ fontSize: "3rem" }} />
-                    </a>
-                    <a href="/">
-                      <FacebookIcon sx={{ fontSize: "3rem" }} />
-                    </a>
-                    <a href="/">
-                      <LinkedInIcon sx={{ fontSize: "3rem" }} />
                     </a>
                   </div>
                 </div>

@@ -38,10 +38,10 @@ const AddressCard = ({ item, showButton, handleSelectAddress }) => {
             sx={{
               marginTop: 2,
               textTransform: "none",
-              borderColor: "red",
-              color: "red",
+              borderColor: "error",
+              color: "error",
               "&:hover": {
-                backgroundColor: "red",
+                backgroundColor: "error",
                 color: "white",
               },
             }}

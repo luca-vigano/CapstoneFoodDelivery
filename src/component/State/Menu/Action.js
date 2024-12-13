@@ -80,6 +80,7 @@ export const searchMenuItem = ({ keyword, token }) => {
         type: SEARCH_MENU_ITEM_SUCCESS,
         payload: data,
       });
+      console.log("search from db", data);
     } catch (error) {
       dispatch({
         type: SEARCH_MENU_ITEM_FAILURE,

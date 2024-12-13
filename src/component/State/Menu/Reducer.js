@@ -62,7 +62,7 @@ const menuItemReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        menuItem: state.menuItems.map((menuItem) =>
+        menuItems: state.menuItems.map((menuItem) =>
           menuItem.id === action.payload.id ? action.payload : menuItem
         ),
       };

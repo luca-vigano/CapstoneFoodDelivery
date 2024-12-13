@@ -1,6 +1,8 @@
 import {
   CREATE_INGREDIENT_CATEGORY_SUCCESS,
   CREATE_INGREDIENT_SUCCESS,
+  DELETE_INGREDIENT_CATEGORY_SUCCESS,
+  DELETE_INGREDIENT_SUCCESS,
   GET_INGREDIENT_CATEGORY_SUCCESS,
   GET_INGREDIENTS,
   UPDATE_STOCK,
@@ -42,7 +44,20 @@ export const ingredientReducer = (state = initialState, action) => {
           item.id === action.payload.id ? action.payload : item
         ),
       };
-
+    case DELETE_INGREDIENT_CATEGORY_SUCCESS:
+      return {
+        ...state,
+        category: state.category.filter(
+          (category) => category.id !== action.payload
+        ),
+      };
+    case DELETE_INGREDIENT_SUCCESS:
+      return {
+        ...state,
+        ingredients: state.ingredients.filter(
+          (ingredient) => ingredient.id !== action.payload
+        ),
+      };
     default:
       return state;
   }

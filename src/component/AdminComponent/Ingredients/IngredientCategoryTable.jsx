@@ -16,7 +16,12 @@ import React, { useEffect } from "react";
 import CreateIcon from "@mui/icons-material/Create";
 import CreateIngredientCategoryForm from "./CreateIngredientCategoryForm";
 import { useDispatch, useSelector } from "react-redux";
-import { getIngredientCategory } from "../../State/Ingredients/Action";
+import {
+  deleteIngredientCategory,
+  getIngredientCategory,
+  getIngredientsOfRestaurant,
+} from "../../State/Ingredients/Action";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const style = {
   position: "absolute",
@@ -37,6 +42,14 @@ export default function IngredientCategoryTable() {
   const dispatch = useDispatch();
   const token = localStorage.getItem("token");
   const { restaurant, ingredients } = useSelector((store) => store);
+
+  const handleDeleteIngradientCategory = (id) => {
+    dispatch(deleteIngredientCategory({ id, token })).then(
+      dispatch(
+        getIngredientsOfRestaurant({ token, id: restaurant.usersRestaurant.id })
+      )
+    );
+  };
 
   useEffect(() => {
     dispatch(
@@ -59,8 +72,8 @@ export default function IngredientCategoryTable() {
           <Table aria-label="simple table">
             <TableHead>
               <TableRow>
-                <TableCell align="left">Id</TableCell>
                 <TableCell align="left">Name</TableCell>
+                <TableCell align="right">Delete</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -70,9 +83,15 @@ export default function IngredientCategoryTable() {
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
-                    {item.id}
+                    {item.name}
                   </TableCell>
-                  <TableCell align="left">{item.name}</TableCell>
+                  <TableCell align="right">
+                    <IconButton aria-label="delete">
+                      <DeleteIcon
+                        onClick={() => handleDeleteIngradientCategory(item.id)}
+                      />
+                    </IconButton>
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>

@@ -18,11 +18,12 @@ import CreateIcon from "@mui/icons-material/Create";
 import CreateIngredientForm from "./CreateIngredientForm";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  deleteIngredient,
   getIngredientsOfRestaurant,
   updateStockOfIngredient,
 } from "../../State/Ingredients/Action";
+import DeleteIcon from "@mui/icons-material/Delete";
 
-const orders = [1, 1, 1, 1, 1];
 const style = {
   position: "absolute",
   top: "50%",
@@ -43,11 +44,15 @@ export default function IngredientsTable() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  const handleDeleteIngradient = (id) => {
+    dispatch(deleteIngredient({ id, token }));
+  };
+
   useEffect(() => {
     dispatch(
       getIngredientsOfRestaurant({ token, id: restaurant.usersRestaurant.id })
     );
-  }, []);
+  }, [dispatch, restaurant.usersRestaurant.id, ingredients]);
 
   const handleUpdateStock = (id) => {
     dispatch(updateStockOfIngredient({ id, token }));
@@ -69,10 +74,10 @@ export default function IngredientsTable() {
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
               <TableRow>
-                <TableCell align="left">Id</TableCell>
-                <TableCell align="right">Name</TableCell>
+                <TableCell align="left">Name</TableCell>
                 <TableCell align="right">Category</TableCell>
-                <TableCell align="right">Disponibile</TableCell>
+                <TableCell align="right">In Stock</TableCell>
+                <TableCell align="right">Delete</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -82,14 +87,21 @@ export default function IngredientsTable() {
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
-                    {item.id}
+                    {item.name}
                   </TableCell>
-                  <TableCell align="right">{item.name}</TableCell>
                   <TableCell align="right">{item.category.name}</TableCell>
                   <TableCell align="right">
                     <Button onClick={() => handleUpdateStock(item.id)}>
                       {item.inStock ? "Yes" : "no"}
                     </Button>
+                  </TableCell>
+                  <TableCell align="right">
+                    {" "}
+                    <IconButton aria-label="delete">
+                      <DeleteIcon
+                        onClick={() => handleDeleteIngradient(item.id)}
+                      />
+                    </IconButton>
                   </TableCell>
                 </TableRow>
               ))}

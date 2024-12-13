@@ -6,6 +6,12 @@ import {
   CREATE_INGREDIENT_FAILURE,
   CREATE_INGREDIENT_REQUEST,
   CREATE_INGREDIENT_SUCCESS,
+  DELETE_INGREDIENT_CATEGORY_FAILURE,
+  DELETE_INGREDIENT_CATEGORY_REQUEST,
+  DELETE_INGREDIENT_CATEGORY_SUCCESS,
+  DELETE_INGREDIENT_FAILURE,
+  DELETE_INGREDIENT_REQUEST,
+  DELETE_INGREDIENT_SUCCESS,
   GET_INGREDIENT_CATEGORY_FAILURE,
   GET_INGREDIENT_CATEGORY_REQUEST,
   GET_INGREDIENT_CATEGORY_SUCCESS,
@@ -114,6 +120,42 @@ export const updateStockOfIngredient = ({ id, token }) => {
       });
     } catch (error) {
       console.log("ERROR", error);
+    }
+  };
+};
+
+// Elimina una categoria di ingredienti
+export const deleteIngredientCategory = ({ id, token }) => {
+  return async (dispatch) => {
+    dispatch({ type: DELETE_INGREDIENT_CATEGORY_REQUEST });
+    try {
+      await api.delete(`/api/admin/ingredients/category/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      dispatch({ type: DELETE_INGREDIENT_CATEGORY_SUCCESS, payload: id });
+    } catch (error) {
+      console.log("ERROR", error);
+      dispatch({ type: DELETE_INGREDIENT_CATEGORY_FAILURE, payload: error });
+    }
+  };
+};
+
+// Elimina un ingrediente
+export const deleteIngredient = ({ id, token }) => {
+  return async (dispatch) => {
+    dispatch({ type: DELETE_INGREDIENT_REQUEST });
+    try {
+      await api.delete(`/api/admin/ingredients/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      dispatch({ type: DELETE_INGREDIENT_SUCCESS, payload: id });
+    } catch (error) {
+      console.log("ERROR", error);
+      dispatch({ type: DELETE_INGREDIENT_FAILURE, payload: error });
     }
   };
 };

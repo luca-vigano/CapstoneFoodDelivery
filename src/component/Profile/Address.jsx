@@ -49,7 +49,7 @@ const validationSchema = Yup.object().shape({
   country: Yup.string().required("country is requred"),
 });
 
-const Address = () => {
+const Address = ({ createOrderUsingSelectedAddress }) => {
   const [open, setOpen] = React.useState(false);
   const dispatch = useDispatch();
   const { addresses } = useSelector((store) => store.address);
@@ -61,9 +61,10 @@ const Address = () => {
 
   const handleClose = () => setOpen(false);
 
-  const handleDeleteAddress = (id) => {
-    console.log("id delete", id);
-    dispatch(deleteAddress({ id, token })).then(() => {
+  const handleDeleteAddress = (item) => {
+    console.log("item passato da card", item);
+    const addressId = item.id;
+    dispatch(deleteAddress({ id: addressId, token })).then(() => {
       dispatch(getUserAddresses(token));
     });
   };
@@ -105,7 +106,8 @@ const Address = () => {
               {addresses.map((item, index) => (
                 <AddressCard
                   key={index}
-                  handleSelectAddress={handleDeleteAddress}
+                  handleSelectAddressToDelete={handleDeleteAddress}
+                  handleSelectAddressToCart={createOrderUsingSelectedAddress}
                   item={item}
                   showButton={true}
                 />

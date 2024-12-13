@@ -17,7 +17,10 @@ import CreateIcon from "@mui/icons-material/Create";
 import { Delete } from "@mui/icons-material";
 import CreateFoodCategoryForm from "./CreateFoodCategoryForm";
 import { useDispatch, useSelector } from "react-redux";
-import { getRestaurantsCategory } from "../../State/Restaurant/Action";
+import {
+  deleteCategoryAction,
+  getRestaurantsCategory,
+} from "../../State/Restaurant/Action";
 
 const orders = [1, 1, 1, 1, 1];
 
@@ -42,7 +45,16 @@ export default function FoodCategoryTable() {
   const token = localStorage.getItem("token");
   // console.log("restaurant details", restaurant);
 
-  const handleDeleteCategory = () => {};
+  const handleDeleteCategory = (id) => {
+    dispatch(deleteCategoryAction({ categoryId: id, token })).then(
+      dispatch(
+        getRestaurantsCategory({
+          token,
+          restaurantId: restaurant.usersRestaurant?.id,
+        })
+      )
+    );
+  };
 
   useEffect(() => {
     dispatch(

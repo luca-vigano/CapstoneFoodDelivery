@@ -7,6 +7,9 @@ import {
   CREATE_RESTAURANT_FAILURE,
   CREATE_RESTAURANT_REQUEST,
   CREATE_RESTAURANT_SUCCESS,
+  DELETE_CATEGORY_FAILURE,
+  DELETE_CATEGORY_REQUEST,
+  DELETE_CATEGORY_SUCCESS,
   DELETE_EVENTS_SUCCESS,
   DELETE_RESTAURANT_FAILURE,
   DELETE_RESTAURANT_REQUEST,
@@ -140,6 +143,26 @@ export const restaurantReducer = (state = initialState, action) => {
     case CREATE_EVENTS_FAILURE:
     case CREATE_CATEGORY_FAILURE:
     case GET_RESTAURANT_CATEGORY_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    case DELETE_CATEGORY_REQUEST:
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
+    case DELETE_CATEGORY_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        categories: state.categories.filter(
+          (category) => category.id !== action.payload
+        ),
+      };
+    case DELETE_CATEGORY_FAILURE:
       return {
         ...state,
         loading: false,

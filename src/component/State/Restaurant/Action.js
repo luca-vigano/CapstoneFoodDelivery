@@ -9,6 +9,9 @@ import {
   CREATE_RESTAURANT_FAILURE,
   CREATE_RESTAURANT_REQUEST,
   CREATE_RESTAURANT_SUCCESS,
+  DELETE_CATEGORY_FAILURE,
+  DELETE_CATEGORY_REQUEST,
+  DELETE_CATEGORY_SUCCESS,
   DELETE_EVENTS_FAILURE,
   DELETE_EVENTS_REQUEST,
   DELETE_EVENTS_SUCCESS,
@@ -285,6 +288,23 @@ export const getRestaurantsCategory = ({ restaurantId, token }) => {
     } catch (error) {
       console.log("delete event error", error);
       dispatch({ type: GET_RESTAURANT_CATEGORY_FAILURE, payload: error });
+    }
+  };
+};
+
+export const deleteCategoryAction = ({ categoryId, token }) => {
+  return async (dispatch) => {
+    dispatch({ type: DELETE_CATEGORY_REQUEST });
+    try {
+      const res = await api.delete(`/api/admin/category/${categoryId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      dispatch({ type: DELETE_CATEGORY_SUCCESS, payload: categoryId });
+    } catch (error) {
+      console.log("delete category error", error);
+      dispatch({ type: DELETE_CATEGORY_FAILURE, payload: error });
     }
   };
 };

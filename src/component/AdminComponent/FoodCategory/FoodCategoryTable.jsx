@@ -42,6 +42,8 @@ export default function FoodCategoryTable() {
   const token = localStorage.getItem("token");
   // console.log("restaurant details", restaurant);
 
+  const handleDeleteCategory = () => {};
+
   useEffect(() => {
     dispatch(
       getRestaurantsCategory({
@@ -67,8 +69,8 @@ export default function FoodCategoryTable() {
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
               <TableRow>
-                <TableCell align="left">Id</TableCell>
                 <TableCell align="left">Name</TableCell>
+                <TableCell align="right">Delete</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -78,9 +80,16 @@ export default function FoodCategoryTable() {
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
-                    {1}
+                    {item.name}
                   </TableCell>
-                  <TableCell align="left">{item.name}</TableCell>
+                  <TableCell align="right">
+                    <IconButton
+                      color="error"
+                      onClick={() => handleDeleteCategory(item.id)}
+                    >
+                      <Delete />
+                    </IconButton>
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>

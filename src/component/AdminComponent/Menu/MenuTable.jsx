@@ -109,7 +109,7 @@ export default function MenuTable() {
                   </TableCell>
                   <TableCell align="right">
                     <IconButton
-                      color="primary"
+                      color="error"
                       onClick={() => handleDeleteFood(item.id)}
                     >
                       <Delete />

@@ -97,7 +97,7 @@ export default function IngredientsTable() {
                   </TableCell>
                   <TableCell align="right">
                     {" "}
-                    <IconButton aria-label="delete">
+                    <IconButton aria-label="delete" color="error">
                       <DeleteIcon
                         onClick={() => handleDeleteIngradient(item.id)}
                       />

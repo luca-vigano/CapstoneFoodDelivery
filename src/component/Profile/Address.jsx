@@ -61,10 +61,10 @@ const Address = ({ createOrderUsingSelectedAddress }) => {
 
   const handleClose = () => setOpen(false);
 
-  const handleDeleteAddress = (item) => {
-    console.log("item passato da card", item);
-    const addressId = item.id;
-    dispatch(deleteAddress({ id: addressId, token })).then(() => {
+  const handleDeleteAddress = (id) => {
+    console.log("item passato da card", id);
+
+    dispatch(deleteAddress({ id, token })).then(() => {
       dispatch(getUserAddresses(token));
     });
   };

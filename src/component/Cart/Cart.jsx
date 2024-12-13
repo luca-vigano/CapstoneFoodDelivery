@@ -16,6 +16,7 @@ import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { createOrder } from "../State/Order/Action";
 import Address from "../Profile/Address";
+import { clearCartAction } from "../State/Cart/Action";
 
 export const style = {
   position: "absolute",
@@ -69,7 +70,8 @@ const Cart = () => {
         },
       },
     };
-    dispatch(createOrder(data));
+    dispatch(createOrder(data)).then(dispatch(clearCartAction()));
+
     console.log("addres data from card", addressData);
   };
 

@@ -17,10 +17,12 @@ const initialState = {
 export const ingredientReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_INGREDIENTS:
-      return {
-        ...state,
-        ingredients: action.payload,
-      };
+      if (
+        JSON.stringify(state.ingredients) === JSON.stringify(action.payload)
+      ) {
+        return state; // Evita aggiornamenti inutili
+      }
+      return { ...state, ingredients: action.payload };
     case GET_INGREDIENT_CATEGORY_SUCCESS:
       return {
         ...state,

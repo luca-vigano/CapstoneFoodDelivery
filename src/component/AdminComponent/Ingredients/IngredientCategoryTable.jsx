@@ -43,7 +43,7 @@ export default function IngredientCategoryTable() {
   const token = localStorage.getItem("token");
   const { restaurant, ingredients } = useSelector((store) => store);
 
-  const handleDeleteIngradientCategory = (id) => {
+  const handleDeleteIngredientCategory = (id) => {
     dispatch(deleteIngredientCategory({ id, token })).then(
       dispatch(
         getIngredientsOfRestaurant({ token, id: restaurant.usersRestaurant.id })
@@ -88,7 +88,7 @@ export default function IngredientCategoryTable() {
                   <TableCell align="right">
                     <IconButton aria-label="delete" color="error">
                       <DeleteIcon
-                        onClick={() => handleDeleteIngradientCategory(item.id)}
+                        onClick={() => handleDeleteIngredientCategory(item.id)}
                       />
                     </IconButton>
                   </TableCell>

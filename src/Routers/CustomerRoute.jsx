@@ -6,6 +6,7 @@ import RestaurantDetails from "../component/Restaurant/RestaurantDetails";
 import Cart from "../component/Cart/Cart";
 import Profile from "../component/Profile/Profile";
 import Auth from "../component/Auth/Auth";
+import CustomFooter from "../component/Footer/CustomFooter";
 
 const CustomerRoute = () => {
   return (
@@ -22,6 +23,7 @@ const CustomerRoute = () => {
         <Route path="/my-profile/*" element={<Profile />} />
       </Routes>
       <Auth />
+      {/* <CustomFooter /> */}
     </div>
   );
 };

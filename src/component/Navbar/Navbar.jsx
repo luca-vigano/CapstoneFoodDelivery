@@ -87,6 +87,7 @@ export const Navbar = () => {
           </IconButton>
           {auth.user ? (
             <Avatar
+              className="cursor-pointer"
               onClick={handleAvatarClick}
               sx={{ bgcolor: "white", color: blue.A400 }}
             >

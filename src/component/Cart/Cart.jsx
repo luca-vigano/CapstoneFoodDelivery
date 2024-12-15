@@ -70,7 +70,8 @@ const Cart = () => {
         },
       },
     };
-    dispatch(createOrder(data)).then(dispatch(clearCartAction()));
+    dispatch(createOrder(data));
+    // dispatch(clearCartAction());
 
     console.log("addres data from card", addressData);
   };

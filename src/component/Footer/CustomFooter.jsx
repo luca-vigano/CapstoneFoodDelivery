@@ -6,13 +6,20 @@ const CustomFooter = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "#367BC1",
+        backgroundColor: "black",
         color: "white",
         py: 4,
         px: { xs: 2, sm: 4, lg: 8 },
       }}
     >
-      <Grid2 container spacing={4}>
+      <Grid2
+        container
+        spacing={4}
+        sx={{
+          borderTop: "1px solid rgba(255, 255, 255, 0.3)",
+          pt: 4,
+        }}
+      >
         {/* Sezione 1: Informazioni */}
         <Grid2 size={{ xs: 12, sm: 6, md: 4 }}>
           <Typography variant="h6" gutterBottom>
@@ -31,15 +38,12 @@ const CustomFooter = () => {
           </Typography>
           <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
             <Link href="/" color="inherit" underline="hover">
-              Home
+              Lavora Con Noi
             </Link>
-            <Link href="/menu" color="inherit" underline="hover">
-              Menu
-            </Link>
-            <Link href="/about" color="inherit" underline="hover">
+            <Link href="/" color="inherit" underline="hover">
               Chi Siamo
             </Link>
-            <Link href="/contact" color="inherit" underline="hover">
+            <Link href="/" color="inherit" underline="hover">
               Contattaci
             </Link>
           </Box>

@@ -25,13 +25,14 @@ export const RestaurantCard = ({ item }) => {
   };
   return (
     <div>
-      <Card onClick={handleNavigateToRestaurant} className="w-[18rem]">
+      <Card className="w-[18rem]">
         <div
           className={`${
             true ? "cursor-pointer" : "cursor-not-allowed"
           } relative`}
         >
           <img
+            onClick={handleNavigateToRestaurant}
             className="w-full h-[10rem] rounded-t-md object-cover"
             src={item.images[0]}
             alt="immage of restaurant"
@@ -44,7 +45,7 @@ export const RestaurantCard = ({ item }) => {
           />
         </div>
         <div className="p-4 textPart lg:flex w-full justify-between">
-          <div className="space-y-1">
+          <div onClick={handleNavigateToRestaurant} className="space-y-1">
             <p className="font-semibold text-lg cursor-pointer">{item.name}</p>
             <p className="text-gray-500 text-sm">{item.description} </p>
           </div>

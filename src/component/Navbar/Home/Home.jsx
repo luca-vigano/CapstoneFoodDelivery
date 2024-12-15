@@ -5,6 +5,7 @@ import { RestaurantCard } from "../../Restaurant/RestaurantCard";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllRestaurantsAction } from "../../State/Restaurant/Action";
 import { useNavigate } from "react-router-dom";
+import CustomFooter from "../../Footer/CustomFooter";
 
 export const Home = () => {
   const dispatch = useDispatch();
@@ -32,19 +33,22 @@ export const Home = () => {
       </section>
       <section className="p-10 lg:py-10 lg:px-20">
         <p className="text-2xl font-semibold text-gray-400 py-3 pb-10">
-          In Evidenza
+          Un Mondo di Scelte
         </p>
         <HomeCarousel />
       </section>
       <section className="px-5 lg:px-20 pt-10">
         <h1 className="text-2xl font-semibold text-gray-400 pb-8">
-          Suggeriti da noi
+          Scegli Dove Ordinare
         </h1>
         <div className="flex flex-wrap items-center justify-around gap-5">
-          {restaurant.restaurants.map((item) => (
+          {restaurant.restaurants?.map((item) => (
             <RestaurantCard item={item} />
           ))}
         </div>
+      </section>
+      <section className="px-5 lg:px-20 pt-10">
+        <CustomFooter />
       </section>
     </div>
   );

@@ -42,8 +42,7 @@ export const authReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        token: action.payload.token, // Aggiorna il token
-        // user: action.payload.user, // Aggiorna i dettagli dell'utente
+        token: action.payload.token, 
         success:
           action.type === REGISTER_SUCCESS
             ? "Register Success"
@@ -54,7 +53,7 @@ export const authReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        user: action.payload, // Memorizza i dati utente ricevuti
+        user: action.payload, 
         error: null,
         favorites: action.payload.favorites,
       };
@@ -78,7 +77,7 @@ export const authReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        error: action.payload, // Memorizza l'errore
+        error: action.payload,
         success: null,
       };
 

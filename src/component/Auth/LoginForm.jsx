@@ -2,7 +2,7 @@ import { Button, TextField, Typography } from "@mui/material";
 import { Field, Form, Formik } from "formik";
 import { useNavigate } from "react-router-dom";
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../State/Authentication/Action";
 
 const initialValues = {
@@ -12,6 +12,7 @@ const initialValues = {
 const LoginForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { auth, cart, menu } = useSelector((store) => store);
 
   const handleSubmit = (values) => {
     dispatch(loginUser({ userData: values, navigate }));

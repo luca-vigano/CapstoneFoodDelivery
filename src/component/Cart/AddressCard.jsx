@@ -1,6 +1,13 @@
 import React from "react";
 import HomeIcon from "@mui/icons-material/Home";
-import { Button, Card, Grid2, IconButton, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Card,
+  Grid2,
+  IconButton,
+  Typography,
+} from "@mui/material";
 import { Delete } from "@mui/icons-material";
 
 const AddressCard = ({
@@ -11,13 +18,26 @@ const AddressCard = ({
 }) => {
   return (
     <Card className="flex flex-col gap-3 p-5 w-64 shadow-lg rounded-md">
-      <HomeIcon color="primary" sx={{ fontSize: 40 }} />
-      <IconButton
-        color="error"
-        onClick={() => handleSelectAddressToDelete(item.id)}
+      {/* Contenitore per allineare le icone */}
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
       >
-        <Delete />
-      </IconButton>
+        {/* Icona Home a sinistra */}
+        <HomeIcon color="primary" sx={{ fontSize: 40 }} />
+
+        {/* Icona Delete a destra */}
+        <IconButton
+          color="error"
+          onClick={() => handleSelectAddressToDelete(item.id)}
+        >
+          <Delete />
+        </IconButton>
+      </Box>
+
       <div className="space-y-3">
         <Typography variant="h6" className="font-semibold">
           <strong>Indirizzo:</strong> {item.streetAddress}

@@ -6,6 +6,8 @@ import AdminPannel from "../component/AdminComponent/Admin/AdminPannel";
 
 function AdminRoute() {
   const { restaurant } = useSelector((store) => store);
+
+  console.log("RES from store", restaurant);
   return (
     <div>
       <Routes>

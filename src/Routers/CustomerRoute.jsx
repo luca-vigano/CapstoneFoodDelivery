@@ -23,7 +23,6 @@ const CustomerRoute = () => {
         <Route path="/my-profile/*" element={<Profile />} />
       </Routes>
       <Auth />
-      {/* <CustomFooter /> */}
     </div>
   );
 };

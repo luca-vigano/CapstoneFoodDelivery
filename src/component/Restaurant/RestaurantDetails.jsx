@@ -32,18 +32,16 @@ const RestaurantDetails = () => {
   const token = localStorage.getItem("token");
   const { auth, restaurant, menu } = useSelector((store) => store);
   const [selectedCategory, setSelectedCategory] = useState("");
-  // console.log("menu item", menu.menuItems);
+  console.log("menu item+++++++++", restaurant);
 
   const { id, city } = useParams();
 
   const handleFilter = (e) => {
     setFoodType(e.target.value);
-    console.log("--", e.target.value, e.target.name);
   };
 
   const handleFilterCategory = (e) => {
     setSelectedCategory(e.target.value);
-    console.log("--", e.target.value, e.target.name);
   };
 
   useEffect(() => {
@@ -105,11 +103,12 @@ const RestaurantDetails = () => {
           <div className="space-y-3 mt-3">
             <p className="text-gray-500 flex items-center gap-3">
               <LocationOnIcon />
-              <span>Milano, Italy</span>
+              <span>{restaurant.restaurant?.address.city},</span>
+              <span>{restaurant.restaurant?.address.streetAddress}</span>
             </p>
             <p className="text-gray-500 flex items-center gap-3">
               <CalendarTodayIcon />
-              <span>Mar-Dom: 10.00 - 23.00</span>
+              <span>{restaurant.restaurant?.openingHours}</span>
             </p>
           </div>
         </div>

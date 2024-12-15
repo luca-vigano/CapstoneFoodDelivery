@@ -70,14 +70,7 @@ const OrderCard = ({ order }) => {
       </CardContent>
 
       <CardContent>
-        <Button
-          variant="contained"
-          color="primary"
-          fullWidth
-          sx={{ cursor: "not-allowed", padding: 1 }}
-        >
-          {order.orderStatus}
-        </Button>
+        <Typography color="primary">{order.orderStatus}</Typography>
       </CardContent>
     </Card>
   );

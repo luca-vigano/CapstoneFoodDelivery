@@ -10,19 +10,20 @@ import React, { useState } from "react";
 import OrderTable from "./OrderTable";
 
 const orderStatus = [
-  { label: "In Lavorazione", value: "PENDING" },
-  { label: "Completato", value: "COMPLETED" },
-  { label: "All", value: "ALL" },
+  { label: "Pending", value: "PENDING" },
+  { label: "Completed", value: "COMPLETED" },
+  { label: "Out For Delivery", value: "OUT_FOR_DELIVERY" },
+  { label: "Delivered", value: "DELIVERED" },
 ];
 
 const Orders = () => {
-  const [filterValue, setFilterValue] = useState();
-  const handleFilter = (e, value) => {
-    setFilterValue(value);
-  };
+  // const [filterValue, setFilterValue] = useState("all");
+  // const handleFilter = (e) => {
+  //   setFilterValue(e.target.value);
+  // };
   return (
     <div className="px-2">
-      <Card className="p-5 ">
+      {/* <Card className="p-5 ">
         <Typography sx={{ paddingBottom: "1rem" }} variant="h5">
           Order Status
         </Typography>
@@ -44,7 +45,7 @@ const Orders = () => {
             ))}
           </RadioGroup>
         </FormControl>
-      </Card>
+      </Card> */}
       <OrderTable />
     </div>
   );

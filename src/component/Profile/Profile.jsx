@@ -5,7 +5,6 @@ import UserProfile from "./UserProfile";
 import Orders from "./Orders";
 import Address from "./Address";
 import Favorites from "./Favorites";
-import Events from "./Events";
 
 //+++++++++++++++++++++++++
 
@@ -34,6 +33,7 @@ import EventIcon from "@mui/icons-material/Event";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { useDispatch } from "react-redux";
 import { logout } from "../State/Authentication/Action";
+import Events from "./Events";
 
 const menu = [
   {
@@ -48,14 +48,14 @@ const menu = [
     title: "Address",
     icon: <HomeIcon />,
   },
-  {
-    title: "Payments",
-    icon: <AccountBalanceWalletIcon />,
-  },
   // {
-  //   title: "Events",
-  //   icon: <EventIcon />,
+  //   title: "Payments",
+  //   icon: <AccountBalanceWalletIcon />,
   // },
+  {
+    title: "Events",
+    icon: <EventIcon />,
+  },
   {
     title: "Logout",
     icon: <LogoutIcon />,
@@ -90,7 +90,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   alignItems: "center",
   justifyContent: "flex-end",
   padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
+
   ...theme.mixins.toolbar,
 }));
 
@@ -144,7 +144,7 @@ const Drawer = styled(MuiDrawer, {
 
 const Profile = () => {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 

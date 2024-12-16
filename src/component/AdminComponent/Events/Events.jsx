@@ -13,12 +13,15 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   createEventAction,
+  deleteEventAction,
+  getAllEvents,
   getRestaurantEvents,
 } from "../../State/Restaurant/Action";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import EventCard from "../../Profile/EventCard";
 import CreateIcon from "@mui/icons-material/Create";
+import { useLocation } from "react-router-dom";
 
 const style = {
   position: "absolute",
@@ -51,6 +54,7 @@ const validationSchema = Yup.object({
 });
 
 const Events = () => {
+  const location = useLocation();
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -70,14 +74,31 @@ const Events = () => {
     setOpen(false);
   };
 
+  const handleDeleteEvent = (eventId) => {
+    dispatch(deleteEventAction({ eventId, token })).then(() => {
+      dispatch(
+        getRestaurantEvents({
+          restaurantId: restaurant.usersRestaurant?.id,
+          token,
+        })
+      );
+    });
+  };
+
   useEffect(() => {
-    dispatch(
-      getRestaurantEvents({
-        restaurantId: restaurant.usersRestaurant?.id,
-        token,
-      })
-    );
-  }, []);
+    const currentPath = window.location.pathname;
+
+    if (currentPath === "/admin/restaurants/event") {
+      dispatch(
+        getRestaurantEvents({
+          restaurantId: restaurant.usersRestaurant?.id,
+          token,
+        })
+      );
+    } else {
+      dispatch(getAllEvents({ token }));
+    }
+  }, [dispatch, restaurant.usersRestaurant?.id, token]);
 
   return (
     <div className="lg:px-20 px-5 pb-10">
@@ -85,15 +106,17 @@ const Events = () => {
         <h1 className="text-2xl lg:text-7xl text-center font-bold p-5">
           Events
         </h1>
-        <IconButton onClick={handleOpen} aria-label="create event">
-          <CreateIcon />
-        </IconButton>
+        {location.pathname.includes("/admin/restaurants/event") && (
+          <IconButton onClick={handleOpen} aria-label="create event">
+            <CreateIcon />
+          </IconButton>
+        )}
       </div>
 
       <Grid2 container spacing={3}>
         {restaurant.restaurantsEvents?.map((event) => (
           <Grid2 item xs={12} sm={6} md={4} key={event.id}>
-            <EventCard item={event} />
+            <EventCard item={event} onDelete={handleDeleteEvent} />
           </Grid2>
         ))}
       </Grid2>

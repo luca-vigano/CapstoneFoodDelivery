@@ -38,12 +38,18 @@ const ExpandMore = styled((props) => {
   ],
 }));
 
-const EventCard = ({ item }) => {
+const EventCard = ({ item, onDelete }) => {
   const [expanded, setExpanded] = React.useState(false);
   const location = useLocation();
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
+  };
+
+  const handleDelete = () => {
+    if (onDelete) {
+      onDelete(item.id); // Chiamata al callback passando l'ID dell'evento
+    }
   };
 
   const formatDate = (date) => {
@@ -92,7 +98,11 @@ const EventCard = ({ item }) => {
         </CardContent>
         <CardActions disableSpacing>
           {location.pathname.includes("/admin/restaurants/event") && (
-            <IconButton aria-label="delete button" color="error">
+            <IconButton
+              aria-label="delete button"
+              color="error"
+              onClick={handleDelete}
+            >
               <DeleteIcon />
             </IconButton>
           )}

@@ -65,7 +65,7 @@ const Cart = () => {
           streetAddress: addressData.streetAddress,
           city: addressData.city,
           state: addressData.state,
-          postalCode: addressData.pincode,
+          postalCode: addressData.postalCode,
           country: addressData.country,
         },
       },

@@ -34,7 +34,7 @@ export const style = {
 const initialValues = {
   streetAddress: "",
   state: "",
-  pincode: "",
+  postalCode: "",
   city: "",
   country: "",
 };

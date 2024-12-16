@@ -5,6 +5,8 @@ import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createEventAction } from "../../State/Restaurant/Action";
+import { Formik, Field, Form, ErrorMessage } from "formik";
+import * as Yup from "yup";
 
 const style = {
   position: "absolute",
@@ -22,39 +24,38 @@ const initialValues = {
   image: "",
   location: "",
   name: "",
-  descritpion: "",
+  description: "",
   startedAt: null,
   endsAt: null,
 };
+
+const validationSchema = Yup.object({
+  image: Yup.string().required("Image URL is required"),
+  location: Yup.string().required("Location is required"),
+  name: Yup.string().required("Event Name is required"),
+  description: Yup.string().required("Event Description is required"),
+  startedAt: Yup.date().required("Start Date and Time is required"),
+  endsAt: Yup.date().required("End Date and Time is required"),
+});
 
 const Events = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const [formValues, setFormValues] = useState(initialValues);
   const dispatch = useDispatch();
   const token = localStorage.getItem("token");
   const { restaurant } = useSelector((store) => store);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("event DATA", formValues);
+  const handleSubmit = (values) => {
+    console.log("event DATA", values);
     dispatch(
       createEventAction({
-        data: formValues,
+        data: values,
         restaurantId: restaurant.usersRestaurant?.id,
         token,
       })
     );
-    setFormValues(initialValues);
-  };
-
-  const handleFormChange = (e) => {
-    setFormValues({ ...formValues, [e.target.name]: e.target.value });
-  };
-
-  const handleDateChange = (date, dateType) => {
-    setFormValues({ ...formValues, [dateType]: date });
+    setOpen(false);
   };
 
   return (
@@ -71,83 +72,105 @@ const Events = () => {
           aria-describedby="modal-modal-description"
         >
           <Box sx={style}>
-            <form onSubmit={handleSubmit}>
-              <Grid2 className="my-3" container spacing={3}>
-                <Grid2 size={{ xs: 12 }}>
-                  <TextField
-                    name="image"
-                    label="image URL"
-                    variant="outlined"
-                    fullWidth
-                    value={formValues.image}
-                    onChange={handleFormChange}
-                  />
-                </Grid2>
-                <Grid2 size={{ xs: 12 }}>
-                  <TextField
-                    name="location"
-                    label="Location"
-                    variant="outlined"
-                    fullWidth
-                    value={formValues.location}
-                    onChange={handleFormChange}
-                  />
-                </Grid2>
-                <Grid2 size={{ xs: 12 }}>
-                  <TextField
-                    name="name"
-                    label="Event Name"
-                    variant="outlined"
-                    fullWidth
-                    value={formValues.name}
-                    onChange={handleFormChange}
-                  />
-                </Grid2>
-                <Grid2 size={{ xs: 12 }}>
-                  <TextField
-                    name="description" // Campo description
-                    label="Event Description"
-                    variant="outlined"
-                    fullWidth
-                    multiline
-                    rows={4} // Aggiunto supporto per più righe
-                    value={formValues.description}
-                    onChange={handleFormChange}
-                  />
-                </Grid2>
-                <Grid2 size={{ xs: 12 }}>
-                  <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <DateTimePicker
-                      renderInput={(props) => <TextField {...props} />}
-                      label="Start Date and Time"
-                      value={formValues.startedAt}
-                      onChange={(newValue) =>
-                        handleDateChange(newValue, "startedAt")
-                      }
-                      className="w-full"
-                      sx={{ width: "100%" }}
-                    />
-                  </LocalizationProvider>
-                </Grid2>
-                <Grid2 size={{ xs: 12 }}>
-                  <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <DateTimePicker
-                      renderInput={(props) => <TextField {...props} />}
-                      label="End Date and Time"
-                      value={formValues.endsAt}
-                      onChange={(newValue) =>
-                        handleDateChange(newValue, "endsAt")
-                      }
-                      className="w-full"
-                      sx={{ width: "100%" }}
-                    />
-                  </LocalizationProvider>
-                </Grid2>
-              </Grid2>
-              <Button className="my-2" variant="contained" type="submit">
-                Create Event
-              </Button>
-            </form>
+            <Formik
+              initialValues={initialValues}
+              validationSchema={validationSchema}
+              onSubmit={handleSubmit}
+            >
+              {({ values, handleChange, setFieldValue, errors, touched }) => (
+                <Form>
+                  <Grid2 className="my-3" container spacing={3}>
+                    <Grid2 size={{ xs: 12 }}>
+                      <Field
+                        name="image"
+                        label="Image URL"
+                        variant="outlined"
+                        fullWidth
+                        as={TextField}
+                        onChange={handleChange}
+                        value={values.image}
+                        error={touched.image && Boolean(errors.image)}
+                        helperText={touched.image && errors.image}
+                      />
+                    </Grid2>
+                    <Grid2 size={{ xs: 12 }}>
+                      <Field
+                        name="location"
+                        label="Location"
+                        variant="outlined"
+                        fullWidth
+                        as={TextField}
+                        onChange={handleChange}
+                        value={values.location}
+                        error={touched.location && Boolean(errors.location)}
+                        helperText={touched.location && errors.location}
+                      />
+                    </Grid2>
+                    <Grid2 size={{ xs: 12 }}>
+                      <Field
+                        name="name"
+                        label="Event Name"
+                        variant="outlined"
+                        fullWidth
+                        as={TextField}
+                        onChange={handleChange}
+                        value={values.name}
+                        error={touched.name && Boolean(errors.name)}
+                        helperText={touched.name && errors.name}
+                      />
+                    </Grid2>
+                    <Grid2 size={{ xs: 12 }}>
+                      <Field
+                        name="description"
+                        label="Event Description"
+                        variant="outlined"
+                        fullWidth
+                        as={TextField}
+                        multiline
+                        rows={4}
+                        onChange={handleChange}
+                        value={values.description}
+                        error={
+                          touched.description && Boolean(errors.description)
+                        }
+                        helperText={touched.description && errors.description}
+                      />
+                    </Grid2>
+                    <Grid2 size={{ xs: 12 }}>
+                      <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <DateTimePicker
+                          renderInput={(props) => <TextField {...props} />}
+                          label="Start Date and Time"
+                          value={values.startedAt}
+                          onChange={(newValue) =>
+                            setFieldValue("startedAt", newValue)
+                          }
+                          className="w-full"
+                          sx={{ width: "100%" }}
+                        />
+                      </LocalizationProvider>
+                    </Grid2>
+                    <Grid2 size={{ xs: 12 }}>
+                      <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <DateTimePicker
+                          renderInput={(props) => <TextField {...props} />}
+                          label="End Date and Time"
+                          value={values.endsAt}
+                          onChange={(newValue) =>
+                            setFieldValue("endsAt", newValue)
+                          }
+                          className="w-full"
+                          sx={{ width: "100%" }}
+                        />
+                      </LocalizationProvider>
+                    </Grid2>
+                  </Grid2>
+                  <Button className="my-2" variant="contained" type="submit">
+                    Create Event
+                  </Button>
+                </Form>
+              )}
+            </Formik>
           </Box>
         </Modal>
       </div>

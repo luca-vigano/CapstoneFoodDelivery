@@ -22,6 +22,7 @@ const initialValues = {
   image: "",
   location: "",
   name: "",
+  descritpion: "",
   startedAt: null,
   endsAt: null,
 };
@@ -99,6 +100,18 @@ const Events = () => {
                     variant="outlined"
                     fullWidth
                     value={formValues.name}
+                    onChange={handleFormChange}
+                  />
+                </Grid2>
+                <Grid2 size={{ xs: 12 }}>
+                  <TextField
+                    name="description" // Campo description
+                    label="Event Description"
+                    variant="outlined"
+                    fullWidth
+                    multiline
+                    rows={4} // Aggiunto supporto per più righe
+                    value={formValues.description}
                     onChange={handleFormChange}
                   />
                 </Grid2>

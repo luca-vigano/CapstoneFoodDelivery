@@ -2,7 +2,6 @@ import { Box, Button, Grid2, Modal, TextField } from "@mui/material";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
-// import dayjs from "dayjs";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createEventAction } from "../../State/Restaurant/Action";
@@ -34,7 +33,7 @@ const Events = () => {
   const [formValues, setFormValues] = useState(initialValues);
   const dispatch = useDispatch();
   const token = localStorage.getItem("token");
-  const { restaurant, restaurantOrder } = useSelector((store) => store);
+  const { restaurant } = useSelector((store) => store);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -52,10 +51,6 @@ const Events = () => {
   const handleFormChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value });
   };
-  // const handleDateChange = (date, dateType) => {
-  //   const formatedDate = dayjs(date).format("MMMM DD, YYYY hh:mm A");
-  //   setFormValues({ ...formValues, [dateType]: formatedDate });
-  // };
 
   const handleDateChange = (date, dateType) => {
     setFormValues({ ...formValues, [dateType]: date });
@@ -116,7 +111,6 @@ const Events = () => {
                       onChange={(newValue) =>
                         handleDateChange(newValue, "startedAt")
                       }
-                      // inputFormat="MM/dd/yyyy hh:mm a"
                       className="w-full"
                       sx={{ width: "100%" }}
                     />
@@ -131,7 +125,6 @@ const Events = () => {
                       onChange={(newValue) =>
                         handleDateChange(newValue, "endsAt")
                       }
-                      // inputFormat="MM/dd/yyyy hh:mm a"
                       className="w-full"
                       sx={{ width: "100%" }}
                     />

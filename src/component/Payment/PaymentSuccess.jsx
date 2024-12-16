@@ -3,9 +3,17 @@ import TaskAltIcon from "@mui/icons-material/TaskAlt";
 import { green } from "@mui/material/colors";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { clearCartAction } from "../State/Cart/Action";
+import { useDispatch } from "react-redux";
 
 export const PaymentSuccess = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleGoToHome = () => {
+    dispatch(clearCartAction());
+    navigate("/");
+  };
 
   return (
     <div className="min-h-screen px-5">
@@ -17,7 +25,7 @@ export const PaymentSuccess = () => {
             Thank you for choosing our restaurant
           </p>
           <Button
-            onClick={() => navigate("/")}
+            onClick={handleGoToHome}
             variant="contained"
             className="py-5"
             sx={{ margin: "1rem 0rem" }}

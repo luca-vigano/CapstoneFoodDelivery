@@ -1,11 +1,4 @@
-import {
-  Button,
-  Card,
-  CardContent,
-  CardMedia,
-  Grid2,
-  Typography,
-} from "@mui/material";
+import { Card, CardContent, CardMedia, Grid2, Typography } from "@mui/material";
 import React from "react";
 
 const OrderCard = ({ order }) => {
@@ -14,7 +7,6 @@ const OrderCard = ({ order }) => {
   return (
     <Card sx={{ maxWidth: 345, margin: 2, borderRadius: 2, boxShadow: 3 }}>
       <CardContent>
-        {/* Nome del ristorante come titolo in cima alla card */}
         {restaurantName && (
           <Typography
             variant="h5"
@@ -26,10 +18,8 @@ const OrderCard = ({ order }) => {
           </Typography>
         )}
 
-        {/* Mappiamo gli item e creiamo una riga per ciascuno */}
         {order.items.map((item, index) => (
           <Grid2 container spacing={1} key={index} alignItems="center">
-            {/* Colonna per l'immagine */}
             <Grid2 size={{ xs: 4, sm: 3, md: 2 }}>
               <CardMedia
                 component="img"
@@ -40,7 +30,6 @@ const OrderCard = ({ order }) => {
               />
             </Grid2>
 
-            {/* Colonna per il nome del cibo */}
             <Grid2 size={{ xs: 8, sm: 9, md: 10 }}>
               <Typography variant="body1" color="textSecondary">
                 {item.food.name}
@@ -49,7 +38,6 @@ const OrderCard = ({ order }) => {
           </Grid2>
         ))}
 
-        {/* Totale ordine sotto le righe degli item */}
         <Grid2 container alignItems="center" spacing={2}>
           <Grid2 size={{ xs: 12 }}>
             <Typography

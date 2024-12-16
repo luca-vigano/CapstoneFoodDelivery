@@ -46,7 +46,7 @@ const menu = [
   { title: "Menu", icon: <ShopTwoIcon />, path: "/menu" },
   { title: "Food Category", icon: <CategoryIcon />, path: "/category" },
   { title: "Ingredients", icon: <FastfoodIcon />, path: "/ingredients" },
-  // { title: "Event", icon: <EventIcon />, path: "/event" },
+  { title: "Event", icon: <EventIcon />, path: "/event" },
   { title: "Details", icon: <AdminPanelSettingsIcon />, path: "/details" },
   { title: "Logout", icon: <LogoutIcon />, path: "/" },
 ];
@@ -133,7 +133,7 @@ const Drawer = styled(MuiDrawer, {
 
 const AdminPannel = () => {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const token = localStorage.getItem("token");

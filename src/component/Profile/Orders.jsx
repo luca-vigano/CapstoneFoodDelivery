@@ -3,6 +3,7 @@ import OrderCard from "./OrderCard";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getUsersOrders } from "../State/Order/Action";
+import { Grid2 } from "@mui/material";
 
 const Orders = () => {
   const { auth, order } = useSelector((store) => store);
@@ -16,12 +17,19 @@ const Orders = () => {
 
   return (
     <div className="flex items-center flex-col">
-      <h1 className="text-xl text-center py-7 font-semibold">My orders</h1>
-      <div className="space-y-5">
-        {order.orders.map((order) => (
-          <OrderCard order={order} />
+      <h1 className="text-xl text-center py-7 font-semibold">My Orders</h1>
+      <Grid2
+        container
+        spacing={2}
+        justifyContent="center"
+        sx={{ width: "100%", maxWidth: "1200px" }}
+      >
+        {order.orders.map((order, index) => (
+          <Grid2 key={index} size={{ xs: 12, sm: 6, md: 4, lg: 3, xl: 2.4 }}>
+            <OrderCard order={order} />
+          </Grid2>
         ))}
-      </div>
+      </Grid2>
     </div>
   );
 };

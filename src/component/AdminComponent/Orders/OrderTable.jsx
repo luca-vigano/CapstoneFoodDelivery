@@ -61,6 +61,7 @@ export default function OrderTable() {
     handleClose(orderId);
   };
 
+  console.log("item+++", restaurantOrder.orders);
   return (
     <Box>
       <Card className="mt-1">
@@ -96,7 +97,7 @@ export default function OrderTable() {
                     </AvatarGroup>
                   </TableCell>
                   <TableCell align="right">{item.customer?.fullName}</TableCell>
-                  <TableCell align="right">{item.totalAmount}</TableCell>
+                  <TableCell align="right">€ {item.totalAmmount}</TableCell>
                   <TableCell align="right">
                     {item.items.map((orderItem, index) => (
                       <p key={index}>{orderItem.food?.name}</p>

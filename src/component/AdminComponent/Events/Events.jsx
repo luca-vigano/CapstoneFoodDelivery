@@ -37,7 +37,7 @@ const Events = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("submit", formValues);
+    console.log("event DATA", formValues);
     dispatch(
       createEventAction({
         data: formValues,
@@ -132,7 +132,7 @@ const Events = () => {
                 </Grid2>
               </Grid2>
               <Button className="my-2" variant="contained" type="submit">
-                Create Ingredient Category
+                Create Event
               </Button>
             </form>
           </Box>

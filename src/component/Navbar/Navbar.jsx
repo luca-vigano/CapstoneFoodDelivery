@@ -69,11 +69,11 @@ export const Navbar = () => {
   console.log("risultati del search", menu.search);
   return (
     <>
-      <Box className="px-5 sticky top-0 z-50 py-[.8rem] bg-[#367BC1] lg:px-20 flex justify-between">
+      <Box className="px-5 sticky top-0 z-50 py-[.8rem] lg:px-20 flex justify-between">
         <div className="lg:mr-10 cursor-pointer flex items-center space-x-4">
           <li
             onClick={() => navigate("/")}
-            className="logo font-semibold text-gray-300 text-2xl"
+            className="logo font-semibold text-2xl"
           >
             ClickFood
           </li>
@@ -82,14 +82,14 @@ export const Navbar = () => {
           <IconButton>
             <SearchIcon
               onClick={handleOpenSearchModal}
-              sx={{ fontSize: "1.5rem" }}
+              sx={{ fontSize: "1.5rem", color: "#D8BD8A" }}
             />
           </IconButton>
           {auth.user ? (
             <Avatar
               className="cursor-pointer"
               onClick={handleAvatarClick}
-              sx={{ bgcolor: "white", color: blue.A400 }}
+              sx={{ bgcolor: "#D8BD8A" }}
             >
               {auth.user?.fullName[0].toUpperCase()}
             </Avatar>
@@ -100,10 +100,10 @@ export const Navbar = () => {
           )}
           <IconButton onClick={() => navigate("/cart")}>
             <Badge
-              color="primary"
+              color="#D8BD8A"
               badgeContent={cart.cartItems ? cart.cartItems.length : 0}
             >
-              <ShoppingCartIcon sx={{ fontSize: "1.5rem" }} />
+              <ShoppingCartIcon sx={{ fontSize: "1.5rem", color: "#D8BD8A" }} />
             </Badge>
           </IconButton>
         </div>

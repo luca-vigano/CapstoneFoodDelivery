@@ -6,8 +6,8 @@ const CustomFooter = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "black",
-        color: "white",
+        backgroundColor: "#4F3130",
+        color: "D8D78F",
         py: 4,
         px: { xs: 2, sm: 4, lg: 8 },
       }}
@@ -58,28 +58,28 @@ const CustomFooter = () => {
             <IconButton
               href="https://www.facebook.com"
               target="_blank"
-              sx={{ color: "white" }}
+              sx={{ color: "#D8D78F" }}
             >
               <Facebook />
             </IconButton>
             <IconButton
               href="https://www.instagram.com"
               target="_blank"
-              sx={{ color: "white" }}
+              sx={{ color: "#D8D78F" }}
             >
               <Instagram />
             </IconButton>
             <IconButton
               href="https://www.twitter.com"
               target="_blank"
-              sx={{ color: "white" }}
+              sx={{ color: "#D8D78F" }}
             >
               <Twitter />
             </IconButton>
             <IconButton
               href="https://www.linkedin.com"
               target="_blank"
-              sx={{ color: "white" }}
+              sx={{ color: "#D8D78F" }}
             >
               <LinkedIn />
             </IconButton>

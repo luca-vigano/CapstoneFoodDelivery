@@ -48,37 +48,45 @@ const Cart = () => {
 
   return (
     <>
+      <Divider sx={{ bgcolor: "#D8BD8A" }} />
       <main className="lg:flex justify-between">
-        <section className="lg:w-[30%] space-y-6 lg:min-h-screen pt-10">
+        <section
+          className="lg:w-[30%] space-y-3 lg:min-h-screen pt-10"
+          style={{ backgroundColor: "#53272F" }}
+        >
           {cart.cartItems.map((item) => (
             <CartItem item={item} />
           ))}
-          <Divider />
-          <div className="billDetails px-5 text-sm">
-            <p className="font-extralight py-5">Dettagli</p>
+          <Divider sx={{ bgcolor: "#D8BD8A" }} />
+          <div>
+            <p className=" text-lg font-bold px-4 mb-3">DETAILS:</p>
+            <Divider sx={{ bgcolor: "#D8BD8A" }} />
             <div className="space-y-3">
-              <div className="flex justify-between text-gray-400">
+              <div className="flex justify-between font-bold mt-2 px-5">
                 <p>Totale</p>
                 <p>€{calculateTotal()}</p>
               </div>
-              <div className="flex justify-between text-gray-400">
-                <p>Spese di consegna</p>
+              <div className="flex justify-between font-semibold px-5">
+                <p>Delivery</p>
                 <p>€3</p>
               </div>
-              <div className="flex justify-between text-gray-400">
-                <p>Spese di gestione</p>
+              <div className="flex justify-between font-bold px-5">
+                <p>App Fee</p>
                 <p>€2</p>
               </div>
-              <Divider />
+              <Divider sx={{ bgcolor: "#D8BD8A" }} />
             </div>
-            <div className="flex justify-between text-gray-400">
-              <p>Totale carrello</p>
+            <div className="flex justify-between font-bold px-5 pt-3">
+              <p>Total Cart:</p>
               <p>€{calculateTotal() === 0 ? 0 : calculateTotal() + 3 + 2}</p>
             </div>
           </div>
         </section>
-        <Divider orientation="vertical" flexItem />
-        <section className="lg:w-[70%] flex justify-center px-5 pb-10 lg:pb-0">
+        <Divider orientation="vertical" flexItem sx={{ bgcolor: "#D8BD8A" }} />
+        <section
+          className="lg:w-[70%] flex justify-center px-5 pb-10 lg:pb-0"
+          style={{ backgroundColor: "#53272F" }}
+        >
           <Address createOrderUsingSelectedAddress={createUserOrder} />
         </section>
       </main>

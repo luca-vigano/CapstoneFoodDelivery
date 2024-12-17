@@ -31,24 +31,24 @@ const CartItem = ({ item }) => {
       <div className="lg:flex items-center lg:space-x-5">
         <div>
           <img
-            className="w-[5rem] h-[5rem] object-cover"
+            className="w-[5rem] h-[5rem] object-cover rounded-md"
             src={item.food.images[0]}
             alt="foto del piatto"
           />
         </div>
         <div className="flex items-center justify-between lg:w-[70%]">
-          <div className="space-y-1 lg:space-y-3 w-full">
+          <div className="space-y-1 lg:space-y-3 w-full font-semibold">
             <p>{item.food.name}</p>
             <div className="flex justify-between items-center">
               <div className="flex items-center space-x-1">
                 <IconButton onClick={() => handleUpdateCartItem(-1)}>
-                  <RemoveCircleOutlineIcon />
+                  <RemoveCircleOutlineIcon sx={{ color: "#D8BD8A" }} />
                 </IconButton>
-                <div className="w-5 h-5 text-xs flex items-center justify-center">
+                <div className="w-5 h-5 flex items-center justify-center">
                   {item.quantity}
                 </div>
                 <IconButton onClick={() => handleUpdateCartItem(1)}>
-                  <AddCircleOutlineIcon />
+                  <AddCircleOutlineIcon sx={{ color: "#D8BD8A" }} />
                 </IconButton>
               </div>
             </div>

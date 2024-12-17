@@ -47,10 +47,10 @@ export const RestaurantCard = ({ item }) => {
         <div className="p-4 textPart lg:flex w-full justify-between">
           <div onClick={handleNavigateToRestaurant} className="space-y-1">
             <p className="font-semibold text-lg cursor-pointer">{item.name}</p>
-            <p className="text-gray-500 text-sm">{item.description} </p>
+            <p className=" text-sm">{item.description} </p>
           </div>
           <div>
-            <IconButton onClick={handleAddToFavorite}>
+            <IconButton onClick={handleAddToFavorite} sx={{ color: "#D8BD8A" }}>
               {isPresentInFavorites(auth.favorites, item) ? (
                 <FavoriteIcon />
               ) : (

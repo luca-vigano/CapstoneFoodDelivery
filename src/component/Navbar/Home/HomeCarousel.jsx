@@ -7,10 +7,11 @@ import CarouselItem from "./CarouselItem";
 
 export const HomeCarousel = () => {
   const settings = {
-    dots: true,
+    dots: false,
+    fade: true,
     infinite: true,
     speed: 2000,
-    slidesToShow: 6,
+    slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3500,

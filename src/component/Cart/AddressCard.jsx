@@ -17,8 +17,10 @@ const AddressCard = ({
   handleSelectAddressToCart,
 }) => {
   return (
-    <Card className="flex flex-col gap-3 p-5 w-64 shadow-lg rounded-md">
-      {/* Contenitore per allineare le icone */}
+    <Card
+      className="flex flex-col gap-3 p-5 w-64 rounded-md"
+      sx={{ backgroundColor: "#753742" }}
+    >
       <Box
         sx={{
           display: "flex",
@@ -26,41 +28,36 @@ const AddressCard = ({
           alignItems: "center",
         }}
       >
-        {/* Icona Home a sinistra */}
-        <HomeIcon color="primary" sx={{ fontSize: 40 }} />
+        <HomeIcon color="secondary" sx={{ fontSize: 40 }} />
 
-        {/* Icona Delete a destra */}
-        <IconButton
-          color="error"
-          onClick={() => handleSelectAddressToDelete(item.id)}
-        >
-          <Delete />
+        <IconButton onClick={() => handleSelectAddressToDelete(item.id)}>
+          <Delete sx={{ color: "#AA5042" }} />
         </IconButton>
       </Box>
 
       <div className="space-y-3">
-        <Typography variant="h6" className="font-semibold">
-          <strong>Indirizzo:</strong> {item.streetAddress}
+        <Typography variant="body2" className="font-semibold">
+          <strong>Street Address: </strong> {item.streetAddress}
         </Typography>
 
         <Grid2 container spacing={1}>
           <Grid2 size={{ xs: 12 }}>
-            <Typography variant="body2" color="textSecondary">
-              <strong>Città:</strong> {item.city}
+            <Typography variant="body2" color="secondary">
+              <strong>City:</strong> {item.city}
             </Typography>
           </Grid2>
           <Grid2 size={{ xs: 12 }}>
-            <Typography variant="body2" color="textSecondary">
-              <strong>Stato:</strong> {item.state}
+            <Typography variant="body2" color="secondary">
+              <strong>State:</strong> {item.state}
             </Typography>
           </Grid2>
           <Grid2 size={{ xs: 12 }}>
-            <Typography variant="body2" color="textSecondary">
-              <strong>Codice Postale:</strong> {item.postalCode}
+            <Typography variant="body2" color="secondary">
+              <strong>Postal Code:</strong> {item.postalCode}
             </Typography>
           </Grid2>
           <Grid2 size={{ xs: 12 }}>
-            <Typography variant="body2" color="textSecondary">
+            <Typography variant="body2" color="secondary">
               <strong>Country:</strong> {item.country}
             </Typography>
           </Grid2>
@@ -69,21 +66,21 @@ const AddressCard = ({
         {showButton && (
           <Button
             variant="outlined"
-            color="primary"
+            color="secondary"
             fullWidth
             onClick={() => handleSelectAddressToCart(item)}
             sx={{
               marginTop: 2,
               textTransform: "none",
-              borderColor: "primary",
-              color: "primary",
+              borderColor: "secondary",
+              color: "secondary",
               "&:hover": {
-                backgroundColor: "primary",
-                color: "white",
+                backgroundColor: "secondary",
+                color: "secondary",
               },
             }}
           >
-            Seleziona Indirizzo
+            Select Address
           </Button>
         )}
       </div>

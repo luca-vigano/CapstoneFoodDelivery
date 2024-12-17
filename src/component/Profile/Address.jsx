@@ -100,7 +100,7 @@ const Address = ({ createOrderUsingSelectedAddress }) => {
         <section className="flex justify-center px-5 pb-10 lg:pb-0">
           <div>
             <h1 className="text-center font-semibold text-2xl py-10">
-              I tuoi indirizzi
+              Your Address
             </h1>
             <div className="flex gap-5 flex-wrap justify-center">
               {addresses.map((item, index) => (
@@ -112,34 +112,37 @@ const Address = ({ createOrderUsingSelectedAddress }) => {
                   showButton={true}
                 />
               ))}
-              <Card className="flex flex-col gap-5 p-5 w-64 shadow-lg rounded-md">
-                <AddLocationAltIcon color="primary" sx={{ fontSize: 40 }} />
+              <Card
+                className="flex flex-col gap-5 p-5 w-64 shadow-lg rounded-md"
+                sx={{ backgroundColor: "#53272F" }}
+              >
+                <AddLocationAltIcon color="secondary" sx={{ fontSize: 40 }} />
                 <div className="space-y-3">
                   <Typography variant="h6" className="font-semibold">
-                    Nuovo Indirizzo
+                    New Address
                   </Typography>
 
-                  <Typography variant="body2" color="textSecondary">
-                    Aggiungi un nuovo indirizzo al tuo profilo.
+                  <Typography variant="body2">
+                    Add a new address to your profile.
                   </Typography>
 
                   <Button
                     variant="outlined"
-                    color="primary"
+                    color="secondary"
                     fullWidth
                     onClick={handleOpenAddressModal}
                     sx={{
                       marginTop: 2,
                       textTransform: "none",
-                      borderColor: "primary",
-                      color: "primary",
+                      borderColor: "secondary",
+                      color: "secondary",
                       "&:hover": {
-                        backgroundColor: "primary",
-                        color: "white",
+                        backgroundColor: "secondary",
+                        color: "secondary",
                       },
                     }}
                   >
-                    Aggiungi Indirizzo
+                    Create New Address
                   </Button>
                 </div>
               </Card>

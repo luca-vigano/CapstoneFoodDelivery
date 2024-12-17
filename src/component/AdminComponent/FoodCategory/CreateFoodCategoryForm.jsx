@@ -43,9 +43,7 @@ const CreateFoodCategoryForm = ({ handleClose }) => {
   return (
     <div className="">
       <div className="p-5">
-        <h1 className="text-gray-400 text-center text-xl pb-10">
-          Create Food Category
-        </h1>
+        <h1 className=" text-center text-xl pb-10">Create Food Category</h1>
         <form className="space-y-4" onSubmit={handleSubmit}>
           <TextField
             fullWidth
@@ -55,8 +53,22 @@ const CreateFoodCategoryForm = ({ handleClose }) => {
             variant="outlined"
             onChange={handleInputChange}
             value={formData.categoryName}
+            InputLabelProps={{
+              style: { color: "#D8BD8A" }, // Colore della label
+            }}
+            sx={{
+              backgroundColor: "##53272F", // Colore di sfondo
+              "& .MuiOutlinedInput-root": {
+                "&:hover fieldset": {
+                  borderColor: "#D8BD8A", // Colore del bordo al passaggio del mouse
+                },
+                "&.Mui-focused fieldset": {
+                  borderColor: "#D8BD8A", // Colore del bordo quando il campo è attivo
+                },
+              },
+            }}
           ></TextField>
-          <Button variant="contained" type="submit">
+          <Button variant="contained" type="submit" sx={{ color: "#D8BD8A" }}>
             Create Category
           </Button>
         </form>

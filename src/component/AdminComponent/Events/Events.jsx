@@ -108,7 +108,7 @@ const Events = () => {
         </h1>
         {location.pathname.includes("/admin/restaurants/event") && (
           <IconButton onClick={handleOpen} aria-label="create event">
-            <CreateIcon />
+            <CreateIcon sx={{ color: "#D8BD8A" }} />
           </IconButton>
         )}
       </div>

@@ -95,7 +95,7 @@ export const Navbar = () => {
             </Avatar>
           ) : (
             <IconButton onClick={() => navigate("/account/login")}>
-              <Person />
+              <Person sx={{ color: "#D8BD8A" }} />
             </IconButton>
           )}
           <IconButton onClick={() => navigate("/cart")}>

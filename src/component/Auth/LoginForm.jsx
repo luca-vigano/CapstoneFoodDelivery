@@ -31,6 +31,15 @@ const LoginForm = () => {
             fullWidth
             variant="outlined"
             margin="normal"
+            InputLabelProps={{
+              style: { color: "#D8BD8A" },
+            }}
+            InputProps={{
+              style: {
+                backgroundColor: "#53272F",
+                color: "##D8BD8A",
+              },
+            }}
           />
           <Field
             as={TextField}
@@ -40,9 +49,18 @@ const LoginForm = () => {
             variant="outlined"
             margin="normal"
             type="password"
+            InputLabelProps={{
+              style: { color: "#D8BD8A" },
+            }}
+            InputProps={{
+              style: {
+                backgroundColor: "#53272F",
+                color: "##D8BD8A",
+              },
+            }}
           />
           <Button
-            sx={{ mt: 2, padding: "1rem" }}
+            sx={{ mt: 2, padding: "1rem", color: "#D8BD8A" }}
             fullWidth
             type="submit"
             variant="contained"
@@ -53,7 +71,11 @@ const LoginForm = () => {
       </Formik>
       <Typography variant="body2" align="center" sx={{ mt: 3 }}>
         Non sei registato?
-        <Button size="small" onClick={() => navigate("/account/register")}>
+        <Button
+          size="small"
+          sx={{ color: "#D8BD8A" }}
+          onClick={() => navigate("/account/register")}
+        >
           Registrati
         </Button>
       </Typography>

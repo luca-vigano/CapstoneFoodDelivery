@@ -171,12 +171,12 @@ const AdminPannel = () => {
   };
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex", backgroundColor: "#53272F" }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open} sx={{ backgroundColor: "#0060C0" }}>
+      <AppBar position="fixed" open={open} sx={{ backgroundColor: "#753742" }}>
         <Toolbar sx={"justify-content: space-between"}>
           <IconButton
-            color="white"
+            color="secondary"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
@@ -189,10 +189,10 @@ const AdminPannel = () => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
+          <Typography variant="h4" noWrap component="div">
             Control Pannel
           </Typography>
-          <IconButton color="white" onClick={() => navigate("/")}>
+          <IconButton color="secondary" onClick={() => navigate("/")}>
             Home
           </IconButton>
         </Toolbar>
@@ -203,7 +203,7 @@ const AdminPannel = () => {
             {theme.direction === "rtl" ? (
               <ChevronRightIcon />
             ) : (
-              <ChevronLeftIcon />
+              <ChevronLeftIcon color="secondary" />
             )}
           </IconButton>
         </DrawerHeader>
@@ -221,9 +221,11 @@ const AdminPannel = () => {
                   open
                     ? {
                         justifyContent: "initial",
+                        color: "#D8BD8A",
                       }
                     : {
                         justifyContent: "center",
+                        color: "#D8BD8A",
                       },
                 ]}
               >
@@ -236,9 +238,11 @@ const AdminPannel = () => {
                     open
                       ? {
                           mr: 3,
+                          color: "#D8BD8A",
                         }
                       : {
                           mr: "auto",
+                          color: "#D8BD8A",
                         },
                   ]}
                 >
@@ -262,7 +266,7 @@ const AdminPannel = () => {
         </List>
         <Divider />
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+      <Box component="main" sx={{ flexGrow: 1, pb: 100, px: 3 }}>
         <DrawerHeader />
         <Routes>
           <Route path="/" element={<RestaurantDashboard />} />

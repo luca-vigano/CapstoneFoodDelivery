@@ -6,7 +6,7 @@ export const topFood = [
   },
   {
     image:
-      "https://cdn.pixabay.com/photo/2022/05/25/21/28/burger-7221436_640.jpg",
+      "https://cdn.pixabay.com/photo/2020/10/05/19/55/hamburger-5630646_640.jpg",
     title: "Hamburger",
   },
   {
@@ -43,11 +43,6 @@ export const topFood = [
     image:
       "https://cdn.pixabay.com/photo/2021/01/18/12/49/ice-cream-5928043_640.jpg",
     title: "Gelato",
-  },
-  {
-    image:
-      "https://images.pexels.com/photos/28674544/pexels-photo-28674544/free-photo-of-spicy-indian-rice-dish-with-red-chilies.jpeg?auto=compress&cs=tinysrgb&w=600",
-    title: "Indiana",
   },
   {
     image:

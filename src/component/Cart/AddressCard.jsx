@@ -36,29 +36,29 @@ const AddressCard = ({
       </Box>
 
       <div className="space-y-3">
-        <Typography variant="body2" className="font-semibold">
+        <Typography variant="h6" className="font-semibold">
           <strong>Street Address: </strong> {item.streetAddress}
         </Typography>
 
         <Grid2 container spacing={1}>
           <Grid2 size={{ xs: 12 }}>
-            <Typography variant="body2" color="secondary">
-              <strong>City:</strong> {item.city}
+            <Typography variant="p" color="secondary">
+              City: {item.city}
             </Typography>
           </Grid2>
           <Grid2 size={{ xs: 12 }}>
-            <Typography variant="body2" color="secondary">
-              <strong>State:</strong> {item.state}
+            <Typography variant="p" color="secondary">
+              State: {item.state}
             </Typography>
           </Grid2>
           <Grid2 size={{ xs: 12 }}>
-            <Typography variant="body2" color="secondary">
-              <strong>Postal Code:</strong> {item.postalCode}
+            <Typography variant="p" color="secondary">
+              Postal Code: {item.postalCode}
             </Typography>
           </Grid2>
           <Grid2 size={{ xs: 12 }}>
-            <Typography variant="body2" color="secondary">
-              <strong>Country:</strong> {item.country}
+            <Typography variant="p" color="secondary">
+              Country: {item.country}
             </Typography>
           </Grid2>
         </Grid2>

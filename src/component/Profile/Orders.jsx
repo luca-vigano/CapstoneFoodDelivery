@@ -17,7 +17,7 @@ const Orders = () => {
 
   return (
     <div className="flex items-center flex-col">
-      <h1 className="text-xl text-center py-7 font-semibold">My Orders</h1>
+      <h1 className="text-5xl  text-center py-7 font-semibold">My Orders</h1>
       <Grid2
         container
         spacing={2}

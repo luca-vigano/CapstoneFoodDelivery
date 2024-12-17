@@ -91,7 +91,10 @@ function CreateMenuForm() {
                   className="w-24 h-24 cursor-pointer flex items-center justify-center 
               p-3 border rounded-md border-gray-600"
                 >
-                  <AddPhotoAlternate className="text-white" />
+                  <AddPhotoAlternate
+                    className="text-white"
+                    sx={{ color: "#D8BD8A" }}
+                  />
                 </span>
                 {uploadImage && (
                   <div
@@ -143,6 +146,7 @@ function CreateMenuForm() {
                 id="description"
                 name="description"
                 label="Description"
+                color="#D8BD8A"
                 variant="outlined"
                 onChange={formik.handleChange}
                 value={formik.values.description}
@@ -169,6 +173,11 @@ function CreateMenuForm() {
                   label="Category"
                   onChange={formik.handleChange}
                   name="category"
+                  sx={{
+                    "& .MuiSelect-icon": {
+                      color: "#D8BD8A",
+                    },
+                  }}
                 >
                   {restaurant.categories?.map((item) => (
                     <MenuItem value={item}>{item.name}</MenuItem>
@@ -185,6 +194,11 @@ function CreateMenuForm() {
                   labelId="demo-multiple-chip-label"
                   id="demo-multiple-chip"
                   name="ingredients"
+                  sx={{
+                    "& .MuiSelect-icon": {
+                      color: "#D8BD8A",
+                    },
+                  }}
                   multiple
                   value={formik.values.ingredients}
                   onChange={formik.handleChange}
@@ -223,6 +237,11 @@ function CreateMenuForm() {
                   label="is vegetarian"
                   onChange={formik.handleChange}
                   name="vegetarian"
+                  sx={{
+                    "& .MuiSelect-icon": {
+                      color: "#D8BD8A",
+                    },
+                  }}
                 >
                   <MenuItem value={true}>Yes</MenuItem>
                   <MenuItem value={false}>No</MenuItem>
@@ -230,7 +249,7 @@ function CreateMenuForm() {
               </FormControl>
             </Grid2>
           </Grid2>
-          <Button variant="contained" color="primary" type="submit">
+          <Button variant="contained" sx={{ color: "#D8BD8A" }} type="submit">
             Create Menu Item
           </Button>
         </form>

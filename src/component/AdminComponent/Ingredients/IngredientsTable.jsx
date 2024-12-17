@@ -64,7 +64,7 @@ export default function IngredientsTable() {
         <CardHeader
           action={
             <IconButton onClick={handleOpen} aria-label="settings">
-              <CreateIcon />
+              <CreateIcon sx={{ color: "#D8BD8A" }} />
             </IconButton>
           }
           title={"Ingredients"}
@@ -84,14 +84,23 @@ export default function IngredientsTable() {
               {ingredients.ingredients.map((item) => (
                 <TableRow
                   key={item.name}
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                  sx={{
+                    "&:last-child td, &:last-child th": { border: 0 }, // Rimuove bordo per l'ultima riga
+                    "& td, & th": {
+                      borderBottom: "2px solid #53272F", // Colore della riga tra le righe
+                      borderTop: "2px solid #53272F", // Colore della riga tra le righe
+                    },
+                  }}
                 >
                   <TableCell component="th" scope="row">
                     {item.name}
                   </TableCell>
                   <TableCell align="right">{item.category.name}</TableCell>
                   <TableCell align="right">
-                    <Button onClick={() => handleUpdateStock(item.id)}>
+                    <Button
+                      onClick={() => handleUpdateStock(item.id)}
+                      sx={{ color: "#D8BD8A" }}
+                    >
                       {item.inStock ? "Yes" : "no"}
                     </Button>
                   </TableCell>

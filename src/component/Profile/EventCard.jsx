@@ -80,7 +80,7 @@ const EventCard = ({ item, onDelete }) => {
           sx={{
             "& .MuiCardHeader-subheader": {
               color: "#D8BD8A",
-              fontWeight: "bold",
+              // fontWeight: "bold",
             },
           }}
         />
@@ -94,14 +94,14 @@ const EventCard = ({ item, onDelete }) => {
           }}
         />
         <CardContent>
-          <Typography variant="body2" sx={{ color: "secondary" }}>
+          <Typography variant="h5" sx={{ color: "secondary" }}>
             {item.location}
           </Typography>
 
-          <Typography variant="body2" sx={{ color: "#4354EB" }}>
+          <Typography variant="body2" sx={{ color: "#secondary" }}>
             {formatDate(item.startedAt)}
           </Typography>
-          <Typography variant="body2" sx={{ color: "#CD524E" }}>
+          <Typography variant="body2" sx={{ color: "#secondary" }}>
             {formatDate(item.endsAt)}
           </Typography>
         </CardContent>
@@ -109,7 +109,7 @@ const EventCard = ({ item, onDelete }) => {
           {location.pathname.includes("/admin/restaurants/event") && (
             <IconButton
               aria-label="delete button"
-              color="error"
+              sx={{ color: "#D8BD8A" }}
               onClick={handleDelete}
             >
               <DeleteIcon />
@@ -121,6 +121,7 @@ const EventCard = ({ item, onDelete }) => {
             onClick={handleExpandClick}
             aria-expanded={expanded}
             aria-label="show more"
+            sx={{ color: "#D8BD8A" }}
           >
             <ExpandMoreIcon />
           </ExpandMore>

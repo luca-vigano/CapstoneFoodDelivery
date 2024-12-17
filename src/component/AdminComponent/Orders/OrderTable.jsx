@@ -84,7 +84,13 @@ export default function OrderTable() {
               {restaurantOrder.orders.map((item) => (
                 <TableRow
                   key={item.id}
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                  sx={{
+                    "&:last-child td, &:last-child th": { border: 0 }, // Rimuove bordo per l'ultima riga
+                    "& td, & th": {
+                      borderBottom: "2px solid #53272F", // Colore della riga tra le righe
+                      borderTop: "2px solid #53272F", // Colore della riga tra le righe
+                    },
+                  }}
                 >
                   <TableCell component="th" scope="row">
                     {item.id}
@@ -122,6 +128,7 @@ export default function OrderTable() {
                       aria-haspopup="true"
                       aria-expanded={openMenu(item.id) ? "true" : undefined}
                       onClick={(event) => handleClick(event, item.id)}
+                      sx={{ color: "#D8BD8A" }}
                     >
                       Update
                     </Button>

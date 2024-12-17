@@ -41,42 +41,40 @@ const RestaurantDetails = () => {
       <Grid2 container spacing={2}>
         <Grid2 size={{ xs: 12 }}>
           <Card>
-            <CardHeader
-              title={<span className="text-gray-300">Restaurant</span>}
-            />
+            <CardHeader title={<span>Restaurant</span>} />
             <CardContent>
-              <div className="space-y-4 text-gray-200">
+              <div className="space-y-4">
                 <div className="flex">
                   <p className="w-48">Owner</p>
-                  <p className="text-gray-400">
+                  <p>
                     <span className="pr-5">-</span>
                     {restaurant.usersRestaurant?.owner.fullName}
                   </p>
                 </div>
                 <div className="flex">
                   <p className="w-48">Restaurant Name</p>
-                  <p className="text-gray-400">
+                  <p>
                     <span className="pr-5">-</span>
                     {restaurant.usersRestaurant?.name}
                   </p>
                 </div>
                 <div className="flex">
                   <p className="w-48">Tipo cucina</p>
-                  <p className="text-gray-400">
+                  <p>
                     <span className="pr-5">-</span>
                     {restaurant.usersRestaurant?.cuisineType}
                   </p>
                 </div>
                 <div className="flex">
                   <p className="w-48">Orari Apertura</p>
-                  <p className="text-gray-400">
+                  <p>
                     <span className="pr-5">-</span>
                     {restaurant.usersRestaurant?.openingHours}
                   </p>
                 </div>
                 <div className="flex">
                   <p className="w-48">Status</p>
-                  <p className="text-gray-400">
+                  <p>
                     <span className="pr-5">-</span>
                     {restaurant.usersRestaurant?.open ? (
                       <span className="px-5 py-2 rounded-full bg-green-400 text-gray-950">
@@ -95,35 +93,33 @@ const RestaurantDetails = () => {
         </Grid2>
         <Grid2 size={{ xs: 12, lg: 6 }}>
           <Card>
-            <CardHeader
-              title={<span className="text-gray-300">Address</span>}
-            />
+            <CardHeader title={<span>Address</span>} />
             <CardContent>
-              <div className="space-y-4 text-gray-200">
+              <div>
                 <div className="flex">
                   <p className="w-48">Country</p>
-                  <p className="text-gray-400">
+                  <p>
                     <span className="pr-5">-</span>
                     {restaurant.usersRestaurant?.address.country}
                   </p>
                 </div>
                 <div className="flex">
                   <p className="w-48">City</p>
-                  <p className="text-gray-400">
+                  <p>
                     <span className="pr-5">-</span>
                     {restaurant.usersRestaurant?.address.city}
                   </p>
                 </div>
                 <div className="flex">
                   <p className="w-48">Postal Code</p>
-                  <p className="text-gray-400">
+                  <p>
                     <span className="pr-5">-</span>
                     {restaurant.usersRestaurant?.address.postalCode}
                   </p>
                 </div>
                 <div className="flex">
                   <p className="w-48">Street Address</p>
-                  <p className="text-gray-400">
+                  <p>
                     <span className="pr-5">-</span>
                     {restaurant.usersRestaurant?.address.streetAddress}
                   </p>
@@ -134,28 +130,26 @@ const RestaurantDetails = () => {
         </Grid2>
         <Grid2 size={{ xs: 12, lg: 6 }}>
           <Card>
-            <CardHeader
-              title={<span className="text-gray-300">Contact</span>}
-            />
+            <CardHeader title={<span>Contact</span>} />
             <CardContent>
-              <div className="space-y-4 text-gray-200">
+              <div className="space-y-4">
                 <div className="flex">
                   <p className="w-48">Email</p>
-                  <p className="text-gray-400">
+                  <p>
                     <span className="pr-5">-</span>
                     {restaurant.usersRestaurant?.contactInformation.email}
                   </p>
                 </div>
                 <div className="flex">
                   <p className="w-48">Mobile</p>
-                  <p className="text-gray-400">
+                  <p>
                     <span className="pr-5">-</span>
                     {restaurant.usersRestaurant?.contactInformation.mobile}
                   </p>
                 </div>
                 <div className="flex">
                   <p className="w-48">Social</p>
-                  <div className="flex text-gray-400 items-center pb-3 gap-2">
+                  <div className="flex  items-center pb-3 gap-2">
                     <span className="pr-5">-</span>
                     <a
                       href={

@@ -70,6 +70,15 @@ const RegisterForm = () => {
               fullWidth
               variant="outlined"
               margin="normal"
+              InputLabelProps={{
+                style: { color: "#D8BD8A" }, // Colore della label
+              }}
+              InputProps={{
+                style: {
+                  backgroundColor: "#53272F", // Sfondo del campo
+                  color: "##D8BD8A", // Colore del testo inserito
+                },
+              }}
               error={touched.fullname && Boolean(errors.fullname)}
               helperText={touched.fullname && errors.fullname}
             />
@@ -80,6 +89,15 @@ const RegisterForm = () => {
               fullWidth
               variant="outlined"
               margin="normal"
+              InputLabelProps={{
+                style: { color: "#D8BD8A" }, // Colore della label
+              }}
+              InputProps={{
+                style: {
+                  backgroundColor: "#53272F", // Sfondo del campo
+                  color: "##D8BD8A", // Colore del testo inserito
+                },
+              }}
               error={touched.email && Boolean(errors.email)}
               helperText={touched.email && errors.email}
             />
@@ -91,6 +109,15 @@ const RegisterForm = () => {
               variant="outlined"
               margin="normal"
               type="password"
+              InputLabelProps={{
+                style: { color: "#D8BD8A" }, // Colore della label
+              }}
+              InputProps={{
+                style: {
+                  backgroundColor: "#53272F", // Sfondo del campo
+                  color: "##D8BD8A", // Colore del testo inserito
+                },
+              }}
               error={touched.password && Boolean(errors.password)}
               helperText={touched.password && errors.password}
             />
@@ -102,14 +129,25 @@ const RegisterForm = () => {
               labelId="role-simple-select-label"
               id="demo-simple-select"
               name="role"
+              InputProps={{
+                style: {
+                  backgroundColor: "#53272F",
+                  color: "##D8BD8A",
+                },
+              }}
               error={touched.role && Boolean(errors.role)}
+              sx={{
+                "& .MuiSelect-icon": {
+                  color: "#D8BD8A",
+                },
+              }}
             >
               <MenuItem value={"RESTAURANT_CUSTOMER"}>Customer</MenuItem>
               <MenuItem value={"RESTAURANT_OWNER"}>Restaurant Owner</MenuItem>
             </Field>
 
             <Button
-              sx={{ mt: 2, padding: "1rem" }}
+              sx={{ mt: 2, padding: "1rem", color: "#D8BD8A" }}
               fullWidth
               type="submit"
               variant="contained"
@@ -122,7 +160,11 @@ const RegisterForm = () => {
       </Formik>
       <Typography variant="body2" align="center" sx={{ mt: 3 }}>
         Sei già registrato?
-        <Button size="small" onClick={() => navigate("/account/login")}>
+        <Button
+          size="small"
+          sx={{ color: "#D8BD8A" }}
+          onClick={() => navigate("/account/login")}
+        >
           Login
         </Button>
       </Typography>

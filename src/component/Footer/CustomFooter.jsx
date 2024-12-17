@@ -6,7 +6,7 @@ const CustomFooter = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "#4F3130",
+        backgroundColor: "#53272F",
         color: "D8D78F",
         py: 4,
         px: { xs: 2, sm: 4, lg: 8 },

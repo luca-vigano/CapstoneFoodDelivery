@@ -8,8 +8,8 @@ const Favorites = () => {
 
   return (
     <div>
-      <h1 className="py-5 text-xl font-semibold text-center">MY Favorites</h1>
-      <div className="flex flex-wrap gap-3 justify-center">
+      <h1 className="py-5 text-5xl font-semibold text-center">MY Favorites</h1>
+      <div className="flex flex-wrap gap-3 justify-center pt-5">
         {auth.favorites.map((item) => (
           <RestaurantCard item={item} />
         ))}

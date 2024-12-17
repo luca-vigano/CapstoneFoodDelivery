@@ -99,7 +99,7 @@ const Address = ({ createOrderUsingSelectedAddress }) => {
       <main>
         <section className="flex justify-center px-5 pb-10 lg:pb-0">
           <div>
-            <h1 className="text-center font-semibold text-2xl py-10">
+            <h1 className="text-center font-semibold text-5xl py-10">
               Your Address
             </h1>
             <div className="flex gap-5 flex-wrap justify-center">
@@ -122,7 +122,7 @@ const Address = ({ createOrderUsingSelectedAddress }) => {
                     New Address
                   </Typography>
 
-                  <Typography variant="body2">
+                  <Typography variant="p">
                     Add a new address to your profile.
                   </Typography>
 

@@ -182,7 +182,7 @@ const Profile = () => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
+          <Typography variant="h4" noWrap component="div">
             Control Pannel
           </Typography>
           <IconButton color="secondary" onClick={() => navigate("/")}>
@@ -259,7 +259,7 @@ const Profile = () => {
         </List>
         <Divider />
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, pb: 100 }}>
+      <Box component="main" sx={{ flexGrow: 1, pb: 100, px: 3 }}>
         <DrawerHeader />
         <Routes>
           <Route path="/" element={<UserProfile />} />

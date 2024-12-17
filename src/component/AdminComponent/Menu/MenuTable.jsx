@@ -61,6 +61,7 @@ export default function MenuTable() {
             <IconButton
               onClick={() => navigate("/admin/restaurants/add-menu")}
               aria-label="settings"
+              sx={{ color: "#D8BD8A" }}
             >
               <CreateIcon />
             </IconButton>
@@ -84,7 +85,13 @@ export default function MenuTable() {
               {menu.menuItems.map((item) => (
                 <TableRow
                   key={item.id}
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                  sx={{
+                    "&:last-child td, &:last-child th": { border: 0 }, // Rimuove bordo per l'ultima riga
+                    "& td, & th": {
+                      borderBottom: "2px solid #53272F", // Colore della riga tra le righe
+                      borderTop: "2px solid #53272F", // Colore della riga tra le righe
+                    },
+                  }}
                 >
                   <TableCell component="th" scope="row">
                     <Avatar src={item.images[0]}></Avatar>
@@ -98,11 +105,17 @@ export default function MenuTable() {
                   <TableCell align="right">€ {item.price}</TableCell>
                   <TableCell align="right">
                     {item.available ? (
-                      <Button onClick={() => handleChangeAvailability(item.id)}>
+                      <Button
+                        onClick={() => handleChangeAvailability(item.id)}
+                        sx={{ color: "#D8BD8A" }}
+                      >
                         Yes
                       </Button>
                     ) : (
-                      <Button onClick={() => handleChangeAvailability(item.id)}>
+                      <Button
+                        onClick={() => handleChangeAvailability(item.id)}
+                        sx={{ color: "#D8BD8A" }}
+                      >
                         No
                       </Button>
                     )}
@@ -111,6 +124,7 @@ export default function MenuTable() {
                     <IconButton
                       color="error"
                       onClick={() => handleDeleteFood(item.id)}
+                      sx={{ color: "#D8BD8A" }}
                     >
                       <Delete />
                     </IconButton>

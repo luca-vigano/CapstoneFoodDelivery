@@ -71,6 +71,11 @@ export const Navbar = () => {
     <>
       <Box className="px-5 sticky top-0 z-50 py-[.8rem] lg:px-20 flex justify-between">
         <div className="lg:mr-10 cursor-pointer flex items-center space-x-4">
+          <img
+            src="https://cbx-prod.b-cdn.net/COLOURBOX38603653.jpg?width=800&height=800&quality=70"
+            alt="logo"
+            className="w-11 h-11 object-cover" // Imposta le dimensioni al quadrato
+          />
           <li
             onClick={() => navigate("/")}
             className="logo font-semibold text-2xl"

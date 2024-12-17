@@ -51,7 +51,7 @@ export const Home = () => {
             <Typography variant="h3" fontWeight="bold">
               Click Food
             </Typography>
-            {/* <Typography variant="h5">Are You Hungry</Typography> */}
+            <Typography variant="h5">Your Food In One Click</Typography>
           </Grid2>
         </Grid2>
       </Container>

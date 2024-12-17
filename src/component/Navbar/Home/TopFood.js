@@ -1,7 +1,7 @@
 export const topFood = [
   {
     image:
-      "https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395_640.jpg",
+      "https://cdn.pixabay.com/photo/2020/04/04/09/59/pizza-5001588_640.jpg",
     title: "Pizza",
   },
   {
@@ -21,17 +21,17 @@ export const topFood = [
   },
   {
     image:
-      "https://cdn.pixabay.com/photo/2020/05/29/04/25/chinese-5233516_640.jpg",
+      "https://cdn.pixabay.com/photo/2018/10/22/12/34/dumpling-3765243_1280.jpg",
     title: "Cinese",
   },
   {
     image:
-      "https://cdn.pixabay.com/photo/2021/02/28/09/38/food-6056720_640.jpg",
+      "https://cdn.pixabay.com/photo/2022/02/12/15/00/biryani-7009109_640.jpg",
     title: "Indiano",
   },
   {
     image:
-      "https://cdn.pixabay.com/photo/2024/03/19/10/25/tacos-8642945_640.png",
+      "https://cdn.pixabay.com/photo/2019/09/05/19/58/nachos-4454941_1280.jpg",
     title: "Messicano",
   },
   {
@@ -41,12 +41,12 @@ export const topFood = [
   },
   {
     image:
-      "https://media.istockphoto.com/id/1143191120/photo/traditional-moroccan-tajine-of-chicken-with-dried-fruits-and-spices.jpg?b=1&s=612x612&w=0&k=20&c=bDSprRC37TsguU36qgPF6P-AnaLRseLOPmwb-7OGtpo=",
+      "https://www.aesu.com/wp-content/uploads/2021/06/dreamstime_xxl_145100933.jpg",
     title: "Marocco",
   },
   {
     image:
-      "https://images.pexels.com/photos/27643021/pexels-photo-27643021/free-photo-of-a-steak-and-fries-on-a-plate-with-a-fork.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://cdn.pixabay.com/photo/2019/07/16/20/07/steak-4342500_640.jpg",
     title: "SteackHouse",
   },
 ];

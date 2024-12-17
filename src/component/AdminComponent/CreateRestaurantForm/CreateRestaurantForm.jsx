@@ -141,6 +141,22 @@ function CreateRestaurantForm() {
                 variant="outlined"
                 onChange={formik.handleChange}
                 value={formik.values.name}
+                sx={{
+                  "& .MuiInputLabel-root": {
+                    color: "#D8BD8A",
+                  },
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#secondary",
+                    },
+                    "&:hover fieldset": {
+                      borderColor: "#D8BD8A",
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#D8BD8A",
+                    },
+                  },
+                }}
               ></TextField>
             </Grid2>
             <Grid2 size={{ xs: 12 }}>
@@ -152,6 +168,22 @@ function CreateRestaurantForm() {
                 variant="outlined"
                 onChange={formik.handleChange}
                 value={formik.values.description}
+                sx={{
+                  "& .MuiInputLabel-root": {
+                    color: "#D8BD8A",
+                  },
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#secondary",
+                    },
+                    "&:hover fieldset": {
+                      borderColor: "#D8BD8A",
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#D8BD8A",
+                    },
+                  },
+                }}
               ></TextField>
             </Grid2>
             <Grid2 size={{ xs: 12, lg: 6 }}>
@@ -163,6 +195,22 @@ function CreateRestaurantForm() {
                 variant="outlined"
                 onChange={formik.handleChange}
                 value={formik.values.cuisineType}
+                sx={{
+                  "& .MuiInputLabel-root": {
+                    color: "#D8BD8A",
+                  },
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#secondary",
+                    },
+                    "&:hover fieldset": {
+                      borderColor: "#D8BD8A",
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#D8BD8A",
+                    },
+                  },
+                }}
               ></TextField>
             </Grid2>
             <Grid2 size={{ xs: 12, lg: 6 }}>
@@ -174,6 +222,22 @@ function CreateRestaurantForm() {
                 variant="outlined"
                 onChange={formik.handleChange}
                 value={formik.values.openingHours}
+                sx={{
+                  "& .MuiInputLabel-root": {
+                    color: "#D8BD8A",
+                  },
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#secondary",
+                    },
+                    "&:hover fieldset": {
+                      borderColor: "#D8BD8A",
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#D8BD8A",
+                    },
+                  },
+                }}
               ></TextField>
             </Grid2>
             <Grid2 size={{ xs: 12 }}>
@@ -185,6 +249,22 @@ function CreateRestaurantForm() {
                 variant="outlined"
                 onChange={formik.handleChange}
                 value={formik.values.addres}
+                sx={{
+                  "& .MuiInputLabel-root": {
+                    color: "#D8BD8A",
+                  },
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#secondary",
+                    },
+                    "&:hover fieldset": {
+                      borderColor: "#D8BD8A",
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#D8BD8A",
+                    },
+                  },
+                }}
               ></TextField>
             </Grid2>
             <Grid2 size={{ xs: 12 }}>
@@ -196,6 +276,22 @@ function CreateRestaurantForm() {
                 variant="outlined"
                 onChange={formik.handleChange}
                 value={formik.values.city}
+                sx={{
+                  "& .MuiInputLabel-root": {
+                    color: "#D8BD8A",
+                  },
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#secondary",
+                    },
+                    "&:hover fieldset": {
+                      borderColor: "#D8BD8A",
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#D8BD8A",
+                    },
+                  },
+                }}
               ></TextField>
             </Grid2>
             <Grid2 size={{ xs: 12, lg: 4 }}>
@@ -207,6 +303,22 @@ function CreateRestaurantForm() {
                 variant="outlined"
                 onChange={formik.handleChange}
                 value={formik.values.state}
+                sx={{
+                  "& .MuiInputLabel-root": {
+                    color: "#D8BD8A",
+                  },
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#secondary",
+                    },
+                    "&:hover fieldset": {
+                      borderColor: "#D8BD8A",
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#D8BD8A",
+                    },
+                  },
+                }}
               ></TextField>
             </Grid2>
             <Grid2 size={{ xs: 12, lg: 4 }}>
@@ -218,6 +330,22 @@ function CreateRestaurantForm() {
                 variant="outlined"
                 onChange={formik.handleChange}
                 value={formik.values.postalCode}
+                sx={{
+                  "& .MuiInputLabel-root": {
+                    color: "#D8BD8A",
+                  },
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#secondary",
+                    },
+                    "&:hover fieldset": {
+                      borderColor: "#D8BD8A",
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#D8BD8A",
+                    },
+                  },
+                }}
               ></TextField>
             </Grid2>
             <Grid2 size={{ xs: 12, lg: 4 }}>
@@ -229,6 +357,22 @@ function CreateRestaurantForm() {
                 variant="outlined"
                 onChange={formik.handleChange}
                 value={formik.values.country}
+                sx={{
+                  "& .MuiInputLabel-root": {
+                    color: "#D8BD8A",
+                  },
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#secondary",
+                    },
+                    "&:hover fieldset": {
+                      borderColor: "#D8BD8A",
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#D8BD8A",
+                    },
+                  },
+                }}
               ></TextField>
             </Grid2>
             <Grid2 size={{ xs: 12, lg: 6 }}>
@@ -240,6 +384,22 @@ function CreateRestaurantForm() {
                 variant="outlined"
                 onChange={formik.handleChange}
                 value={formik.values.email}
+                sx={{
+                  "& .MuiInputLabel-root": {
+                    color: "#D8BD8A",
+                  },
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#secondary",
+                    },
+                    "&:hover fieldset": {
+                      borderColor: "#D8BD8A",
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#D8BD8A",
+                    },
+                  },
+                }}
               ></TextField>
             </Grid2>
             <Grid2 size={{ xs: 12, lg: 6 }}>
@@ -251,6 +411,22 @@ function CreateRestaurantForm() {
                 variant="outlined"
                 onChange={formik.handleChange}
                 value={formik.values.mobile}
+                sx={{
+                  "& .MuiInputLabel-root": {
+                    color: "#D8BD8A",
+                  },
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#secondary",
+                    },
+                    "&:hover fieldset": {
+                      borderColor: "#D8BD8A",
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#D8BD8A",
+                    },
+                  },
+                }}
               ></TextField>
             </Grid2>
             <Grid2 size={{ xs: 12, lg: 6 }}>
@@ -262,6 +438,22 @@ function CreateRestaurantForm() {
                 variant="outlined"
                 onChange={formik.handleChange}
                 value={formik.values.instagram}
+                sx={{
+                  "& .MuiInputLabel-root": {
+                    color: "#D8BD8A",
+                  },
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#secondary",
+                    },
+                    "&:hover fieldset": {
+                      borderColor: "#D8BD8A",
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#D8BD8A",
+                    },
+                  },
+                }}
               ></TextField>
             </Grid2>
             <Grid2 size={{ xs: 12, lg: 6 }}>
@@ -273,10 +465,26 @@ function CreateRestaurantForm() {
                 variant="outlined"
                 onChange={formik.handleChange}
                 value={formik.values.twitter}
+                sx={{
+                  "& .MuiInputLabel-root": {
+                    color: "#D8BD8A",
+                  },
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#secondary",
+                    },
+                    "&:hover fieldset": {
+                      borderColor: "#D8BD8A",
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#D8BD8A",
+                    },
+                  },
+                }}
               ></TextField>
             </Grid2>
           </Grid2>
-          <Button variant="contained" color="primary" type="submit">
+          <Button variant="contained" sx={{ color: "#D8BD8A" }} type="submit">
             Create Restaurant
           </Button>
         </form>

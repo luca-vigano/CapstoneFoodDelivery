@@ -44,7 +44,7 @@ const MenuCard = ({ item }) => {
   return (
     <Accordion>
       <AccordionSummary
-        expandIcon={<ExpandMoreIcon />}
+        expandIcon={<ExpandMoreIcon sx={{ color: "#D8BD8A" }} />}
         aria-controls="panel1-content"
         id="panel1-header"
       >
@@ -58,7 +58,7 @@ const MenuCard = ({ item }) => {
             <div className="space-y-1 lg:space-y-5 lg:max-w-2xl">
               <p className="font-semibold text-xl">{item.name}</p>
               <p>€ {item.price}</p>
-              <p className="text-gray-400">{item.description}</p>
+              <p>{item.description}</p>
             </div>
           </div>
         </div>
@@ -78,6 +78,15 @@ const MenuCard = ({ item }) => {
                           control={
                             <Checkbox
                               onChange={() => handleCheckboxChange(item.name)}
+                              sx={{
+                                color: "#D8BD8A",
+                                "&.Mui-checked": {
+                                  color: "#D8BD8A",
+                                },
+                                "&:hover": {
+                                  backgroundColor: "transparent",
+                                },
+                              }}
                             />
                           }
                           label={item.name}
@@ -90,7 +99,12 @@ const MenuCard = ({ item }) => {
             )}
           </div>
           <div className="pt-5">
-            <Button variant="contained" disabled={false} type="submit">
+            <Button
+              variant="contained"
+              disabled={false}
+              type="submit"
+              sx={{ color: "#D8BD8A" }}
+            >
               {true ? "Aggiungi al carrello" : "Prodotto esaurito"}
             </Button>
           </div>

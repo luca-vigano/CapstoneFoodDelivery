@@ -97,16 +97,14 @@ const RestaurantDetails = () => {
           <h1 className="text-4xl font-semibold">
             {restaurant.restaurant?.name}
           </h1>
-          <p className="text-gray-500 mt-1">
-            {restaurant.restaurant?.description}
-          </p>
+          <p className=" mt-1">{restaurant.restaurant?.description}</p>
           <div className="space-y-3 mt-3">
-            <p className="text-gray-500 flex items-center gap-3">
+            <p className=" flex items-center gap-3">
               <LocationOnIcon />
               <span>{restaurant.restaurant?.address.city},</span>
               <span>{restaurant.restaurant?.address.streetAddress}</span>
             </p>
-            <p className="text-gray-500 flex items-center gap-3">
+            <p className=" flex items-center gap-3">
               <CalendarTodayIcon />
               <span>{restaurant.restaurant?.openingHours}</span>
             </p>
@@ -131,7 +129,22 @@ const RestaurantDetails = () => {
                     <FormControlLabel
                       key={item.value}
                       value={item.value}
-                      control={<Radio />}
+                      control={
+                        <Radio
+                          sx={{
+                            color: "#D8BD8A", // Colore del pallino (non selezionato)
+                            "&.Mui-checked": {
+                              color: "#D8BD8A", // Colore del pallino quando selezionato
+                            },
+                            "&:hover": {
+                              backgroundColor: "transparent", // Rimuove il colore di sfondo al passaggio del mouse
+                            },
+                            "& .MuiRadio-root": {
+                              borderColor: "#D8BD8A", // Colore del contorno del radio
+                            },
+                          }}
+                        />
+                      }
                       label={item.label}
                     />
                   ))}
@@ -151,14 +164,44 @@ const RestaurantDetails = () => {
                 >
                   <FormControlLabel
                     value="All"
-                    control={<Radio />}
+                    control={
+                      <Radio
+                        sx={{
+                          color: "#D8BD8A", // Colore del pallino (non selezionato)
+                          "&.Mui-checked": {
+                            color: "#D8BD8A", // Colore del pallino quando selezionato
+                          },
+                          "&:hover": {
+                            backgroundColor: "transparent", // Rimuove il colore di sfondo al passaggio del mouse
+                          },
+                          "& .MuiRadio-root": {
+                            borderColor: "#D8BD8A", // Colore del contorno del radio
+                          },
+                        }}
+                      />
+                    }
                     label="All"
                   />
                   {restaurant.categories.map((item) => (
                     <FormControlLabel
                       key={item.id}
                       value={item.name}
-                      control={<Radio />}
+                      control={
+                        <Radio
+                          sx={{
+                            color: "#D8BD8A", // Colore del pallino (non selezionato)
+                            "&.Mui-checked": {
+                              color: "#D8BD8A", // Colore del pallino quando selezionato
+                            },
+                            "&:hover": {
+                              backgroundColor: "transparent", // Rimuove il colore di sfondo al passaggio del mouse
+                            },
+                            "& .MuiRadio-root": {
+                              borderColor: "#D8BD8A", // Colore del contorno del radio
+                            },
+                          }}
+                        />
+                      }
                       label={item.name}
                     />
                   ))}

@@ -1,20 +1,11 @@
 import React from "react";
-import {
-  Button,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Button, MenuItem, Select, TextField, Typography } from "@mui/material";
 import { Field, Form, Formik } from "formik";
 import { useNavigate } from "react-router-dom";
 import { loginUser, registerUser } from "../State/Authentication/Action";
 import { useDispatch } from "react-redux";
-import * as Yup from "yup"; // Importa Yup per la validazione
+import * as Yup from "yup";
 
-// Aggiungiamo la validazione con Yup
 const validationSchema = Yup.object({
   fullname: Yup.string().required("Il nome completo è obbligatorio"),
   email: Yup.string()
@@ -71,12 +62,12 @@ const RegisterForm = () => {
               variant="outlined"
               margin="normal"
               InputLabelProps={{
-                style: { color: "#D8BD8A" }, // Colore della label
+                style: { color: "#D8BD8A" },
               }}
               InputProps={{
                 style: {
-                  backgroundColor: "#53272F", // Sfondo del campo
-                  color: "##D8BD8A", // Colore del testo inserito
+                  backgroundColor: "#53272F",
+                  color: "##D8BD8A",
                 },
               }}
               error={touched.fullname && Boolean(errors.fullname)}
@@ -90,12 +81,12 @@ const RegisterForm = () => {
               variant="outlined"
               margin="normal"
               InputLabelProps={{
-                style: { color: "#D8BD8A" }, // Colore della label
+                style: { color: "#D8BD8A" },
               }}
               InputProps={{
                 style: {
-                  backgroundColor: "#53272F", // Sfondo del campo
-                  color: "##D8BD8A", // Colore del testo inserito
+                  backgroundColor: "#53272F",
+                  color: "##D8BD8A",
                 },
               }}
               error={touched.email && Boolean(errors.email)}
@@ -110,12 +101,12 @@ const RegisterForm = () => {
               margin="normal"
               type="password"
               InputLabelProps={{
-                style: { color: "#D8BD8A" }, // Colore della label
+                style: { color: "#D8BD8A" },
               }}
               InputProps={{
                 style: {
-                  backgroundColor: "#53272F", // Sfondo del campo
-                  color: "##D8BD8A", // Colore del testo inserito
+                  backgroundColor: "#53272F",
+                  color: "##D8BD8A",
                 },
               }}
               error={touched.password && Boolean(errors.password)}

@@ -138,6 +138,22 @@ function CreateMenuForm() {
                 variant="outlined"
                 onChange={formik.handleChange}
                 value={formik.values.name}
+                sx={{
+                  "& .MuiInputLabel-root": {
+                    color: "#D8BD8A", // Cambia il colore della label
+                  },
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#secondary", // Cambia il colore del contorno dell'input
+                    },
+                    "&:hover fieldset": {
+                      borderColor: "#D8BD8A", // Cambia il colore del contorno al passaggio del mouse
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#D8BD8A", // Cambia il colore del contorno quando il campo è in focus
+                    },
+                  },
+                }}
               ></TextField>
             </Grid2>
             <Grid2 size={{ xs: 12 }}>
@@ -146,10 +162,25 @@ function CreateMenuForm() {
                 id="description"
                 name="description"
                 label="Description"
-                color="#D8BD8A"
                 variant="outlined"
                 onChange={formik.handleChange}
                 value={formik.values.description}
+                sx={{
+                  "& .MuiInputLabel-root": {
+                    color: "#D8BD8A",
+                  },
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#secondary",
+                    },
+                    "&:hover fieldset": {
+                      borderColor: "#D8BD8A",
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#D8BD8A",
+                    },
+                  },
+                }}
               ></TextField>
             </Grid2>
             <Grid2 size={{ xs: 12, lg: 6 }}>
@@ -161,6 +192,22 @@ function CreateMenuForm() {
                 variant="outlined"
                 onChange={formik.handleChange}
                 value={formik.values.price}
+                sx={{
+                  "& .MuiInputLabel-root": {
+                    color: "#D8BD8A",
+                  },
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#secondary",
+                    },
+                    "&:hover fieldset": {
+                      borderColor: "#D8BD8A",
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#D8BD8A",
+                    },
+                  },
+                }}
               ></TextField>
             </Grid2>
             <Grid2 size={{ xs: 12, lg: 6 }}>
@@ -174,8 +221,22 @@ function CreateMenuForm() {
                   onChange={formik.handleChange}
                   name="category"
                   sx={{
+                    "& .MuiInputLabel-root": {
+                      color: "#D8BD8A", // Colore della label
+                    },
+                    "& .MuiOutlinedInput-root": {
+                      "& fieldset": {
+                        borderColor: "#D8BD8A", // Colore del bordo dell'input
+                      },
+                      "&:hover fieldset": {
+                        borderColor: "#D8BD8A", // Colore del bordo al passaggio del mouse
+                      },
+                      "&.Mui-focused fieldset": {
+                        borderColor: "#D8BD8A", // Colore del bordo quando il campo è in focus
+                      },
+                    },
                     "& .MuiSelect-icon": {
-                      color: "#D8BD8A",
+                      color: "#D8BD8A", // Colore dell'icona
                     },
                   }}
                 >

@@ -16,11 +16,6 @@ export const topFood = [
   },
   {
     image:
-      "https://images.pexels.com/photos/1893563/pexels-photo-1893563.jpeg?auto=compress&cs=tinysrgb&w=600",
-    title: "Poke",
-  },
-  {
-    image:
       "https://cdn.pixabay.com/photo/2021/04/26/12/31/kebab-6208833_640.jpg",
     title: "Kebab",
   },

@@ -77,7 +77,7 @@ export const Home = () => {
             <Typography variant="h4" fontWeight="bold" gutterBottom>
               Are You Hungry??
             </Typography>
-            <Typography>
+            <Typography variant="h6">
               With our food delivery app, we take care of everything! All you
               need to do is choose your favorite dish with just a few clicks
               from the comfort of your couch, and we’ll handle the rest: from
@@ -93,7 +93,7 @@ export const Home = () => {
             <Typography variant="h4" fontWeight="bold" gutterBottom>
               Do You Have Your Own Business?
             </Typography>
-            <Typography>
+            <Typography variant="h6">
               Easily register your business in just a few steps and gain access
               to a practical and user-friendly dashboard. Manage your orders,
               menu, ingredients, and photos effortlessly, all in one place.
@@ -121,11 +121,11 @@ export const Home = () => {
       {/* Restaurant Cards */}
       <Container>
         <Typography variant="h4" fontWeight="bold" mb={4}>
-          Scegli Dove Ordinare
+          Choose Where To Order
         </Typography>
-        <Grid2 container spacing={2}>
+        <Grid2 container spacing={6}>
           {restaurant.restaurants?.map((item) => (
-            <Grid2 size={{ xs: 12, lg: 6 }} key={item.id}>
+            <Grid2 size={{ xs: 12, lg: 3 }} key={item.id}>
               <RestaurantCard item={item} />
             </Grid2>
           ))}

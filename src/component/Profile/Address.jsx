@@ -173,6 +173,22 @@ const Address = ({ createOrderUsingSelectedAddress }) => {
                       label="Street Address"
                       fullWidth
                       variant="outlined"
+                      sx={{
+                        "& .MuiInputLabel-root": {
+                          color: "#D8BD8A",
+                        },
+                        "& .MuiOutlinedInput-root": {
+                          "& fieldset": {
+                            borderColor: "#secondary",
+                          },
+                          "&:hover fieldset": {
+                            borderColor: "#D8BD8A",
+                          },
+                          "&.Mui-focused fieldset": {
+                            borderColor: "#D8BD8A",
+                          },
+                        },
+                      }}
                       error={
                         touched.streetAddress && Boolean(errors.streetAddress)
                       }
@@ -188,6 +204,22 @@ const Address = ({ createOrderUsingSelectedAddress }) => {
                       label="State"
                       fullWidth
                       variant="outlined"
+                      sx={{
+                        "& .MuiInputLabel-root": {
+                          color: "#D8BD8A",
+                        },
+                        "& .MuiOutlinedInput-root": {
+                          "& fieldset": {
+                            borderColor: "#secondary",
+                          },
+                          "&:hover fieldset": {
+                            borderColor: "#D8BD8A",
+                          },
+                          "&.Mui-focused fieldset": {
+                            borderColor: "#D8BD8A",
+                          },
+                        },
+                      }}
                       error={touched.state && Boolean(errors.state)}
                       helperText={touched.state && errors.state}
                     />
@@ -201,6 +233,22 @@ const Address = ({ createOrderUsingSelectedAddress }) => {
                       label="City"
                       fullWidth
                       variant="outlined"
+                      sx={{
+                        "& .MuiInputLabel-root": {
+                          color: "#D8BD8A",
+                        },
+                        "& .MuiOutlinedInput-root": {
+                          "& fieldset": {
+                            borderColor: "#secondary",
+                          },
+                          "&:hover fieldset": {
+                            borderColor: "#D8BD8A",
+                          },
+                          "&.Mui-focused fieldset": {
+                            borderColor: "#D8BD8A",
+                          },
+                        },
+                      }}
                       error={touched.city && Boolean(errors.city)}
                       helperText={touched.city && errors.city}
                     />
@@ -214,6 +262,22 @@ const Address = ({ createOrderUsingSelectedAddress }) => {
                       label="Postal Code"
                       fullWidth
                       variant="outlined"
+                      sx={{
+                        "& .MuiInputLabel-root": {
+                          color: "#D8BD8A",
+                        },
+                        "& .MuiOutlinedInput-root": {
+                          "& fieldset": {
+                            borderColor: "#secondary",
+                          },
+                          "&:hover fieldset": {
+                            borderColor: "#D8BD8A",
+                          },
+                          "&.Mui-focused fieldset": {
+                            borderColor: "#D8BD8A",
+                          },
+                        },
+                      }}
                       error={touched.postalCode && Boolean(errors.postalCode)}
                       helperText={touched.postalCode && errors.postalCode}
                     />
@@ -227,6 +291,22 @@ const Address = ({ createOrderUsingSelectedAddress }) => {
                       label="Country"
                       fullWidth
                       variant="outlined"
+                      sx={{
+                        "& .MuiInputLabel-root": {
+                          color: "#D8BD8A",
+                        },
+                        "& .MuiOutlinedInput-root": {
+                          "& fieldset": {
+                            borderColor: "#secondary",
+                          },
+                          "&:hover fieldset": {
+                            borderColor: "#D8BD8A",
+                          },
+                          "&.Mui-focused fieldset": {
+                            borderColor: "#D8BD8A",
+                          },
+                        },
+                      }}
                       error={touched.country && Boolean(errors.country)}
                       helperText={touched.country && errors.country}
                     />
@@ -238,8 +318,7 @@ const Address = ({ createOrderUsingSelectedAddress }) => {
                       fullWidth
                       variant="contained"
                       type="submit"
-                      color="primary"
-                      sx={{ marginTop: 2 }}
+                      sx={{ marginTop: 2, color: "#D8BD8A" }}
                     >
                       Save
                     </Button>

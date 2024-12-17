@@ -25,16 +25,16 @@ export const registerUser = (reqData) => async (dispatch) => {
     );
     console.log("RISPOSTA DEL SERVER", data);
     if (data.token) localStorage.setItem("token", data.token);
+    dispatch({
+      type: REGISTER_SUCCESS,
+      payload: { token: data.token, user: data.user },
+    });
     // if (data.user) localStorage.setItem("user", data.user);
     if (data.role === "RESTAURANT_OWNER") {
       reqData.navigate("/admin/restaurants");
     } else {
       reqData.navigate("/");
     }
-    dispatch({
-      type: REGISTER_SUCCESS,
-      payload: { token: data.token, user: data.user },
-    });
     console.log("register success", data);
   } catch (error) {
     dispatch({ type: REGISTER_FAILURE, payload: error });

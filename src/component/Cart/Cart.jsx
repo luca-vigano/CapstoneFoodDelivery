@@ -51,7 +51,7 @@ const Cart = () => {
       <Divider sx={{ bgcolor: "#D8BD8A" }} />
       <main className="lg:flex justify-between">
         <section
-          className="lg:w-[30%] space-y-3 lg:min-h-screen pt-10"
+          className="lg:w-[20%] space-y-3 lg:min-h-screen pt-10"
           style={{ backgroundColor: "#53272F" }}
         >
           {cart.cartItems.map((item) => (
@@ -84,7 +84,7 @@ const Cart = () => {
         </section>
         <Divider orientation="vertical" flexItem sx={{ bgcolor: "#D8BD8A" }} />
         <section
-          className="lg:w-[70%] flex justify-center px-5 pb-10 lg:pb-0"
+          className="lg:w-[80%] flex justify-center px-5 pb-10 lg:pb-0"
           style={{ backgroundColor: "#53272F" }}
         >
           <Address createOrderUsingSelectedAddress={createUserOrder} />

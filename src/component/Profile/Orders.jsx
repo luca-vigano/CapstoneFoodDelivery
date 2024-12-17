@@ -25,7 +25,7 @@ const Orders = () => {
         sx={{ width: "100%", maxWidth: "1200px" }}
       >
         {order.orders.map((order, index) => (
-          <Grid2 key={index} size={{ xs: 12, sm: 6, md: 4, lg: 3, xl: 2.4 }}>
+          <Grid2 key={index} size={{ xs: 12, lg: 4 }}>
             <OrderCard order={order} />
           </Grid2>
         ))}

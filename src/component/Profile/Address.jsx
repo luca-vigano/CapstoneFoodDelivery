@@ -241,7 +241,7 @@ const Address = ({ createOrderUsingSelectedAddress }) => {
                       color="primary"
                       sx={{ marginTop: 2 }}
                     >
-                      Salva
+                      Save
                     </Button>
                   </Grid2>
                 </Grid2>

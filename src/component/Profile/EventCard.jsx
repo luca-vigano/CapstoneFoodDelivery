@@ -48,7 +48,7 @@ const EventCard = ({ item, onDelete }) => {
 
   const handleDelete = () => {
     if (onDelete) {
-      onDelete(item.id); // Chiamata al callback passando l'ID dell'evento
+      onDelete(item.id);
     }
   };
 
@@ -74,7 +74,16 @@ const EventCard = ({ item, onDelete }) => {
           flexDirection: "column",
         }}
       >
-        <CardHeader title={item.name} subheader={item.restaurant.name} />
+        <CardHeader
+          title={item.name}
+          subheader={item.restaurant.name}
+          sx={{
+            "& .MuiCardHeader-subheader": {
+              color: "#D8BD8A",
+              fontWeight: "bold",
+            },
+          }}
+        />
         <CardMedia
           component="img"
           height="194"
@@ -85,7 +94,7 @@ const EventCard = ({ item, onDelete }) => {
           }}
         />
         <CardContent>
-          <Typography variant="body2" sx={{ color: "text.secondary" }}>
+          <Typography variant="body2" sx={{ color: "secondary" }}>
             {item.location}
           </Typography>
 

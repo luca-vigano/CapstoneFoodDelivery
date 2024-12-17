@@ -31,7 +31,7 @@ const OrderCard = ({ order }) => {
             </Grid2>
 
             <Grid2 size={{ xs: 8, sm: 9, md: 10 }}>
-              <Typography variant="body1" color="textSecondary">
+              <Typography variant="body1" color="secondary">
                 {item.food.name}
               </Typography>
             </Grid2>
@@ -48,7 +48,7 @@ const OrderCard = ({ order }) => {
             </Typography>
             <Typography
               variant="h6"
-              color="primary"
+              color="secondary"
               sx={{ display: "inline", marginLeft: 1 }}
             >
               € {order.totalAmmount}
@@ -58,7 +58,7 @@ const OrderCard = ({ order }) => {
       </CardContent>
 
       <CardContent>
-        <Typography color="primary">{order.orderStatus}</Typography>
+        <Typography color="secondary">{order.orderStatus}</Typography>
       </CardContent>
     </Card>
   );

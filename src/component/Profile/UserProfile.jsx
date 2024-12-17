@@ -19,10 +19,11 @@ const UserProfile = () => {
       <div className="flex flex-col items-center justify-center">
         <AccountCircleIcon sx={{ fontSize: "9rem" }} />
         <h1 className="py-5 text-2xl font-semibold">{auth.user?.fullName}</h1>
-        <p>{auth.user?.email}</p>
+        <h5>{auth.user?.email}</h5>
         <Button
           variant="contained"
           onClick={handleLogout}
+          color="secondary"
           sx={{ margin: "2rem 0rem" }}
         >
           Logout

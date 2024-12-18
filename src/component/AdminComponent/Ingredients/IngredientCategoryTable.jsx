@@ -92,7 +92,7 @@ export default function IngredientCategoryTable() {
                     {item.name}
                   </TableCell>
                   <TableCell align="right">
-                    <IconButton aria-label="delete" color="error">
+                    <IconButton aria-label="delete" sx={{ color: "#D8BD8A" }}>
                       <DeleteIcon
                         onClick={() => handleDeleteIngredientCategory(item.id)}
                       />

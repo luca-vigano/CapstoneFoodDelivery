@@ -57,9 +57,51 @@ const CreateIngredientForm = ({ handleClose }) => {
             variant="outlined"
             onChange={handleInputChange}
             value={formData.name}
+            InputLabelProps={{
+              style: { color: "#D8BD8A" }, // Colore della label
+            }}
+            sx={{
+              backgroundColor: "##53272F", // Colore di sfondo
+              "& .MuiOutlinedInput-root": {
+                "&:hover fieldset": {
+                  borderColor: "#D8BD8A", // Colore del bordo al passaggio del mouse
+                },
+                "&.Mui-focused fieldset": {
+                  borderColor: "#D8BD8A", // Colore del bordo quando il campo è attivo
+                },
+              },
+            }}
           ></TextField>
-          <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Category</InputLabel>
+          <FormControl
+            fullWidth
+            sx={{
+              "& .MuiOutlinedInput-root": {
+                "&:hover fieldset": {
+                  borderColor: "#D8BD8A",
+                },
+                "&.Mui-focused fieldset": {
+                  borderColor: "#D8BD8A", // Colore del bordo quando è in focus
+                },
+              },
+              "& .MuiSelect-icon": {
+                color: "#D8BD8A", // Colore dell'icona
+              },
+            }}
+          >
+            <InputLabel
+              id="demo-simple-select-label"
+              sx={{
+                color: "#D8BD8A", // Colore della label
+                "&.Mui-focused": {
+                  color: "#D8BD8A", // Colore della label quando il campo è in focus
+                },
+                "&.Mui-focused fieldset": {
+                  borderColor: "#D8BD8A", // Colore del bordo quando il campo è in focus
+                },
+              }}
+            >
+              Category
+            </InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
@@ -67,13 +109,29 @@ const CreateIngredientForm = ({ handleClose }) => {
               label="Category"
               onChange={handleInputChange}
               name="categoryId"
+              sx={{
+                "& .MuiInputLabel-root": {
+                  color: "#D8BD8A", // Colore della label
+                },
+                "& .MuiOutlinedInput-root": {
+                  "& fieldset": {
+                    borderColor: "#D8BD8A", // Colore del bordo dell'input
+                  },
+                  "&:hover fieldset": {
+                    borderColor: "#D8BD8A", // Colore del bordo al passaggio del mouse
+                  },
+                  "&.Mui-focused fieldset": {
+                    borderColor: "#D8BD8A", // Colore del bordo quando il campo è in focus
+                  },
+                },
+              }}
             >
               {ingredients.category.map((item) => (
                 <MenuItem value={item.id}>{item.name}</MenuItem>
               ))}
             </Select>
           </FormControl>
-          <Button variant="contained" type="submit">
+          <Button variant="contained" type="submit" sx={{ color: "#D8BD8A" }}>
             Create Ingredient
           </Button>
         </form>

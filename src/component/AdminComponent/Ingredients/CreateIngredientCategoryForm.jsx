@@ -49,8 +49,22 @@ const CreateIngredientCategoryForm = ({ handleClose }) => {
             variant="outlined"
             onChange={handleInputChange}
             value={formData.name}
+            InputLabelProps={{
+              style: { color: "#D8BD8A" }, // Colore della label
+            }}
+            sx={{
+              backgroundColor: "##53272F", // Colore di sfondo
+              "& .MuiOutlinedInput-root": {
+                "&:hover fieldset": {
+                  borderColor: "#D8BD8A", // Colore del bordo al passaggio del mouse
+                },
+                "&.Mui-focused fieldset": {
+                  borderColor: "#D8BD8A", // Colore del bordo quando il campo è attivo
+                },
+              },
+            }}
           ></TextField>
-          <Button variant="contained" type="submit">
+          <Button variant="contained" type="submit" sx={{ color: "#D8BD8A" }}>
             Create Ingredient Category
           </Button>
         </form>

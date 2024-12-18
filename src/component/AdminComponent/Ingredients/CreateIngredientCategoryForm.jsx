@@ -37,7 +37,7 @@ const CreateIngredientCategoryForm = ({ handleClose }) => {
   return (
     <div className="">
       <div className="p-5">
-        <h1 className="text-gray-400 text-center text-xl pb-10">
+        <h1 className=" text-center text-xl pb-10">
           Create Ingredient Category
         </h1>
         <form className="space-y-4" onSubmit={handleSubmit}>
